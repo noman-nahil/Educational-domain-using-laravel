@@ -19,3 +19,33 @@ Route::post('/login','loginController@verify');
 Route::get('/home','adminController@home');
 Route::get('/home/adduser','adminController@adduser');
 Route::get('/home/addcourse','adminController@addcourse');
+
+Route::get('/CoursesResult', 'studentController@CoursesResult');
+
+
+Route::get('/EditUser', 'studentController@EditUser');
+
+
+Route::get('/Email', 'studentController@Email');
+
+Route::get('/Email/Emaildelete', 'studentController@Emaildelete');
+
+Route::get('/GradeReport', 'studentController@GradeReport');
+
+
+Route::get('/Library', 'studentController@Library');
+
+Route::get('/Notice', 'studentController@Notice');
+
+Route::get('/Notice/NoticeDelete', 'studentController@NoticeDelete');
+
+Route::get('/Profile/password', 'studentController@password');
+
+Route::get('/portal', 'studentController@portal');
+
+Route::get('/Profile', 'studentController@Profile');
+
+
+
+
+
