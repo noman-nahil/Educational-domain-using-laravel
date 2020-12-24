@@ -47,14 +47,14 @@
     <div class="py-2 bg-light">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-9 d-none d-lg-block">
+          <div class="col-lg-6 d-none d-lg-block">
             <a href="#" class="small mr-3"><span class="icon-question-circle-o mr-2"></span> Have a questions?</a> 
             <a href="#" class="small mr-3"><span class="icon-phone2 mr-2"></span> 10 20 123 456</a> 
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a> 
           </div>
-          <div class="col-lg-3 text-right">
-          <a href="/home/password" class="small mr-3"><span class=""></span>Change Password</a>
-            <a href="/logout" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span>Logout</a>
+          <div class="col-lg-6 text-right">
+            <a href="/home/password" class="small mr-3"><span class=""></span>Change Password</a>
+            <a href="/logout" class="small btn btn-primary px-4 py-2 rounded-0"><span class=""></span> Logout</a>
           </div>
         </div>
       </div>
@@ -75,16 +75,13 @@
                   <a href="/home" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/home/user" class="nav-link text-left">User Information</a>
+                  <a href="/home/adduser" class="nav-link text-left">Add new user</a>
                 </li>
                 <li>
-                  <a href="/home/addcourse" class="nav-link text-left">Add new Courses</a>
+                  <a href="/home/addcourse" class="nav-link text-left">Add New Course</a>
                 </li>
                 <li>
                   <a href="/home/book" class="nav-link text-left">Book</a>
-                </li>
-                <li>
-                  <a href="/home/news" class="nav-link text-left">News</a>
                 </li>
               </ul>                                                                                                                                                                                                                  
             </nav>
@@ -111,7 +108,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">Add New User</h2>
+              <h2 class="mb-0">Edit My Information</h2>
              <p></p>
             </div>
           </div>
@@ -124,74 +121,49 @@
 
 
             <div class="row justify-content-center">
-              
+
                 <div class="col-md-5">
                   <form method="post">
-                    <div class="row">
-                        <div class="col-md-12 form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" class="form-control form-control-lg">
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control form-control-lg">
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <label for="gender">Gender</label>
-                            <select name="gender"class="form-control form-control-lg">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <label for="dob">Birthday</label>
-                            <input type="date" name="dob" class="form-control form-control-lg">
-                        </div>
-                         <div class="col-md-12 form-group">
-                            <label for="address">Address</label>
-                            <input type="text" name="address" class="form-control form-control-lg">
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <label for="dob">Contact</label>
-                            <input type="text" name="contact" class="form-control form-control-lg">
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <label for="blood">Blood Group</label>
-                            <select name="blood" class="form-control form-control-lg">
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12 form-group">
-                          <label for="status">Status</label>
-                          <select name="status" class="form-control form-control-lg">
-                              <option value="Active">Active</option>
-                              <option value="Deactive">Deactive</option>
-                          </select>
-                      </div>
-                      <div class="col-md-12 form-group">
-                          <label for="type">User Type</label>
-                          <select name="type" class="form-control form-control-lg">
-                              <option value="Admin">Admin</option>
-                              <option value="Teacher">Teacher</option>
-                              <option value="Student">Student</option>
-                          </select>
-                      </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                        <label for="name">Name:</label>
+                        <input type="text"  name="name" value="" class="form-control form-control-lg"> 
                     </div>
+                    <div class="col-md-12 form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" value="" class="form-control form-control-lg"> 
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label for="gender">Gender</label>
+                        <select name="gender" class="form-control form-control-lg">
+              
+                      </select>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label for="dob">Birthday</label>
+                        <input type="text" name="dob" value="" class="form-control form-control-lg"> 
+                    </div>
+                     <div class="col-md-12 form-group">
+                        <label for="address">Address</label>
+                        <input type="text"  name="address" value="" class="form-control form-control-lg"> 
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label for="dob">Contact</label>
+                        <input type="text" name="contact" value="" class="form-control form-control-lg"> 
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label for="blood">Blood Group</label>
+                        <select name="blood" class="form-control form-control-lg">
+                      </select>
+                    </div>
+                </div>
                     <div class="row">
                         <div class="col-12">
-                            <input type="submit"   name="submit" value="Register" class="btn btn-primary btn-lg px-5">
+                            <input type="submit" value="Save Changes" name="submit" class="btn btn-primary btn-lg px-5">
                         </div>
                     </div>
-                  </form>
+                    </form>
                 </div>
-              
             </div>
             
 

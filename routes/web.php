@@ -17,5 +17,9 @@ Route::get('/', function () {
 Route::get('/login','loginController@index');
 Route::post('/login','loginController@verify');
 Route::get('/home','adminController@home');
+Route::get('/home/edit','adminController@edit');
 Route::get('/home/adduser','adminController@adduser');
+Route::get('/home/user','adminController@user');
 Route::get('/home/addcourse','adminController@addcourse');
+Route::get('/home/book','adminController@book');
+Route::get('/home/password','adminController@password');

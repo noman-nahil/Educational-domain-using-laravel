@@ -69,19 +69,19 @@
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li>
-                  <a href="/admin" class="nav-link text-left">Home</a>
+                  <a href="/home" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/admin/adduser" class="nav-link text-left">Add user</a>
+                  <a href="/home/adduser" class="nav-link text-left">Add user</a>
                 </li>
                 <li>
-                  <a href="/admin/user" class="nav-link text-left">User Information</a>
+                  <a href="/home/user" class="nav-link text-left">User Information</a>
                 </li>
                 <li>
-                  <a href="/admin/book" class="nav-link text-left">Book</a>
+                  <a href="/home/book" class="nav-link text-left">Book</a>
                 </li>
                 <li>
-                  <a href="/admin/news" class="nav-link text-left">News</a>
+                  <a href="/home/news" class="nav-link text-left">News</a>
                 </li>
                 
               </ul>                                                                                                                                                                                                                  
