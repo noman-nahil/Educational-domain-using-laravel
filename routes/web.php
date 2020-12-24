@@ -16,15 +16,16 @@ Route::get('/', function () {
 });
 Route::get('/login','loginController@index');
 Route::post('/login','loginController@verify');
+Route::get('/logout', 'logoutController@index');
 Route::get('/home','adminController@home');
 Route::get('/home/edit','adminController@edit');
 Route::get('/home/adduser','adminController@adduser');
-<<<<<<< HEAD
+
 Route::get('/home/user','adminController@user');
 Route::get('/home/addcourse','adminController@addcourse');
 Route::get('/home/book','adminController@book');
 Route::get('/home/password','adminController@password');
-=======
+
 Route::get('/home/addcourse','adminController@addcourse');
 
 Route::get('/CoursesResult', 'studentController@CoursesResult');
@@ -56,4 +57,3 @@ Route::get('/Profile', 'studentController@Profile');
 
 
 
->>>>>>> b064c0133819234ca4b9f03f6e4f7d03cdefc4fe

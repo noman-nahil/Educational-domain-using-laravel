@@ -15,8 +15,8 @@ class loginController extends Controller
         if($req->username =='Admin'){
            return redirect('/home');
         }
-        else if($req->id=='student'){
-            redirect('/portal');
+        else if($req->username =='student'){
+            return redirect('/portal');
          }
         //  else if($req->id=='student'){
         //     //redirect('/home');
