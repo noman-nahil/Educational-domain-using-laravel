@@ -130,6 +130,7 @@
                         <div class="col-12  form-group">
                             <input type="submit" name="submit"value="Log In" class="btn btn-primary btn-lg px-5">
                         </div>
+                        <h2>{{session('msg')}}</h2>
                       </div>
                         </form>
                 </div>

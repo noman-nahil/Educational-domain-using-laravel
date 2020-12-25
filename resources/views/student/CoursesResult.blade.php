@@ -57,7 +57,7 @@
                                             <nav class="site-navigation position-relative text-right" role="navigation">
                                               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                                                 <li>
-                                                  <a href="/student" class="nav-link text-left">Home</a>
+                                                  <a href="/portal" class="nav-link text-left">Home</a>
                                                 </li>
                                               </ul>                                                                                                                                                                                                                  
                                             </nav>
@@ -104,11 +104,7 @@
                                                   <div class="row">
                                                     <div class="col-md-12 form-group">
                                                         <label for="courseName">Course Name</label>
-<<<<<<< HEAD
-                                                        <input type="text" id="courseName" name="courseName" value="Course" class="form-control form-control-lg" disabled> 
-=======
                                                         <input type="text" id="courseName" name="courseName" value="" class="form-control form-control-lg" disabled> 
->>>>>>> 61a2504fb6d0919e4b1ee9ff9b56a3eeb19c4369
                                                     </div>
                                                     <div class="col-md-12 form-group">
                                                         <label for="grade">Grade</label>
