@@ -20,15 +20,12 @@ Route::get('/logout', 'logoutController@index');
 Route::get('/home','adminController@home');
 Route::get('/home/edit','adminController@edit');
 Route::get('/home/adduser','adminController@adduser');
-<<<<<<< HEAD
-=======
 
 Route::get('/home/user','adminController@user');
 Route::get('/home/addcourse','adminController@addcourse');
 Route::get('/home/book','adminController@book');
 Route::get('/home/password','adminController@password');
 
->>>>>>> 61a2504fb6d0919e4b1ee9ff9b56a3eeb19c4369
 Route::get('/home/addcourse','adminController@addcourse');
 
 Route::get('/CoursesResult', 'studentController@CoursesResult');
