@@ -7,7 +7,6 @@ use DB;
 use App\userModel;
 class loginController extends Controller
 {
-    //
     function index(){
         return view('login.login');
     }
@@ -17,12 +16,12 @@ class loginController extends Controller
                             ->where('password',$req->password)
                             ->get();
             if(count($users) > 0){
-               
                 $userStatus = userModel::find($req->username)->status;
                 if($userStatus == 'Active'){
                     $userType = userModel::find($req->username)->type;
                     if($userType== 'Admin'){
                         //echo "$userType";
+                        $req->session()->put('username', $req->username);
                         return redirect('/home');
                     }
                     else if($userType== 'Teacher'){
@@ -39,7 +38,6 @@ class loginController extends Controller
                     echo "opps!! Inactive";
                 }
 
-                
             }
             else{
                 $req->session()->flash('msg', 'invalid username/password');

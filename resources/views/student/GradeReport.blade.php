@@ -64,7 +64,7 @@
       </div>
     </div>
 
-    {{-- <div class="site-section">
+    <div class="site-section">
         <div class="container">
          <div class="row justify-content-center">
             <div class="col-md-5">
@@ -72,26 +72,24 @@
             </div>
             <div class="col-md-12 form-group">
               <table class="table table-hover">
-                <thead class="thead-dark"> --}}
-                  {{-- <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Student Id</th>
+                <thead class="thead-dark"> 
+                <tr>
+                    <th scope="col">Student Username</th>
                     <th scope="col">Student Name</th>
                     <th scope="col">Student email</th>
                   </tr>
                 </thead>
-                --}}
-                {{-- <tbody>
+                <tbody>
                   @foreach ($data as $i)
                   <tr> 
-                  <td>{{$i->username}}</td>
+                    <td>{{$i->username}}</td>
                     <td>{{$i->name}}</td>
                     <td>{{$i->email}}</td>
                   </tr>
               @endforeach
               </tbody>
               </table>
-                      </div> --}}
+                      </div> 
 
          <div class="col-md-5">
             <h1 class="font weight bold">All Courses Grade</h1>
@@ -106,15 +104,15 @@
                   <th scope="col">Grade</th>
                 </tr>
               </thead>
-              @for($i=0; $i < count($data); $i++)
+              @foreach ($data as $i)
               <tbody>
                 <tr>
                   <td></td>
-                  <td>{{$data[$i]['id']}}</td>
-                  <td>{{$data[$i]['courseName']}}</td>
-                  <td>{{$data[$i]['grade']}}</td>
+                  <td>{{$i->id}}</td>
+                  <td>{{$i->courseName}}</td>
+                  <td>{{$i->grade}}</td>
                 </tr>
-              @endfor
+                @endforeach
             </tbody>
             </table>
                     </div>
@@ -122,7 +120,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
   <!-- .site-wrap -->
 
   <!-- loader -->

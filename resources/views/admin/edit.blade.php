@@ -125,38 +125,35 @@
                 <div class="col-md-5">
                   <form method="post">
                   <div class="row">
-                    <div class="col-md-12 form-group">
-                        <label for="name">Name:</label>
-                        <input type="text"  name="name" value="" class="form-control form-control-lg"> 
+                        <div class="col-md-12 form-group">
+                            <label for="username">Name:</label>
+                            <input type="text" id="name" name="name" value="{{$name}}" class="form-control form-control-lg" disabled> 
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" value="{{$email}}" class="form-control form-control-lg" disabled> 
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="gender">Gender</label>
+                            <input type="text"  name="gender" value="{{$gender}}" class="form-control form-control-lg" disabled> 
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="dob">Birthday</label>
+                            <input type="text" name="dob" value="{{$dob}}" class="form-control form-control-lg" disabled> 
+                        </div>
+                         <div class="col-md-12 form-group">
+                            <label for="address">Address</label>
+                            <input type="text" name="address" value="{{$address}}" class="form-control form-control-lg" disabled> 
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="dob">Contact</label>
+                            <input type="text" name="contact" value="{{$contact}}" class="form-control form-control-lg" disabled> 
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="gender">Blood Group</label>
+                            <input type="text"  name="blood" value="{{$blood}}" class="form-control form-control-lg" disabled> 
+                        </div>
                     </div>
-                    <div class="col-md-12 form-group">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" value="" class="form-control form-control-lg"> 
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <label for="gender">Gender</label>
-                        <select name="gender" class="form-control form-control-lg">
-              
-                      </select>
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <label for="dob">Birthday</label>
-                        <input type="text" name="dob" value="" class="form-control form-control-lg"> 
-                    </div>
-                     <div class="col-md-12 form-group">
-                        <label for="address">Address</label>
-                        <input type="text"  name="address" value="" class="form-control form-control-lg"> 
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <label for="dob">Contact</label>
-                        <input type="text" name="contact" value="" class="form-control form-control-lg"> 
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <label for="blood">Blood Group</label>
-                        <select name="blood" class="form-control form-control-lg">
-                      </select>
-                    </div>
-                </div>
                     <div class="row">
                         <div class="col-12">
                             <input type="submit" value="Save Changes" name="submit" class="btn btn-primary btn-lg px-5">

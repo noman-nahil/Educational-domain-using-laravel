@@ -29,12 +29,12 @@ public function Emaildelete(){
     return view('student.Emaildelete');
 
 }
-public function GradeReport(Request $req){
+public function GradeReport(){
      $data= DB::table('course')
-    ->select('course.*')
+     ->join('userinfo', 'userinfo.username', '=', 'course.username')
+    ->select('userinfo.username','userinfo.name','userinfo.email','course.id','course.courseName','course.grade')
     ->get();
     return view('student.GradeReport',['data'=>$data]);
-//  ->join('course','course.username','userinfo.id')
 }
 public function Library(){
     return view('student.Library');
