@@ -64,7 +64,7 @@
         <div class="d-flex align-items-center">
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome,Shamim Ahamed</p>
+                <p>Welcome,{{$name}}</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -89,55 +89,45 @@
           <div class="row justify-content-center">
               <div class="col-md-5">
                   <div class="row">
-                    @foreach ($data as $i)
                     <div class="col-md-12 form-group">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" value="{{ $i->name }}" class="form-control form-control-lg" disabled> 
+                        <input type="text" id="name" name="name" value="{{$name}}" class="form-control form-control-lg" disabled> 
                       </div>
                       <div class="col-md-12 form-group">
                         <label for="email">Email</label>
-                        <input type="text" id="email" name="email" value="{{ $i->email}}" class="form-control form-control-lg" disabled> 
+                        <input type="text" id="email" name="email" value="{{$email}}" class="form-control form-control-lg" disabled> 
                     </div>
-                  </div>
                   <div class="col-md-12 form-group">
                       <label for="gender">Gender</label>
-                      <input type="text" id="gender" name="gender" value="{{ $i->gender}}" class="form-control form-control-lg" disabled> 
+                      <input type="text" id="gender" name="gender" value="{{$gender}}" class="form-control form-control-lg" disabled> 
                   </div>
                   <div class="col-md-12 form-group">
                       <label for="dob">Birthday</label>
-                      <input type="text" id="dob" name="dob" value="{{ $i->dob }}" class="form-control form-control-lg" disabled> 
+                      <input type="text" id="dob" name="dob" value="{{$dob}}" class="form-control form-control-lg" disabled> 
                   </div>
                    <div class="col-md-12 form-group">
                       <label for="address">Address</label>
-                      <input type="text" id="address" name="address" value="{{ $i->address }}" class="form-control form-control-lg" disabled> 
+                      <input type="text" id="address" name="address" value="{{$address}}" class="form-control form-control-lg" disabled> 
                   </div>
                   <div class="col-md-12 form-group">
                       <label for="dob">Contact</label>
-                      <input type="text" id="contact" name="contact" value="{{ $i->contact }}" class="form-control form-control-lg" disabled> 
+                      <input type="text" id="contact" name="contact" value="{{$contact}}" class="form-control form-control-lg" disabled> 
                   </div>
                   <div class="col-md-12 form-group">
                       <label for="gender">Blood Group</label>
-                      <input type="text" id="blood" name="blood" value="{{ $i->blood }}" class="form-control form-control-lg" disabled> 
+                      <input type="text" id="blood" name="blood" value="{{$blood}}" class="form-control form-control-lg" disabled> 
                   </div>
-                    @endforeach
-
-               {{-- <div>
-              <ul>
-                 @foreach($data as $i )
-                 <li>
-                 {{$i->name}}
-               </li>
-                @endforeach
-               </ul>
-                 </div>    --}}
-
+</div>
+</div>
+<div class="row">
+    <div class="col-12">
+      <a href="/home/edit" class="small btn btn-primary px-4 py-2 rounded-0"><span class=""></span> Edit</a>
+    </div>
 </div>
 </div>
 </div>      
 </div>
 </div>
-
-
 <div class="footer">
   <div class="container">
     <div class="row">

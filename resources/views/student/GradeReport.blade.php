@@ -86,7 +86,7 @@
                     <td>{{$i->name}}</td>
                     <td>{{$i->email}}</td>
                   </tr>
-              @endforeach
+                  @endforeach
               </tbody>
               </table>
                       </div> 

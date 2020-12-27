@@ -87,7 +87,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome,Abdullah AL Noman</p>
+                <p>Welcome,{{$name}}</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -120,31 +120,31 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <label for="username">Name:</label>
-                            <input type="text" id="name" name="name" value="" class="form-control form-control-lg" disabled> 
+                            <input type="text" id="name" name="name" value="{{$name}}" class="form-control form-control-lg" disabled> 
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="email">Email</label>
-                            <input type="text" name="email" value="" class="form-control form-control-lg" disabled> 
+                            <input type="text" name="email" value="{{$email}}" class="form-control form-control-lg" disabled> 
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="gender">Gender</label>
-                            <input type="text"  name="gender" value="" class="form-control form-control-lg" disabled> 
+                            <input type="text"  name="gender" value="{{$gender}}" class="form-control form-control-lg" disabled> 
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="dob">Birthday</label>
-                            <input type="text" name="dob" value="" class="form-control form-control-lg" disabled> 
+                            <input type="text" name="dob" value="{{$dob}}" class="form-control form-control-lg" disabled> 
                         </div>
                          <div class="col-md-12 form-group">
                             <label for="address">Address</label>
-                            <input type="text" name="address" value="" class="form-control form-control-lg" disabled> 
+                            <input type="text" name="address" value="{{$address}}" class="form-control form-control-lg" disabled> 
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="dob">Contact</label>
-                            <input type="text" name="contact" value="" class="form-control form-control-lg" disabled> 
+                            <input type="text" name="contact" value="{{$contact}}" class="form-control form-control-lg" disabled> 
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="gender">Blood Group</label>
-                            <input type="text"  name="blood" value="" class="form-control form-control-lg" disabled> 
+                            <input type="text"  name="blood" value="{{$blood}}" class="form-control form-control-lg" disabled> 
                         </div>
                     </div>
                     <div class="row">

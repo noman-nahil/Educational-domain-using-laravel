@@ -1,10 +1,7 @@
 <?php
 namespace App\Http\Controllers;
-use App\GradeReport as AppGradeReport;
 use Illuminate\Http\Request;
-use App\Models\GradeReports;
-use App\Models\Profile;
-use App\profile as AppProfile;
+use App\userModel;
 use App\portal as Appportal;
 use App\notice as Appnotice;
 use DB;
@@ -29,11 +26,13 @@ public function Emaildelete(){
     return view('student.Emaildelete');
 
 }
-public function GradeReport(){
+public function GradeReport(Request $req){
      $data= DB::table('course')
      ->join('userinfo', 'userinfo.username', '=', 'course.username')
     ->select('userinfo.username','userinfo.name','userinfo.email','course.id','course.courseName','course.grade')
     ->get();
+    // $id = $req->session()->get('username');
+    // $data = userModel::find($id);
     return view('student.GradeReport',['data'=>$data]);
 }
 public function Library(){
@@ -57,10 +56,9 @@ public function portal(Request $req){
      return view('student.portal',['data'=>$data]);
     
 }
-public function Profile(Request $req){
-    $data =  DB::table("userinfo") ->where('id', 2006)->get(); 
-    
-    return view ('student.Profile',['data'=>$data]);
-
-}
+function Profile(Request $req){
+     $id = $req->session()->get('username');
+    $user = userModel::find($id);
+    return view('student.Profile',$user);
+ }
 }
