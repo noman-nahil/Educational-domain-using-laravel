@@ -27,13 +27,15 @@ public function Emaildelete(){
 
 }
 public function GradeReport(Request $req){
+    $id = $req->session()->get('username');
+    $user = userModel::find($id);
      $data= DB::table('course')
      ->join('userinfo', 'userinfo.username', '=', 'course.username')
     ->select('userinfo.username','userinfo.name','userinfo.email','course.id','course.courseName','course.grade')
     ->get();
     // $id = $req->session()->get('username');
     // $data = userModel::find($id);
-    return view('student.GradeReport',['data'=>$data]);
+    return view('student.GradeReport',$user,['data'=>$data]);
 }
 public function Library(){
     return view('student.Library');
@@ -57,8 +59,8 @@ public function portal(Request $req){
     
 }
 function Profile(Request $req){
-     $id = $req->session()->get('username');
-    $user = userModel::find($id);
-    return view('student.Profile',$user);
+    $id = $req->session()->get('username');
+        $user = userModel::find($id);
+return view('student.Profile',$user);
  }
 }
