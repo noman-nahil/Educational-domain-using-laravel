@@ -127,31 +127,53 @@
                   <div class="row">
                         <div class="col-md-12 form-group">
                             <label for="username">Name:</label>
-                            <input type="text" id="name" name="name" value="{{$name}}" class="form-control form-control-lg" disabled> 
+                            <input type="text" id="name" name="name" value="{{$name}}" class="form-control form-control-lg"> 
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="email">Email</label>
-                            <input type="text" name="email" value="{{$email}}" class="form-control form-control-lg" disabled> 
+                            <input type="text" name="email" value="{{$email}}" class="form-control form-control-lg" > 
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="gender">Gender</label>
-                            <input type="text"  name="gender" value="{{$gender}}" class="form-control form-control-lg" disabled> 
+                            <select name="gender" class="form-control form-control-lg">
+                            @foreach(array("Male","Female") as $gen)
+                              @if($gen==$gender)
+                              {
+                                <option value="{{$gen}}" selected="selected">{{$gen}}</option>
+                              }
+                              @else{
+                                <option value="{{$gen}}">{{$gen}}</option>
+                              }
+                              @endif
+                            @endforeach
+                            <select>
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="dob">Birthday</label>
-                            <input type="text" name="dob" value="{{$dob}}" class="form-control form-control-lg" disabled> 
+                            <input type="text" name="dob" value="{{$dob}}" class="form-control form-control-lg" > 
                         </div>
                          <div class="col-md-12 form-group">
                             <label for="address">Address</label>
-                            <input type="text" name="address" value="{{$address}}" class="form-control form-control-lg" disabled> 
+                            <input type="text" name="address" value="{{$address}}" class="form-control form-control-lg" > 
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="dob">Contact</label>
-                            <input type="text" name="contact" value="{{$contact}}" class="form-control form-control-lg" disabled> 
+                            <input type="text" name="contact" value="{{$contact}}" class="form-control form-control-lg" > 
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="gender">Blood Group</label>
-                            <input type="text"  name="blood" value="{{$blood}}" class="form-control form-control-lg" disabled> 
+                            <select name="blood" class="form-control form-control-lg">
+                            @foreach(array("A+","A-","B+","B-","AB+","AB-","O+","O-") as $group)
+                              @if($group==$blood)
+                              {
+                                <option value="{{$group}}" selected="selected">{{$group}}</option>
+                              }
+                              @else{
+                                <option value="{{$group}}">{{$group}}</option>
+                              }
+                              @endif
+                            @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="row">

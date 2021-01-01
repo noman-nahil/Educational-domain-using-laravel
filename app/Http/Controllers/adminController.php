@@ -27,6 +27,33 @@ class adminController extends Controller
     function adduser(){
         return view('admin.adduser');
     }
+    function userstore(Request $req){
+       $id = DB::table('userinfo')->max('id');
+    
+        $password= sprintf("%06d", mt_rand(1, 999999));
+     
+        $user = new userModel();
+        $user->id = $id+1;
+        $user->name = $req->name;
+        $user->username = "";
+        $user->email = $req->email;
+        $user->password =  $password;
+        $user->gender = $req->gender;
+        $user->address = $req->address;
+        $user->dob = $req->dob;
+        $user->contact = $req->contact;
+        $user->blood = $req->blood;
+        $user->status = $req->status;
+        $user->type = $req->type;
+
+        if($user->save()){
+            $req->session()->flash('addmsg', 'Added Successfully');
+            return redirect('/home/adduser');
+        }else{
+            $req->session()->flash('addmsg', 'Something Wrong');
+            return redirect('/home/adduser');
+        }
+    }
     function addcourse(){
         return view('admin.addcourse');
     }

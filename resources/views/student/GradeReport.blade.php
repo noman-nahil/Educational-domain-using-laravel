@@ -58,7 +58,7 @@
 
     <div class="custom-breadcrumns border-bottom">
       <div class="container">
-        <a href="/student">Home</a>
+        <a href="/portal">Home</a>
         <span class="mx-3 icon-keyboard_arrow_right"></span>
         <span class="current">Grade Report</span>
       </div>
