@@ -80,13 +80,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($data as $i)
                   <tr> 
-                    <td>{{$i->username}}</td>
-                    <td>{{$i->name}}</td>
-                    <td>{{$i->email}}</td>
+                    <td>{{$username}}</td>
+                    <td>{{$name}}</td>
+                    <td>{{$email}}</td>
                   </tr>
-              @endforeach
               </tbody>
               </table>
                       </div> 

@@ -21,6 +21,24 @@ class adminController extends Controller
         $user = userModel::find($id);
         return view('admin.edit',$user);
     }
+    function update(Request $req){
+        $id = $req->session()->get('username');
+        
+        $user = userModel::find($id);
+        //echo "$user";
+        //$user = new userModel();
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->gender = $req->gender;
+        $user->address = $req->address;
+        $user->dob = $req->dob;
+        $user->contact = $req->contact;
+        $user->blood = $req->blood;
+        $user->save();
+
+        return redirect('/home');
+    }
+
     function user(){
         return view('admin.user');
     }

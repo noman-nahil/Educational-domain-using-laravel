@@ -19,7 +19,10 @@ Route::post('/login','loginController@verify');
 Route::get('/logout', 'logoutController@index');
 
 Route::get('/home','adminController@home');
+
 Route::get('/home/edit','adminController@edit');
+Route::post('/home/edit','adminController@update');
+
 Route::get('/home/adduser','adminController@adduser');
 Route::post('/home/adduser','adminController@userstore');
 

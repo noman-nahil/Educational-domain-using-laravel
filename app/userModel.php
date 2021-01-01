@@ -9,4 +9,5 @@ class userModel extends Model
     protected $table = "userinfo";
     protected $primaryKey =  "id";
     public $timestamps = false;
+
 }
