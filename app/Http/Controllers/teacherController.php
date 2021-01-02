@@ -59,4 +59,14 @@ public function delete($id){
   }
 
 
+  function showStudent(Request $req){
+ $studentList=userModel::where('type','Student')
+                         ->get();
+
+    return view('teacher.studentList')->with('studentList',$studentList);
+    
+}
+
+
+
 }
