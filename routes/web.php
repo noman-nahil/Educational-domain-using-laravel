@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/login','loginController@index');
 Route::post('/login','loginController@verify');
 Route::get('/logout', 'logoutController@index');
-
+//admin
 Route::get('/home','adminController@home');
 
 Route::get('/home/edit','adminController@edit');
@@ -30,9 +30,12 @@ Route::get('/home/user','adminController@user');
 Route::get('/home/addcourse','adminController@addcourse');
 Route::get('/home/book','adminController@book');
 Route::get('/home/password','adminController@password');
+Route::post('/home/password','adminController@passUpdate');
 
 Route::get('/home/addcourse','adminController@addcourse');
 
+
+//adminend
 Route::get('/CoursesResult', 'studentController@CoursesResult');
 
 

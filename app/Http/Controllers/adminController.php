@@ -95,7 +95,36 @@ class adminController extends Controller
     function book(){
         return view('admin.book');
     }
-    function password(){
-        return view('admin.password');
+    function password(Request $req){
+        $id = $req->session()->get('username');
+        $user = userModel::find($id);
+        return view('admin.password',$user);
+    }
+    function passUpdate(Request $req){
+        $id = $req->session()->get('username');
+        $pass = userModel::find($id)->password;
+        if($req->oldpass==$pass){
+            //echo "$pass";
+            if($req->newpass==$req->newpass2 && $req->newpass2!=""){
+                //echo "$req->newpass";
+                $user = userModel::find($id);
+
+                $user->password=$req->newpass;
+                $user->save();
+
+                $req->session()->flash('passmsg', 'Password change Successfully');
+                return redirect('/home/password'); 
+            }
+            else{
+                $req->session()->flash('passmsg', "Password didn't match");
+                return redirect('/home/password'); 
+                //echo "Not same";password didn't match
+            }
+        }
+        else{
+            $req->session()->flash('passmsg', "Current password isn't correct");
+            return redirect('/home/password'); 
+        }
+        
     }
 }

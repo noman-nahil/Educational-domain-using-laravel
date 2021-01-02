@@ -120,6 +120,9 @@
                   <form method="post">
                     <div class="row">
                         <div class="col-md-12 form-group">
+                            <h4>{{session('passmsg')}}</h4>
+                        </div>
+                        <div class="col-md-12 form-group">
                             <label for="newpass">Current</label>
                             <input type="password" id="oldpass" name="oldpass" value="" class="form-control form-control-lg"> 
                         </div>
