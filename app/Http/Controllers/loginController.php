@@ -26,7 +26,8 @@ class loginController extends Controller
                     }
                     else if($userType== 'Teacher'){
                         $req->session()->put('username', $req->username);
-                        echo "$userType";
+                        return redirect('/teacher');
+                        
                     }
                     else if($userType== 'Student'){
                         $req->session()->put('username', $req->username);
