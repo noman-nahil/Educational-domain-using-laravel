@@ -40,13 +40,28 @@ class adminController extends Controller
         return redirect('/home');
     }
 
-    function user(Request $req){
-        $id = $req->session()->get('username');
+    function user($id,Request $req){
         $user = userModel::find($id);
-        return view('admin.user',$user);
+        return view('admin.user',$user);    
     }
-    function adduser(Request $req){
+    function useredit($id,Request $req){
+        
+        $user = userModel::find($id);
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->gender = $req->gender;
+        $user->address = $req->address;
+        $user->dob = $req->dob;
+        $user->contact = $req->contact;
+        $user->blood = $req->blood;
+        $user->status = $req->status;
+        $user->save();
+        $req->session()->flash('upmsg', 'Update Successfully');
+        return redirect('/home/teacherlist');
 
+    }
+
+    function adduser(Request $req){
         return view('admin.adduser');
     }
     function userstore(Request $req){
@@ -126,5 +141,15 @@ class adminController extends Controller
             return redirect('/home/password'); 
         }
         
+    }
+    function teacherlist(){
+        $list = DB ::table('userinfo')->where('type','Teacher')
+                                    ->get();
+        $list->transform(function($i) {
+            return (array)$i;
+            });
+        $users = $list->toArray(); 
+        //echo "$list";                           
+        return view('admin.teacherlist')->with("users",$users);
     }
 }

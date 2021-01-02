@@ -17,6 +17,7 @@ Route::get('/', function () {
 Route::get('/login','loginController@index');
 Route::post('/login','loginController@verify');
 Route::get('/logout', 'logoutController@index');
+
 //admin
 Route::get('/home','adminController@home');
 
@@ -26,7 +27,10 @@ Route::post('/home/edit','adminController@update');
 Route::get('/home/adduser','adminController@adduser');
 Route::post('/home/adduser','adminController@userstore');
 
-Route::get('/home/user','adminController@user');
+Route::get('/home/user/{id}','adminController@user')->name('admin.user');
+Route::post('/home/user/{id}','adminController@useredit');
+
+Route::get('/home/teacherlist','adminController@teacherlist');
 Route::get('/home/addcourse','adminController@addcourse');
 Route::get('/home/book','adminController@book');
 Route::get('/home/password','adminController@password');
