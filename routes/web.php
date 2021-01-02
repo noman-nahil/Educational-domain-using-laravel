@@ -35,13 +35,13 @@ Route::get('/home/addcourse','adminController@addcourse');
 
 Route::get('/CoursesResult', 'studentController@CoursesResult');
 
-
-Route::get('/EditUser', 'studentController@EditUser');
-
+Route::post('/Profile/EditUser','studentController@update');
 
 Route::get('/Email', 'studentController@Email');
 
-Route::get('/Email/Emaildelete', 'studentController@Emaildelete');
+Route::get('/Email/Emaildelete/{id}', 'studentController@Emaildelete');
+Route::post('/Email/Emaildelete/{id}', 'studentController@delete');
+
 
 Route::get('/GradeReport', 'studentController@GradeReport');
 
@@ -49,15 +49,15 @@ Route::get('/GradeReport', 'studentController@GradeReport');
 Route::get('/Library', 'studentController@Library');
 
 Route::get('/Notice', 'studentController@Notice');
-
-Route::get('/Notice/NoticeDelete', 'studentController@NoticeDelete');
+Route::get('/Notice/NoticeDelete/{id}', 'studentController@NoticeDelete');
+Route::post('/Notice/NoticeDelete/{id}', 'studentController@delete_notice');
 
 Route::get('/Profile/password', 'studentController@password');
 
 Route::get('/portal', 'studentController@portal');
 
 Route::get('/Profile', 'studentController@Profile');
-
+Route::get('/pdf', 'studentController@pdf');
 
 
 

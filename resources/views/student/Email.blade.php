@@ -133,7 +133,7 @@
                       <td>{{$data[$i]['notice']}}</td>
                       <td>{{$data[$i]['DateTime']}}</td>
               <td>
-                <a href="/Email/Emaildelete/">Delete</a>
+                <a href="/Email/Emaildelete/{{$data[$i]['id']}}">Delete</a>
                       </td>
                   </tr>
                   @endfor
