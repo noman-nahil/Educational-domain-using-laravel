@@ -69,7 +69,7 @@
                   <a href="/home/adduser" class="nav-link text-left">Add New User</a>
                 </li>
                 <li>
-                    <a href="/home/user" class="nav-link text-left">User Information</a>
+                    <a href="/home/teacherlist" class="nav-link text-left">Teacher List</a>
                   </li>
                 <li>
                   <a href="/home/addcourse" class="nav-link text-left">Add New Course</a>
