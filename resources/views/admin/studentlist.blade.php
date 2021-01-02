@@ -160,7 +160,7 @@
                                     <td>{{$user['contact']}}</td>
                                     <td>{{$user['blood']}}</td>
                                     <td>{{$user['status']}}</td>
-                                    <td><a href="{{route('admin.user',$user['id'])}}">Edit</a>&nbsp<a href="{{route('admin.user',$user['id'])}}">Delete</a></td>
+                                    <td><a href="{{route('admin.user',$user['id'])}}">Edit</a>&nbsp<a href="{{route('admin.delete',$user['id'])}}">Delete</a></td>
                                 </tr>
                               @endforeach
                             </tbody>

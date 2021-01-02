@@ -5,6 +5,7 @@ use App\userModel;
 use App\portal as Appportal;
 use App\notice as Appnotice;
 use DB;
+use PDF;
 
 class studentController extends Controller
 {
@@ -13,42 +14,69 @@ class studentController extends Controller
         ->select('select * from userinfo');
         return view('student.CoursesResult',['user'=>$users]);
 }
-public function EditUser(){
-    return view('student.EditUser');
 
+public function update(Request $req){
+    $id = $req->session()->get('username');
+    
+    $user = userModel::find($id);
+    //echo "$user";
+    //$user = new userModel();
+    $user->name = $req->name;
+    $user->email = $req->email;
+    $user->gender = $req->gender;
+    $user->address = $req->address;
+    $user->dob = $req->dob;
+    $user->contact = $req->contact;
+    $user->blood = $req->blood;
+    $user->save();
+    return redirect('/Profile');
 }
 public function Email(){
     $data = Appnotice::all();
     return view('student.Email',['data'=>$data]);
 
 }
-public function Emaildelete(){
-    return view('student.Emaildelete');
-
+public function Emaildelete($id){
+    $user = Appnotice::find($id);
+    return view('student.Emaildelete',$user);
+}
+public function delete($id){
+    $user=Appnotice::find($id);
+     $user->delete();
+    return redirect('/Email');
+  }
+public function pdf()
+{
+    $data = $this->GradeReport();
+    return view('pdf')->with('data',$data);
 }
 public function GradeReport(Request $req){
     $id = $req->session()->get('username');
     $user = userModel::find($id);
      $data= DB::table('course')
-     ->join('userinfo', 'userinfo.username', '=', 'course.username')
+     ->join('userinfo', 'userinfo.id', '=', 'course.username')
     ->select('userinfo.username','userinfo.name','userinfo.email','course.id','course.courseName','course.grade')
     ->get();
-    // $id = $req->session()->get('username');
-    // $data = userModel::find($id);
     return view('student.GradeReport',$user,['data'=>$data]);
 }
 public function Library(){
     return view('student.Library');
 
 }
+
 public function Notice(){
     $data = Appnotice::all();
     return view('student.Notice' ,['data'=>$data]);
-
 }
-public function NoticeDelete(){
-    return view('student.NoticeDelete');
+public function NoticeDelete($id){
+    $user = Appnotice::find($id);
+   return view('student.NoticeDelete',$user);
 }
+public function delete_notice($id){
+    $user=Appnotice::find($id);
+     $user->delete();
+    return redirect('/Notice');
+  }
 public function password(){
     return view('student.password');
 
