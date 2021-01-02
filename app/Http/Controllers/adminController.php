@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\userModel;
 use DB;
+use PDF;
 
 class adminController extends Controller
 {
@@ -39,19 +40,22 @@ class adminController extends Controller
         return redirect('/home');
     }
 
-    function user(){
-        return view('admin.user');
+    function user(Request $req){
+        $id = $req->session()->get('username');
+        $user = userModel::find($id);
+        return view('admin.user',$user);
     }
-    function adduser(){
+    function adduser(Request $req){
+
         return view('admin.adduser');
     }
     function userstore(Request $req){
        $id = DB::table('userinfo')->max('id');
     
         $password= sprintf("%06d", mt_rand(1, 999999));
-     
+        $newID =$id+1;
         $user = new userModel();
-        $user->id = $id+1;
+        $user->id = $newID ;
         $user->name = $req->name;
         $user->username = "";
         $user->email = $req->email;
@@ -65,8 +69,21 @@ class adminController extends Controller
         $user->type = $req->type;
 
         if($user->save()){
-            $req->session()->flash('addmsg', 'Added Successfully');
-            return redirect('/home/adduser');
+            
+            $data =[
+                'name' => $req->name,
+                'email' => $req->email,
+                'ID'=> $newID,
+                'password'=> $password,
+            ];
+
+                $pdf = PDF::loadView('admin.print', $data); 
+                return $pdf->download("$newID.pdf"); 
+                $req->session()->flash('addmsg', 'Added Successfully');
+                return redirect('/home/adduser');
+                
+                
+            
         }else{
             $req->session()->flash('addmsg', 'Something Wrong');
             return redirect('/home/adduser');
