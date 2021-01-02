@@ -62,6 +62,8 @@ Route::get('/Profile', 'studentController@Profile');
 //teacher
 
 Route::get('/teacher', 'teacherController@home');
+Route::get('/teacher/notice', 'teacherController@notice');
+Route::post('/teacher/notice', 'teacherController@noticePost');
 
 
 
