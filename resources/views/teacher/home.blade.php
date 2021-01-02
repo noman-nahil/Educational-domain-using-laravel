@@ -69,7 +69,7 @@
                   <a href="/teacher" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/teacher/notice" class="nav-link text-left">Notice</a>
+                  <a href="/teacher/notice" class="nav-link text-left">PostNotice</a>
                 </li>
                 <li>
                   <a href="/teacher/checkNotice" class="nav-link text-left">Check Notice</a>

@@ -43,4 +43,20 @@ public function delete($id){
     return redirect('/teacher/checkNotice');
   }
 
+  public function editNotice($id){
+    $noticePostEdit=noticePost::find($id);
+    return view('teacher.editNotice',$noticePostEdit);
+  }
+
+
+  public function updateNotice($id, Request $req){
+    $noticeUpdate=noticePost::find($id);
+    $noticeUpdate->notice    = $req->update;
+    
+    $noticeUpdate->save(); 
+    return redirect('/teacher/checkNotice');
+  
+  }
+
+
 }

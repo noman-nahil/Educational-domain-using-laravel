@@ -72,7 +72,7 @@
                   <a href="/teacher" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/teacher/notice" class="nav-link text-left">Notice</a>
+                  <a href="/teacher/notice" class="nav-link text-left">PostNotice</a>
                 </li>
                 <li>
                   <a href="/teacher/checkNotice" class="nav-link text-left">Check Notice</a>
@@ -83,10 +83,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-              <a href="#"><span class="icon-facebook"></span></a>
-              <a href="#"><span class="icon-twitter"></span></a>
-              <a href="#"><span class="icon-linkedin"></span></a>
-
+                <p>Welcome, Anik Sikder</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -102,7 +99,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">Post Notice</h2>
+              <h2 class="mb-0">Update Notice</h2>
              <p></p>
             </div>
           </div>
@@ -114,29 +111,29 @@
         <div class="container">
 
 
-            <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-md-12 form-group">
-                        
 
-                    <form method="post">
-                        <div class="form-group">
-                          <label for="exampleFormControlTextarea1">Notice</label>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="text" placeholder="Please write something"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Post</button>
-                      </form>
-                </div>
-            </div>
-            
+    <div>
 
-          
-        </div>
+      <h3 align='center'>Notices</h3>
+      <form method="post">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Notice</th>
+        </tr>
+      </thead>
+      <tbody>
+			<tr>
+        <td>{{ $id }}</td>
+       <td><textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="update">{{ $notice }}</textarea></td>
+			</tr>
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Post</button>
+      </form>
     </div>
-
     
-
     <div class="footer">
       <div class="container">
         <div class="row">
