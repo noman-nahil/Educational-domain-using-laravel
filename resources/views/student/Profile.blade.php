@@ -123,12 +123,6 @@
 </div>
 </div>
 </div>      
-
-<div class="row">
-    <div class="col-md-12 form-group">
-      <a href="/home/edit" class="small btn btn-primary px-4 py-2 rounded-0"><span class=""></span> Edit</a>
-    </div>
-</div>
 </div>
 </div>
 <div class="footer">

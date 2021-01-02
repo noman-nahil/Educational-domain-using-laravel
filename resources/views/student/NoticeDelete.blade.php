@@ -77,7 +77,6 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome, Shamim Ahamed</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -103,12 +102,8 @@
 
     <div class="site-section">
         <div class="container">
-
-
-
     <div>
-
-      <h3 align='center'>Notices</h3>
+      <h3 align='center'>Notice Delete</h3>
       <form method="post">
     <table class="table">
       <thead>
@@ -119,15 +114,16 @@
       </thead>
       <tbody>
 			<tr>
-				<td><%= id %></td>
-				<td><%= notice %></td>
-			</tr>
+				<td>{{$id}} </td>
+				<td>{{$notice}}</td>
+      </tr>
       </tbody>
     </table>
-    <button type="submit" class="btn btn-primary">Delete</button>
+    <button type="submit"  class="btn btn-primary">Delete</button>
       </form>
     </div>
-    
+  </div>
+</div>
     <div class="footer">
       <div class="container">
         <div class="row">

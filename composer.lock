@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "24c15adb908544691e3b54153080aa65",
+=======
+    "content-hash": "103b6b5ccb4911258309fbe94b62111b",
+>>>>>>> b6fafc422b90a9f11409863388f384ffe316c709
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -2038,6 +2042,7 @@
             "time": "2020-06-01T09:10:00+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "setasign/fpdi",
             "version": "v2.3.5",
             "source": {
@@ -2110,6 +2115,8 @@
             "time": "2020-12-03T13:40:03+00:00"
         },
         {
+=======
+>>>>>>> b6fafc422b90a9f11409863388f384ffe316c709
             "name": "swiftmailer/swiftmailer",
             "version": "v6.2.4",
             "source": {

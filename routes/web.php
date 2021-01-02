@@ -30,7 +30,11 @@ Route::post('/home/adduser','adminController@userstore');
 Route::get('/home/user/{id}','adminController@user')->name('admin.user');
 Route::post('/home/user/{id}','adminController@useredit');
 
+Route::get('/home/delete/{id}','adminController@delete')->name('admin.delete');
+Route::post('/home/delete/{id}','adminController@del');
+
 Route::get('/home/teacherlist','adminController@teacherlist');
+Route::get('/home/studentlist','adminController@studentlist');
 Route::get('/home/addcourse','adminController@addcourse');
 Route::get('/home/book','adminController@book');
 Route::get('/home/password','adminController@password');
@@ -42,13 +46,13 @@ Route::get('/home/addcourse','adminController@addcourse');
 //adminend
 Route::get('/CoursesResult', 'studentController@CoursesResult');
 
-
-Route::get('/EditUser', 'studentController@EditUser');
-
+Route::post('/Profile/EditUser','studentController@update');
 
 Route::get('/Email', 'studentController@Email');
 
-Route::get('/Email/Emaildelete', 'studentController@Emaildelete');
+Route::get('/Email/Emaildelete/{id}', 'studentController@Emaildelete');
+Route::post('/Email/Emaildelete/{id}', 'studentController@delete');
+
 
 Route::get('/GradeReport', 'studentController@GradeReport');
 
@@ -56,15 +60,15 @@ Route::get('/GradeReport', 'studentController@GradeReport');
 Route::get('/Library', 'studentController@Library');
 
 Route::get('/Notice', 'studentController@Notice');
-
-Route::get('/Notice/NoticeDelete', 'studentController@NoticeDelete');
+Route::get('/Notice/NoticeDelete/{id}', 'studentController@NoticeDelete');
+Route::post('/Notice/NoticeDelete/{id}', 'studentController@delete_notice');
 
 Route::get('/Profile/password', 'studentController@password');
 
 Route::get('/portal', 'studentController@portal');
 
 Route::get('/Profile', 'studentController@Profile');
-
+Route::get('/pdf', 'studentController@pdf');
 
 //teacher
 

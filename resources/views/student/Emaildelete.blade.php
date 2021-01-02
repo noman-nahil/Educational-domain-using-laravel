@@ -75,14 +75,6 @@
             </nav>
 
           </div>
-          <div class="ml-auto">
-            <div class="social-wrap">
-                <p>Welcome, Shamim Ahamed</p>
-              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                class="icon-menu h3"></span></a>
-            </div>
-          </div>
-         
         </div>
       </div>
 
@@ -93,7 +85,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">checkEmail</h2>
+              <h2 class="mb-0"> Delete Email</h2>
              <p></p>
             </div>
           </div>
@@ -114,13 +106,15 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
+          <th scope="col">Email</th>
           <th scope="col">Inbox</th>
         </tr>
       </thead>
       <tbody>
 			<tr>
-				<td><%= id %></td>
-				<td><%= notice %></td>
+        <td>{{$id}}</td>
+        <td>{{$email}}</td>
+				<td>{{$notice}}</td>
 			</tr>
       </tbody>
     </table>

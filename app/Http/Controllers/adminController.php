@@ -56,9 +56,35 @@ class adminController extends Controller
         $user->blood = $req->blood;
         $user->status = $req->status;
         $user->save();
-        $req->session()->flash('upmsg', 'Update Successfully');
-        return redirect('/home/teacherlist');
-
+        $usertype = userModel::find($id)->type;
+        if($usertype=="Teacher")
+        {
+            $req->session()->flash('upmsg', 'Update Successfully');
+            return redirect('/home/teacherlist');
+        }
+        else{
+            $req->session()->flash('upmsg', 'Update Successfully');
+            return redirect('/home/studentlist');
+        }
+        
+    }
+    function delete($id,Request $req){
+        $user = userModel::find($id);
+        return view('admin.delete',$user);    
+    }
+    function del($id,Request $req){
+        $usertype = userModel::find($id)->type;
+        if($usertype=="Teacher")
+        {
+            DB::table('userinfo')->delete($id);
+            $req->session()->flash('upmsg', 'Delete Successfully');
+            return redirect('/home/teacherlist');
+        }
+        else{
+            DB::table('userinfo')->delete($id);
+            $req->session()->flash('upmsg', 'Delete Successfully');
+            return redirect('/home/studentlist');
+        }   
     }
 
     function adduser(Request $req){
@@ -107,8 +133,10 @@ class adminController extends Controller
     function addcourse(){
         return view('admin.addcourse');
     }
-    function book(){
-        return view('admin.book');
+    function book(Request $req){
+        $id = $req->session()->get('username');
+        $user = userModel::find($id);
+        return view('admin.book',$user);
     }
     function password(Request $req){
         $id = $req->session()->get('username');
@@ -151,5 +179,15 @@ class adminController extends Controller
         $users = $list->toArray(); 
         //echo "$list";                           
         return view('admin.teacherlist')->with("users",$users);
+    }
+    function studentlist(){
+        $list = DB ::table('userinfo')->where('type','Student')
+                                    ->get();
+        $list->transform(function($i) {
+            return (array)$i;
+            });
+        $users = $list->toArray(); 
+        //echo "$list";                           
+        return view('admin.studentlist')->with("users",$users);
     }
 }
