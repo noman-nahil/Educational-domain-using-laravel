@@ -36,4 +36,11 @@ function checkNotice(Request $req){
     return view('teacher.checkNotice')->with('noticePost',$noticePost);
 }
 
+
+public function delete($id){
+    $noticePost=noticePost::find($id);
+     $noticePost->delete();
+    return redirect('/teacher/checkNotice');
+  }
+
 }
