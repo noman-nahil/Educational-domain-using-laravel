@@ -62,6 +62,11 @@ Route::get('/portal', 'studentController@portal');
 Route::get('/Profile', 'studentController@Profile');
 
 
+//teacher
+
+Route::get('/teacher', 'teacherController@home');
+
+
 
 
 
