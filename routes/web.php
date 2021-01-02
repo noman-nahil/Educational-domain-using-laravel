@@ -70,6 +70,10 @@ Route::get('/Profile', 'studentController@Profile');
 //teacher
 
 Route::get('/teacher', 'teacherController@home');
+Route::get('/teacher/notice', 'teacherController@notice');
+Route::post('/teacher/notice', 'teacherController@noticePost');
+Route::get('/teacher/checkNotice', 'teacherController@checkNotice');
+Route::get('/teacher/delete/{id}','teacherController@delete');
 
 
 
