@@ -80,6 +80,7 @@ Route::get('/teacher/delete/{id}','teacherController@delete');
 Route::get('/teacher/edit/{id}','teacherController@editNotice');
 Route::post('/teacher/edit/{id}','teacherController@updateNotice');
 Route::get('/teacher/studentList','teacherController@showStudent');
+Route::get('/teacher/gradeList','teacherController@showGrade');
 
 
 

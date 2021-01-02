@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\userModel;
 use App\noticePost; 
+use App\gradeList; 
 
 class teacherController extends Controller
 {
@@ -65,6 +66,12 @@ public function delete($id){
 
     return view('teacher.studentList')->with('studentList',$studentList);
     
+}
+
+
+function showGrade(Request $req){
+  $gradeList=gradeList::all();
+  return view('teacher.gradeList')->with('gradeList',$gradeList);
 }
 
 
