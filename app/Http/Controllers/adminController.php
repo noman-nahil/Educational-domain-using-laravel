@@ -68,6 +68,24 @@ class adminController extends Controller
         }
         
     }
+    function delete($id,Request $req){
+        $user = userModel::find($id);
+        return view('admin.delete',$user);    
+    }
+    function del($id,Request $req){
+        $usertype = userModel::find($id)->type;
+        if($usertype=="Teacher")
+        {
+            DB::table('userinfo')->delete($id);
+            $req->session()->flash('upmsg', 'Delete Successfully');
+            return redirect('/home/teacherlist');
+        }
+        else{
+            DB::table('userinfo')->delete($id);
+            $req->session()->flash('upmsg', 'Delete Successfully');
+            return redirect('/home/studentlist');
+        }   
+    }
 
     function adduser(Request $req){
         return view('admin.adduser');

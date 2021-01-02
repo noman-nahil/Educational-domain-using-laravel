@@ -30,6 +30,9 @@ Route::post('/home/adduser','adminController@userstore');
 Route::get('/home/user/{id}','adminController@user')->name('admin.user');
 Route::post('/home/user/{id}','adminController@useredit');
 
+Route::get('/home/delete/{id}','adminController@delete')->name('admin.delete');
+Route::post('/home/delete/{id}','adminController@del');
+
 Route::get('/home/teacherlist','adminController@teacherlist');
 Route::get('/home/studentlist','adminController@studentlist');
 Route::get('/home/addcourse','adminController@addcourse');

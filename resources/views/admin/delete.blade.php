@@ -191,17 +191,7 @@
                   </div>
                   <div class="row">
                           <div class="col-sm-3">
-                              <input type="submit" value="Update" id="update" name="submit" class="btn btn-primary btn-lg px-5">
-                          </div>
-                          <div id="editor"></div>
-                          <div class="col-sm-3">
-                            
-                          </div>
-                          <div class="col-sm-3">
-                            
-                          </div>
-                          <div class="col-sm-3">
-                             <input type="button" value="Print" id="print" name="print" class="btn btn-secondary btn-lg px-5">
+                              <input type="submit" value="Delete" id="update" name="submit" class="btn btn-primary btn-lg px-5">
                           </div>
                     </div>
                 </div>
