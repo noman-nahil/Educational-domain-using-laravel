@@ -31,4 +31,9 @@ function noticePost(Request $req){
     }
 }
 
+function checkNotice(Request $req){
+    $noticePost=noticePost::all();
+    return view('teacher.checkNotice')->with('noticePost',$noticePost);
+}
+
 }
