@@ -31,6 +31,7 @@ Route::get('/home/user/{id}','adminController@user')->name('admin.user');
 Route::post('/home/user/{id}','adminController@useredit');
 
 Route::get('/home/teacherlist','adminController@teacherlist');
+Route::get('/home/studentlist','adminController@studentlist');
 Route::get('/home/addcourse','adminController@addcourse');
 Route::get('/home/book','adminController@book');
 Route::get('/home/password','adminController@password');

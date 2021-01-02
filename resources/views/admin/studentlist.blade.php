@@ -73,7 +73,7 @@
                   <a href="/home/adduser" class="nav-link text-left">Add New User</a>
                 </li>
                 <li>
-                    <a href="/home/studentlist" class="nav-link text-left">Student List</a>
+                    <a href="/home/teacherlist" class="nav-link text-left">Teacher List</a>
                   </li>
                 <li>
                   <a href="/home/addcourse" class="nav-link text-left">Add New Course</a>
@@ -106,7 +106,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">Teacher List</h2>
+              <h2 class="mb-0">Student List</h2>
             </div>
           </div>
         </div>

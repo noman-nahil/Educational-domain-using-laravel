@@ -71,6 +71,9 @@
                 <li>
                     <a href="/home/teacherlist" class="nav-link text-left">Teacher List</a>
                   </li>
+                  <li>
+                    <a href="/home/studentlist" class="nav-link text-left">Student List</a>
+                  </li>
                 <li>
                   <a href="/home/addcourse" class="nav-link text-left">Add New Course</a>
                 </li>
