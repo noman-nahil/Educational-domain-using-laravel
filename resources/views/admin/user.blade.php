@@ -67,19 +67,19 @@
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li>
-                  <a href="/admin" class="nav-link text-left">Home</a>
+                  <a href="/home" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/admin/adduser" class="nav-link text-left">Add New User</a>
+                  <a href="/home/adduser" class="nav-link text-left">Add New User</a>
                 </li>
                 <li>
-                  <a href="/admin/addcourse" class="nav-link text-left">Add New Course</a>
+                  <a href="/home/addcourse" class="nav-link text-left">Add New Course</a>
                 </li>
                 <li>
-                  <a href="/admin/book" class="nav-link text-left">Book</a>
+                  <a href="/home/book" class="nav-link text-left">Book</a>
                 </li>
                 <li>
-                  <a href="/admin/news" class="nav-link text-left">News</a>
+                  <a href="/home/news" class="nav-link text-left">News</a>
                 </li>
               </ul>                                                                                                                                                                                                                  
             </nav>
@@ -87,7 +87,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome,Abdullah AL Noman</p>
+                <p>Welcome,{{$name}}</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -310,7 +310,7 @@
             e.preventDefault();
             var search = $("#searchId").val();
             $.ajax({
-                url: "/admin/user",
+                url: "/home/user",
                 data: { search: search },
                 method: "post",
                 contentType: "application/x-www-form-urlencoded",
@@ -422,7 +422,7 @@
               doc.setFontSize(10);
               doc.setFont('times')
               doc.text(160, 35, 'Print Time:')
-            doc.setFontSize(16);
+              doc.setFontSize(16);
               doc.text(30, 40, 'ID:'+id);
               doc.text(30, 50, 'Name:'+name);
               doc.text(30, 60, 'Email:'+email);

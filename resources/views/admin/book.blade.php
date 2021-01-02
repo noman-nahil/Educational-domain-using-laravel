@@ -84,7 +84,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome,Abdullah AL Noman</p>
+                <p>Welcome,{{$name}}</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>

@@ -11,7 +11,6 @@ class loginController extends Controller
         return view('login.login');
     }
     function verify(Request $req){
-        //return view('welcome');
         $users = userModel:: where ('id',$req->username)
                             ->where('password',$req->password)
                             ->get();
@@ -22,6 +21,7 @@ class loginController extends Controller
                     if($userType== 'Admin'){
                         //echo "$userType";
                         $req->session()->put('username', $req->username);
+                        $req->session()->put('type',$userType);
                         return redirect('/home');
                     }
                     else if($userType== 'Teacher'){
@@ -38,10 +38,12 @@ class loginController extends Controller
                     }
                 }
                 else{
-                    echo "opps!! Inactive";
-                }
 
-            }
+                    //echo "opps!! Inactive";
+                    $req->session()->flash('msg', 'opps!! Inactive');
+                    return redirect('/login');
+                }
+            }           
             else{
                 $req->session()->flash('msg', 'invalid username/password');
                     return redirect('/login');

@@ -111,7 +111,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">Add New User</h2>
+              <h2 class="mb-0"><a href="/home/adduser">Add New User</a></h2>
              <p></p>
             </div>
           </div>
@@ -127,6 +127,11 @@
               
                 <div class="col-md-5">
                   <form method="post">
+                  <div class="row">
+                        <div class="col-12">
+                            <h4>{{session('addmsg')}}</h4>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <label for="name">Name</label>
@@ -152,7 +157,7 @@
                             <input type="text" name="address" class="form-control form-control-lg">
                         </div>
                         <div class="col-md-12 form-group">
-                            <label for="dob">Contact</label>
+                            <label for="contact">Contact</label>
                             <input type="text" name="contact" class="form-control form-control-lg">
                         </div>
                         <div class="col-md-12 form-group">
