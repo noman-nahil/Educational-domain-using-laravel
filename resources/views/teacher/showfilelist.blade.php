@@ -118,7 +118,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">checknotice</h2>
+              <h2 class="mb-0">Grade Info</h2>
              <p></p>
             </div>
           </div>
@@ -130,33 +130,32 @@
         <div class="container">
 
 
+           
 
     <div>
 
-      <h3 align='center'>Notices</h3>
-      <form method="post">
+      <h3 align='center'>Grade</h3>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Day</th>
-          <th scope="col">Slot1</th>
-          <th scope="col">Slot2</th>
-          <th scope="col">Slot3</th>
-          <th scope="col">Slot4</th>
+          <th scope="col">Section</th>
+          <th scope="col">File Name</th>
+          <th scope="col">Time</th>    
         </tr>
       </thead>
       <tbody>
-			<tr>
-        <td>{{$day}}</td>
-       <td><input type="text"  name="slot1" class="form-control form-control-lg" value="{{ $slot1 }}"></td>
-       <td><input type="text"  name="slot2" class="form-control form-control-lg" value="{{$slot2}}"></td>
-       <td><input type="text"  name="slot3" class="form-control form-control-lg" value="{{$slot3}}"></td>
-       <td><input type="text"  name="slot4" class="form-control form-control-lg" value="{{$slot4}}"></td> 
-    </tr>
+        @for($i=0; $i<count($users); $i++)
+    <tr>
+        <td>{{ $users[$i]['sec']}}</td>
+        <td><img src="{{asset('upload/'.$users[$i]['filename'])}}" width="100px" height="100px"></td>
+        <td>{{ $users[$i]['Time']}}</td>
+    </tr>    
+    @endfor
+
+
       </tbody>
     </table>
-    <button type="submit" class="btn btn-primary">Post</button>
-      </form>
+
     </div>
     
     <div class="footer">
