@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/login','loginController@index');
 Route::post('/login','loginController@verify');
 
-Route::get('/logout', 'logoutController@index');
+Route::get('/logout', 'logoutController@index')->middleware('session');
 
 Route::get('/login','loginController@index');
 Route::get('/login/github','loginController@github');
@@ -54,34 +54,33 @@ Route::get('/home/addcourse','adminController@addcourse');
 
 
 //adminend
-Route::get('/CoursesResult', 'studentController@CoursesResult');
-Route::post('/CoursesResult/actionCourse', 'studentController@actionCourse')->name('CoursesResult.actionCourse');
+Route::get('/CoursesResult', 'studentController@CoursesResult')->middleware('session');
+Route::post('/CoursesResult/actionCourse', 'studentController@actionCourse')->name('CoursesResult.actionCourse')->middleware('session');
 
-Route::get('/Email', 'studentController@Email');
-Route::get('/Email/Emaildelete/{id}', 'studentController@Emaildelete');
-Route::post('/Email/Emaildelete/{id}', 'studentController@delete');
-
-
-Route::get('/GradeReport', 'studentController@GradeReport');
+Route::get('/Email', 'studentController@Email')->middleware('session');
+Route::get('/Email/Emaildelete/{id}', 'studentController@Emaildelete')->middleware('session');
+Route::post('/Email/Emaildelete/{id}', 'studentController@delete')->middleware('session');
 
 
-Route::get('/Registration', 'studentController@Registration');
+Route::get('/GradeReport', 'studentController@GradeReport')->middleware('session');
 
 
-Route::get('/Library', 'studentController@test')->name('student.Library');
-Route::post('/Library','studentController@Library');
+Route::get('/Registration', 'studentController@Registration')->middleware('session');
 
-Route::get('/Notice', 'studentController@Notice');
-Route::get('/Notice/NoticeDelete/{id}', 'studentController@NoticeDelete');
-Route::post('/Notice/NoticeDelete/{id}', 'studentController@delete_notice');
 
-Route::get('/Profile/password', 'studentController@password');
-Route::post('/Profile/password','studentController@passUpdate');
+Route::get('/Library', 'studentController@test')->name('student.Library')->middleware('session');
 
-Route::get('/portal', 'studentController@portal');
+Route::get('/Notice', 'studentController@Notice')->middleware('session');
+Route::get('/Notice/NoticeDelete/{id}', 'studentController@NoticeDelete')->middleware('session');
+Route::post('/Notice/NoticeDelete/{id}', 'studentController@delete_notice')->middleware('session');
 
-Route::get('/Profile', 'studentController@Profile');
-Route::get('/pdf', 'studentController@pdf');
+Route::get('/Profile/password', 'studentController@password')->middleware('session');
+Route::post('/Profile/password','studentController@passUpdate')->middleware('session');
+
+Route::get('/portal', 'studentController@portal')->middleware('session');
+
+Route::get('/Profile', 'studentController@Profile')->middleware('session');
+Route::get('/pdf', 'studentController@pdf')->middleware('session');
 
 //teacher
 
