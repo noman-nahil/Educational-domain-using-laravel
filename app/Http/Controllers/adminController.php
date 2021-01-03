@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\userModel;
+use App\course;
 use DB;
 use PDF;
 
@@ -131,7 +132,31 @@ class adminController extends Controller
         }
     }
     function addcourse(){
-        return view('admin.addcourse');
+        $list = DB ::table('userinfo')->where('type','Teacher')
+                                    ->get();
+        $list->transform(function($i) {
+            return (array)$i;
+            });
+        $users = $list->toArray(); 
+        //echo "$list";                           
+        return view('admin.addcourse')->with("users",$users);
+    }
+    function coursestore(Request $req){
+        $id = DB::table('subject')->max('id');
+        $course = new course();
+        $newID =$id+1;
+        $course->id = $newID ;
+        $course->courseName = $req->courseName;
+        $course->courseTime = $req->courseTime;
+        $course->courseDay = $req->courseDay;
+        $course->courseTeacher = $req->courseTeacher;
+
+        if($course->save()){
+            $req->session()->flash('coursemsg', 'Added Successfully');
+            return redirect('/home/addcourse');
+
+        }
+        
     }
     function book(Request $req){
         $id = $req->session()->get('username');

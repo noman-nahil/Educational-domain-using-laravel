@@ -36,7 +36,8 @@ Route::post('/home/delete/{id}','adminController@del');
 Route::get('/home/teacherlist','adminController@test')->name('admin.teacherlist');//
 Route::post('/home/teacherlist','adminController@teacherlist');
 Route::get('/home/studentlist','adminController@studentlist');
-Route::get('/home/addcourse','adminController@addcourse');
+Route::get('/home/addcourse','adminController@addcourse');//coursestore
+Route::post('/home/addcourse','adminController@coursestore');
 Route::get('/home/book','adminController@book');
 Route::get('/home/password','adminController@password');
 Route::post('/home/password','adminController@passUpdate');
