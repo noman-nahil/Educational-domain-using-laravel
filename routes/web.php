@@ -80,11 +80,10 @@ Route::get('/teacher/delete/{id}','teacherController@delete');
 Route::get('/teacher/edit/{id}','teacherController@editNotice');
 Route::post('/teacher/edit/{id}','teacherController@updateNotice');
 Route::get('/teacher/studentList','teacherController@showStudent');
-Route::get('/teacher/gradeList','teacherController@showGrade');
-Route::get('/teacher/gradeEdit/{sid}','teacherController@editGrade');
 Route::get('/teacher/tsf','teacherController@showTsf');
 Route::get('/teacher/tsfedit/{id}','teacherController@editTsf');
 Route::post('/teacher/tsfedit/{id}','teacherController@updatetsf');
+Route::get('/teacher/clasRoutine','teacherController@showRoutine');
 
 
 

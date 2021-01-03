@@ -78,10 +78,10 @@
                   <a href="/teacher/studentList" class="nav-link text-left">ViewStudents</a>
                 </li>
                 <li>
-                  <a href="/teacher/gradeList" class="nav-link text-left">GradeList</a>
+                  <a href="/teacher/tsf" class="nav-link text-left">Tsf</a>
                 </li>
                 <li>
-                  <a href="/teacher/tsf" class="nav-link text-left">Tsf</a>
+                  <a href="/teacher/clasRoutine" class="nav-link text-left">classRoutine</a>
                 </li>
 
 

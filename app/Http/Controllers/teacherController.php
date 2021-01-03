@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\userModel;
 use App\noticePost; 
 use App\gradeList; 
-use App\tsfList; 
+use App\tsfList;
+use App\classRoutine; 
 
 class teacherController extends Controller
 {
@@ -69,34 +70,6 @@ public function delete($id){
     
   }
   
-  
- /* function showGrade(Request $req){
-    $gradeList=gradeList::all();
-    return view('teacher.gradeList')->with('gradeList',$gradeList);
-  }
-  
-   
-
-   function editGrade($id){
-    $gradeListEdit=gradeList::find($id);
-    return view('teacher.editGrade',$gradeListEdit);
-  }
-  
-*/
-
-public function showGrade(){
-  $data = gradeList::all();
-  return view('teacher.gradeList',['data'=>$data]);
-
-}
-
-  public function editGrade($id){
-    $user = gradeList::find($id);
-    echo $user;
-    //return view('teacher.editGrade',$user);
-}
-
-
 
 public function showTsf(){
   $users=tsfList::all();
@@ -120,5 +93,11 @@ public function updatetsf($id, Request $req){
   return redirect('/teacher/tsf');
 
 }
+
+public function showRoutine(){
+  $users=classRoutine::all();
+  return view('teacher.showRoutine')->with('users',$users);
+}
+
   
 }
