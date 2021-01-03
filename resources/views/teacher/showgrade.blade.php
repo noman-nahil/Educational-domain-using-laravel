@@ -75,7 +75,13 @@
                   <a href="/teacher/notice" class="nav-link text-left">Notice</a>
                 </li>
                 <li>
-                  <a href="/teacher/checkNotice" class="nav-link text-left">Check Notice</a>
+                  <a href="/teacher/studentlist" class="nav-link text-left">View students</a>
+                </li>
+                <li>
+                  <a href="teacher/password" class="nav-link text-left">Change Password</a>
+                </li>
+                <li>
+                  <a href="/logout" class="nav-link text-left">Logout</a>
                 </li>
               </ul>                                                                                                                                                                                                                  
             </nav>
@@ -83,10 +89,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-              <a href="#"><span class="icon-facebook"></span></a>
-              <a href="#"><span class="icon-twitter"></span></a>
-              <a href="#"><span class="icon-linkedin"></span></a>
-
+                <p>Welcome, Anik Sikder</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -102,7 +105,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">Post Notice</h2>
+              <h2 class="mb-0">Grade Info</h2>
              <p></p>
             </div>
           </div>
@@ -114,29 +117,41 @@
         <div class="container">
 
 
-            <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-md-12 form-group">
-                        
+           
 
-                    <form method="post">
-                        <div class="form-group">
-                          <label for="exampleFormControlTextarea1">Notice</label>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="text" placeholder="Please write something"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Post</button>
-                      </form>
-                </div>
-            </div>
-            
+    <div>
 
+      <h3 align='center'>Grade</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Student id</th>
+          <th scope="col">Midterm</th>
+          <th scope="col">Finalterm</th>
+          <th scope="col">Total</th>
+
+          <th scope="col">Edit</th>
           
-        </div>
+        </tr>
+      </thead>
+      <tbody>
+        @for($i=0; $i<count($users); $i++)
+    <tr>
+        <td>{{ $users[$i]['sid']}}</td>
+        <td>{{ $users[$i]['Midterm']}}</td>
+        <td>{{ $users[$i]['Finalterm']}}</td>
+        <td>{{ $users[$i]['password']}}</td>
+        <td>{{ $users[$i]['Total']}}</td>
+        <td><a href="/edit/{{ $users[$i]['sid']}}">Edit</a></td>
+    </tr>    
+    @endfor
+
+
+      </tbody>
+    </table>
+
     </div>
-
     
-
     <div class="footer">
       <div class="container">
         <div class="row">

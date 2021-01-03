@@ -68,14 +68,17 @@
           <div class="mr-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li>
+              <li>
                   <a href="/teacher" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/teacher/notice" class="nav-link text-left">Notice</a>
+                  <a href="/teacher/notice" class="nav-link text-left">PostNotice</a>
                 </li>
                 <li>
                   <a href="/teacher/checkNotice" class="nav-link text-left">Check Notice</a>
+                </li>
+                <li>
+                  <a href="/teacher/studentList" class="nav-link text-left">View Students</a>
                 </li>
               </ul>                                                                                                                                                                                                                  
             </nav>
@@ -83,10 +86,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-              <a href="#"><span class="icon-facebook"></span></a>
-              <a href="#"><span class="icon-twitter"></span></a>
-              <a href="#"><span class="icon-linkedin"></span></a>
-
+                <p>Welcome, Anik Sikder</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -102,7 +102,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">Post Notice</h2>
+              <h2 class="mb-0">Student List</h2>
              <p></p>
             </div>
           </div>
@@ -114,29 +114,45 @@
         <div class="container">
 
 
-            <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-md-12 form-group">
-                        
 
-                    <form method="post">
-                        <div class="form-group">
-                          <label for="exampleFormControlTextarea1">Notice</label>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="text" placeholder="Please write something"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Post</button>
-                      </form>
-                </div>
-            </div>
-            
+    <div>
 
-          
-        </div>
+      <h3 align='center'>List</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Address</th>
+          <th scope="col">DOB</th>
+          <th scope="col">Contact</th>
+          <th scope="col">Blood</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+
+            @foreach($studentList as $user)
+                                <tr>
+                                    <td>{{$user['id']}}</td>
+                                    <td>{{$user['name']}}</td>
+                                    <td>{{$user['email']}}</td>
+                                    <td>{{$user['gender']}}</td>
+                                    <td>{{$user['address']}}</td>
+                                    <td>{{$user['dob']}}</td>
+                                    <td>{{$user['contact']}}</td>
+                                    <td>{{$user['blood']}}</td>
+                                    <td>{{$user['status']}}</td>
+                                </tr>
+                              @endforeach
+     
+      </tbody>
+    </table>
+
     </div>
-
     
-
     <div class="footer">
       <div class="container">
         <div class="row">
