@@ -68,41 +68,28 @@
           <div class="mr-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-              <li>
+                <li>
                   <a href="/teacher" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/teacher/notice" class="nav-link text-left">PostNotice</a>
+                  <a href="/teacher/checknotice" class="nav-link text-left">check notice</a>
                 </li>
                 <li>
-                  <a href="/teacher/checkNotice" class="nav-link text-left">CheckNotice</a>
-                </li>
-                <li>
-                  <a href="/teacher/studentList" class="nav-link text-left">ViewStudents</a>
-                </li>
-                <li>
-                  <a href="/teacher/tsf" class="nav-link text-left">Tsf</a>
-                </li>
-                <li>
-                  <a href="/teacher/clasRoutine" class="nav-link text-left">classRoutine</a>
-                </li>
-                <li>
-                  <a href="/teacher/gradelist" class="nav-link text-left">GradeList</a>
-                </li>
-                <li>
-                  <a href="/teacher/password" class="nav-link text-left">change password</a>
+                  <a href="/teacher/password" class="nav-link text-left">Change Password</a>
                 </li>
                 <li>
                   <a href="/logout" class="nav-link text-left">Logout</a>
                 </li>
-
               </ul>                                                                                                                                                                                                                  
             </nav>
 
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome, Anik Sikder</p>
+              <a href="#"><span class="icon-facebook"></span></a>
+              <a href="#"><span class="icon-twitter"></span></a>
+              <a href="#"><span class="icon-linkedin"></span></a>
+
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -118,7 +105,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">checknotice</h2>
+              <h2 class="mb-0">File upload</h2>
              <p></p>
             </div>
           </div>
@@ -130,35 +117,34 @@
         <div class="container">
 
 
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                    <form method="post"  enctype="multipart/form-data">
+                            <div class="form-group">
+                              <label for="exampleFormControlFile1">Please select a file</label>
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1" name='fileup'>
+                              <label for="inputState">Sec</label>
+                                <select class="form-control form-control-lg" name="sec">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                </select>
+                            </div>
+                        <button type="submit" class="btn btn-primary">Post</button>
+                      </form>
+                </div>
+            </div>
+            
 
-    <div>
-
-      <h3 align='center'>Notices</h3>
-      <form method="post">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Day</th>
-          <th scope="col">Slot1</th>
-          <th scope="col">Slot2</th>
-          <th scope="col">Slot3</th>
-          <th scope="col">Slot4</th>
-        </tr>
-      </thead>
-      <tbody>
-			<tr>
-        <td>{{$day}}</td>
-       <td><input type="text"  name="slot1" class="form-control form-control-lg" value="{{ $slot1 }}"></td>
-       <td><input type="text"  name="slot2" class="form-control form-control-lg" value="{{$slot2}}"></td>
-       <td><input type="text"  name="slot3" class="form-control form-control-lg" value="{{$slot3}}"></td>
-       <td><input type="text"  name="slot4" class="form-control form-control-lg" value="{{$slot4}}"></td> 
-    </tr>
-      </tbody>
-    </table>
-    <button type="submit" class="btn btn-primary">Post</button>
-      </form>
+          
+        </div>
     </div>
+
     
+
     <div class="footer">
       <div class="container">
         <div class="row">

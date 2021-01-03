@@ -8,6 +8,8 @@ use App\noticePost;
 use App\tsfList;
 use App\classRoutine; 
 use App\grade; 
+use App\fileUpload; 
+
 use DB;
 
 class teacherController extends Controller
@@ -171,6 +173,44 @@ public function editGrade($id){
           
       }
       
+      public function fileupload(){
+        return view('teacher.fileupload'); 
+    }
+
+    public function insertfile(Request $req){
+      if($req->hasFile('fileup')){
+        $file= $req->file('fileup');
+
+       /*echo "File name: ".$file->getClientOriginalName().'</br>';
+        echo "File extension: ".$file->getClientOriginalExtension().'</br>';
+        echo "File size: ".$file->getSize();
+        */
+        if($file->move('upload',$file->getClientOriginalName())){
+      
+          $user = new fileUpload();
+          $user->sec     = $req->sec;
+          $user->filename  = $file->getClientOriginalName();
+    
+          if($user->save()){
+              return redirect('/teacher');
+          }else{
+            return redirect("/teacher/fileupload");
+          }
+        }
+        else{
+    
+          return redirect("/teacher/fileupload");
+    
+         }
+  }
+
+}
+
+public function showfilelist(){
+  $users=fileUpload::all();
+  return view('teacher.showfilelist')->with('users',$users);
+  
+}
 
 
 }

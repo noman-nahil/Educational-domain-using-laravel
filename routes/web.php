@@ -86,9 +86,12 @@ Route::get('/teacher/clasRoutine','teacherController@showRoutine');
 Route::get('/teacher/gradelist','teacherController@showgrade');
 Route::get('/teacher/gradeedit/{id}','teacherController@editGrade');
 Route::post('/teacher/gradeedit/{id}','teacherController@updateGrade');
-
 Route::get('/teacher/password', 'teacherController@password');
 Route::post('/teacher/password','teacherController@passUpdate');
+Route::get('/teacher/fileupload', 'teacherController@fileupload');
+Route::post('/teacher/fileupload','teacherController@insertfile');
+Route::get('/teacher/showfilelist', 'teacherController@showfilelist');
+
 
 
 
