@@ -5,10 +5,14 @@
         "This file is @generated automatically"
     ],
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "24c15adb908544691e3b54153080aa65",
 =======
     "content-hash": "103b6b5ccb4911258309fbe94b62111b",
 >>>>>>> b6fafc422b90a9f11409863388f384ffe316c709
+=======
+    "content-hash": "b683527adfe369bbfa4acdf8757b0b81",
+>>>>>>> 06eeddf538f43dcb2f46b299348a1d7d1cbc28f1
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -1289,6 +1293,56 @@
             "time": "2020-12-17T20:55:32+00:00"
         },
         {
+            "name": "nicolaslopezj/searchable",
+            "version": "1.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nicolaslopezj/searchable.git",
+                "reference": "b1d24ea45f75e36a11a093efa46fe44c06dd10b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nicolaslopezj/searchable/zipball/b1d24ea45f75e36a11a093efa46fe44c06dd10b7",
+                "reference": "b1d24ea45f75e36a11a093efa46fe44c06dd10b7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "illuminate/database": ">=4.2",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nicolaslopezj\\Searchable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Lopez",
+                    "email": "nicolaslopezj@me.com"
+                }
+            ],
+            "description": "Eloquent model search trait.",
+            "keywords": [
+                "database",
+                "eloquent",
+                "laravel",
+                "model",
+                "search",
+                "searchable"
+            ],
+            "support": {
+                "issues": "https://github.com/nicolaslopezj/searchable/issues",
+                "source": "https://github.com/nicolaslopezj/searchable/tree/master"
+            },
+            "time": "2020-03-30T12:30:18+00:00"
+        },
+        {
             "name": "nikic/php-parser",
             "version": "v4.10.4",
             "source": {
@@ -2043,6 +2097,9 @@
         },
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 06eeddf538f43dcb2f46b299348a1d7d1cbc28f1
             "name": "setasign/fpdi",
             "version": "v2.3.5",
             "source": {
@@ -2115,8 +2172,11 @@
             "time": "2020-12-03T13:40:03+00:00"
         },
         {
+<<<<<<< HEAD
 =======
 >>>>>>> b6fafc422b90a9f11409863388f384ffe316c709
+=======
+>>>>>>> 06eeddf538f43dcb2f46b299348a1d7d1cbc28f1
             "name": "swiftmailer/swiftmailer",
             "version": "v6.2.4",
             "source": {
