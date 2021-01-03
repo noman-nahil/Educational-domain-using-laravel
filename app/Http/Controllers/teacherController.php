@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\userModel;
 use App\noticePost; 
 use App\gradeList; 
+use App\tsfList; 
 
 class teacherController extends Controller
 {
@@ -58,22 +59,48 @@ public function delete($id){
     return redirect('/teacher/checkNotice');
   
   }
-
-
+  
+  
   function showStudent(Request $req){
- $studentList=userModel::where('type','Student')
-                         ->get();
-
+    $studentList=userModel::where('type','Student')
+    ->get();
+    
     return view('teacher.studentList')->with('studentList',$studentList);
     
+  }
+  
+  
+ /* function showGrade(Request $req){
+    $gradeList=gradeList::all();
+    return view('teacher.gradeList')->with('gradeList',$gradeList);
+  }
+  
+   
+
+   function editGrade($id){
+    $gradeListEdit=gradeList::find($id);
+    return view('teacher.editGrade',$gradeListEdit);
+  }
+  
+*/
+
+public function showGrade(){
+  $data = gradeList::all();
+  return view('teacher.gradeList',['data'=>$data]);
+
+}
+
+  public function editGrade($id){
+    $user = gradeList::find($id);
+    echo $user;
+    //return view('teacher.editGrade',$user);
 }
 
 
-function showGrade(Request $req){
-  $gradeList=gradeList::all();
-  return view('teacher.gradeList')->with('gradeList',$gradeList);
+
+public function showTsf(){
+  $users=tsfList::all();
+  return view('teacher.showTsf')->with('users',$users);
 }
-
-
-
+  
 }

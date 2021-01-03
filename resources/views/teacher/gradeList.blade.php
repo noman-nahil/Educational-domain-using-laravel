@@ -135,23 +135,18 @@
         </tr>
       </thead>
       <tbody>
-       
-     
-
-
-        @foreach($gradeList as $user)
-                                <tr>
-                                    <td>{{$user['sid']}}</td>
-                                    <td>{{$user['Midterm']}}</td>
-                                    <td>{{$user['Finalterm']}}</td>
-                                    <td>{{$user['Total']}}</td>
-                                    <td>
-					<a href="/teacher/gradeEdit/{{$user['sid']}}">Edit</a>
-        </td>
-                                </tr>
-
-                              @endforeach
-
+      
+                              @for($i=0; $i < count($data); $i++)
+                  <tr>
+                      <td>{{$data[$i]['sid']}}</td>
+                      <td>{{$data[$i]['Midterm']}}</td>
+                      <td>{{$data[$i]['Finalterm']}}</td>
+                      <td>{{$data[$i]['Total']}}</td>
+              <td>
+                <a href="/teacher/gradeEdit/{{$data[$i]['sid']}}">Edit</a>
+                      </td>
+                  </tr>
+                  @endfor
 
 
 
