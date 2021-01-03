@@ -8,7 +8,7 @@ use App\noticePost;
 use App\tsfList;
 use App\classRoutine; 
 use App\grade; 
-
+use DB;
 
 class teacherController extends Controller
 {
@@ -99,10 +99,42 @@ public function showRoutine(){
   $users=classRoutine::all();
   return view('teacher.showRoutine')->with('users',$users);
 }
+
 public function showgrade(){
   $users=grade::all();
   return view('teacher.showgrade')->with('users',$users);
 }
 
+ 
+public function editGrade($id){
+
+  $user=grade::find($id);
+  return view('teacher.gradeedit',$user);
   
+          }
+
+    public function updateGrade($id, Request $req){
+            $user=grade::find($id);
+            $user->Midterm     = $req->Midterm;
+            $user->Finalterm    = $req->Finalterm;
+            
+            
+            $num1 =$req->Midterm; 
+            $int1 = (int)$num1;
+            $num2 =$req->Finalterm; 
+            $int2 = (int)$num2;
+            $int3 = $int1+$int2;
+            
+            
+            
+            
+            $user->Total         =  $int3;
+            $user->save(); 
+          
+            return redirect('/teacher/gradelist');
+          
+          }
+
+
+
 }
