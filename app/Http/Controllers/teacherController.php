@@ -102,5 +102,23 @@ public function showTsf(){
   $users=tsfList::all();
   return view('teacher.showTsf')->with('users',$users);
 }
+
+
+public function editTsf($id){
+  $user=tsfList::find($id);
+  return view('teacher.editTsf',$user);
+}
+
+public function updatetsf($id, Request $req){
+  $user=tsfList::find($id);
+  $user->slot1     = $req->slot1;
+  $user->slot2     = $req->slot2;
+  $user->slot3         = $req->slot3;
+  $user->slot4         = $req->slot4;
+  $user->save(); 
+
+  return redirect('/teacher/tsf');
+
+}
   
 }
