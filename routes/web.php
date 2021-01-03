@@ -84,6 +84,7 @@ Route::get('/teacher/tsf','teacherController@showTsf');
 Route::get('/teacher/tsfedit/{id}','teacherController@editTsf');
 Route::post('/teacher/tsfedit/{id}','teacherController@updatetsf');
 Route::get('/teacher/clasRoutine','teacherController@showRoutine');
+Route::get('/teacher/gradelist','teacherController@showgrade');
 
 
 

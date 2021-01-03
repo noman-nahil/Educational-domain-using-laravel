@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\userModel;
 use App\noticePost; 
-use App\gradeList; 
 use App\tsfList;
 use App\classRoutine; 
+use App\grade; 
+
 
 class teacherController extends Controller
 {
@@ -97,6 +98,10 @@ public function updatetsf($id, Request $req){
 public function showRoutine(){
   $users=classRoutine::all();
   return view('teacher.showRoutine')->with('users',$users);
+}
+public function showgrade(){
+  $users=grade::all();
+  return view('teacher.showgrade')->with('users',$users);
 }
 
   
