@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class VerifySession
+class studentSession
 {
     /**
      * Handle an incoming request.

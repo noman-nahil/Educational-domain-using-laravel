@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/login','loginController@index');
 Route::post('/login','loginController@verify');
 
-Route::get('/logout', 'logoutController@index')->middleware('session');
+Route::get('/logout', 'logoutController@index');
 
 Route::get('/login','loginController@index');
 Route::get('/login/github','loginController@github');
