@@ -25,6 +25,7 @@ Route::get('/login/github/redirect','loginController@githubRedirect');
 
 //admin
 Route::group(['middleware'=>['chck']], function(){
+    Route::group(['middleware'=>['sesn']], function(){
 Route::get('/home','adminController@home');
 
 Route::get('/home/edit','adminController@edit');
@@ -41,7 +42,8 @@ Route::post('/home/delete/{id}','adminController@del');
 
 Route::get('/home/teacherlist','adminController@test')->name('admin.teacherlist');//
 Route::post('/home/teacherlist','adminController@teacherlist');
-Route::get('/home/studentlist','adminController@studentlist');
+Route::get('/home/studentlist','adminController@student')->name('admin.studentlist');
+Route::post('/home/studentlist','adminController@studentlist');
 Route::get('/home/addcourse','adminController@addcourse');//coursestore
 Route::post('/home/addcourse','adminController@coursestore');
 
@@ -52,6 +54,8 @@ Route::get('/home/password','adminController@password');
 Route::post('/home/password','adminController@passUpdate');
 
 Route::get('/home/addcourse','adminController@addcourse');
+
+    });
 });
 
 //adminend

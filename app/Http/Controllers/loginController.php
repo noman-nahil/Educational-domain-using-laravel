@@ -31,7 +31,7 @@ class loginController extends Controller
                         return redirect('/teacher');
                         
                     }
-                    else if($userType== 'Student'){
+                    else if($userType =='Student'){
                         $req->session()->put('username', $req->username);
                         return redirect('/portal');
                     }

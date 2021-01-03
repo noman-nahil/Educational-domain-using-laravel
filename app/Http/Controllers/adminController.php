@@ -219,62 +219,6 @@ class adminController extends Controller
         return view('admin.teacherlist')->with("users",$users);
     }
     function teacherlist(Request $req){
-        /*$list = DB ::table('userinfo')->where('type','Teacher')
-                                    ->get();
-        $list->transform(function($i) {
-            return (array)$i;
-            });
-        $users = $list->toArray(); 
-        //echo "$list";                           
-        return view('admin.teacherlist')->with("users",$users);*/
-       /* if($req->ajax()){
-            $output = '';
-            $query = $req->get('query');
-            if($query != '')
-            {
-                $data = DB::table('userinfo')
-                ->where('id', 'like', '%'.$query.'%')
-                -get();
-            }
-            else{
-                $data = DB ::table('userinfo')//->where('type','Student')
-                ->get();
-            }
-            $total_row = $data->count();
-            if($total_row>0){
-                foreach($data as $row)
-                    {
-                        $output .= '
-                        <tr>
-                        <td>'.$row->id.'</td>
-                        <td>'.$row->name.'</td>
-                        <td>'.$row->email.'</td>
-                        <td>'.$row->gender.'</td>
-                        <td>'.$row->address.'</td>
-                        <td>'.$row->dob.'</td>
-                        <td>'.$row->contact.'</td>
-                        <td>'.$row->blood.'</td>
-                        <td>'.$row->status.'</td>
-                        <td><a href="">Edit</a> &nbsp <a>Delete</a></td>
-                        </tr>
-                        ';
-                    }
-                }
-                else
-                    {
-                    $output = '
-                    <tr>
-                        <td align="center" colspan="5">No Data Found</td>
-                    </tr>
-                    ';
-                    }
-                    $data = array(
-                        'table_data'  => $output,
-                        'total_data'  => $total_row
-                       );
-                       echo json_encode($data);
-        }*/
-        //new method
         $query = $req->get('query');
 
         $users = userModel::where('type','Student')
@@ -283,14 +227,23 @@ class adminController extends Controller
 
         return json_encode($users);
     }
-    function studentlist(){
+    function student(){
         $list = DB ::table('userinfo')->where('type','Student')
                                     ->get();
         $list->transform(function($i) {
             return (array)$i;
             });
-        $users = $list->toArray(); 
-        //echo "$list";                           
+        $users = $list->toArray();                            
         return view('admin.studentlist')->with("users",$users);
     }
+    function studentlist(Request $req){
+        $query = $req->get('query');
+
+        $users = userModel::where('type','Student')
+        ->where('id','like','%'.$query.'%')
+        ->get();
+
+        return json_encode($users);
+    }
+
 }
