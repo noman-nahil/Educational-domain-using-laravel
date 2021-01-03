@@ -69,11 +69,25 @@
                   <a href="/teacher" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/teacher/notice" class="nav-link text-left">Notice</a>
+                  <a href="/teacher/notice" class="nav-link text-left">PostNotice</a>
                 </li>
                 <li>
-                  <a href="/teacher/checkNotice" class="nav-link text-left">Check Notice</a>
+                  <a href="/teacher/checkNotice" class="nav-link text-left">CheckNotice</a>
                 </li>
+                <li>
+                  <a href="/teacher/studentList" class="nav-link text-left">ViewStudents</a>
+                </li>
+                <li>
+                  <a href="/teacher/tsf" class="nav-link text-left">Tsf</a>
+                </li>
+                <li>
+                  <a href="/teacher/clasRoutine" class="nav-link text-left">classRoutine</a>
+                </li>
+                <li>
+                  <a href="/teacher/gradelist" class="nav-link text-left">GradeList</a>
+                </li>
+
+
 
               </ul>                                                                                                                                                                                                                  
             </nav>

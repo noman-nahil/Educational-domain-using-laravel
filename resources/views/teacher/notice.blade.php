@@ -74,6 +74,9 @@
                 <li>
                   <a href="/teacher/notice" class="nav-link text-left">Notice</a>
                 </li>
+                <li>
+                  <a href="/teacher/checkNotice" class="nav-link text-left">Check Notice</a>
+                </li>
               </ul>                                                                                                                                                                                                                  
             </nav>
 

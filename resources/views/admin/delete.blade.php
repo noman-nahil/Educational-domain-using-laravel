@@ -29,7 +29,6 @@
 
 
 
-
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -74,9 +73,6 @@
                   <a href="/home/adduser" class="nav-link text-left">Add New User</a>
                 </li>
                 <li>
-                    <a href="/home/studentlist" class="nav-link text-left">Student List</a>
-                  </li>
-                <li>
                   <a href="/home/addcourse" class="nav-link text-left">Add New Course</a>
                 </li>
                 <li>
@@ -91,7 +87,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome,</p>
+                <p>Welcome,{{$name}}</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -107,7 +103,8 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">Teacher List</h2>
+              <h2 class="mb-0">User Information</h2>
+             <p></p>
             </div>
           </div>
         </div>
@@ -115,62 +112,99 @@
 
 
     <div class="site-section">
-        <div class="listboard">
+        <div class="container">
+
+
             <div class="row justify-content-center">
-                <div class="col-12">
-                  <div class="row">
-                         
-                  </div> 
-                  <form>
+                <div class="col-md-8">
+                  <form method="post">
                     <div class="row">
-                        <div class="col-md-4 offset-md-4 form-group">
-                        <input type="text" name="search" id="search" class="form-control" placeholder="Search Teacher Data" />
-                        </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-3 offset-md-4">
-                      <h5>{{session('upmsg')}}</h5>
+                      <div class="col-md-12 form-group">
+                          <label for="id">ID:</label>
+                          <input type="text" id="id" name="id" value="{{$id}}" class="form-control form-control-lg" disabled> 
                       </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Gender</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Date of Birth</th>
-                                    <th scope="col">Contact</th>
-                                    <th scope="col">Blood</th>
-                                    <th scope="col">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="temporary-table">
-                            @foreach($users as $user)
-                                <tr>
-                                    <td>{{$user['id']}}</td>
-                                    <td>{{$user['name']}}</td>
-                                    <td>{{$user['email']}}</td>
-                                    <td>{{$user['gender']}}</td>
-                                    <td>{{$user['address']}}</td>
-                                    <td>{{$user['dob']}}</td>
-                                    <td>{{$user['contact']}}</td>
-                                    <td>{{$user['blood']}}</td>
-                                    <td>{{$user['status']}}</td>
-                                    <td><a href="{{route('admin.user',$user['id'])}}">Edit</a>&nbsp<a href="{{route('admin.delete',$user['id'])}}">Delete</a></td>
-                                </tr>
-                              @endforeach
-                            </tbody>
-                        </table>
+                    
+                    <div class="col-md-12 form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" value="{{$name}}" class="form-control form-control-lg"> 
                     </div>
+                    <div class="col-md-12 form-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" value="{{$email}}" class="form-control form-control-lg"> 
+                    </div>
+                    <div class="col-md-12 form-group">
+                      <label for="gender">Gender</label>
+                            <select name="gender" class="form-control form-control-lg">
+                            @foreach(array("Male","Female") as $gen)
+                              @if($gen==$gender)
+                              {
+                                <option value="{{$gen}}" selected="selected">{{$gen}}</option>
+                              }
+                              @else{
+                                <option value="{{$gen}}">{{$gen}}</option>
+                              }
+                              @endif
+                            @endforeach
+                            <select>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label for="dob">Birthday</label>
+                        <input type="text" id="dob" name="dob" value="{{$dob}}" class="form-control form-control-lg"> 
+                    </div>
+                     <div class="col-md-12 form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" value="{{$address}}" class="form-control form-control-lg"> 
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label for="contact">Contact</label>
+                        <input type="text" id="contact" name="contact" value="{{$contact}}" class="form-control form-control-lg"> 
+                    </div>
+                    <div class="col-md-12 form-group">
+                    <label for="gender">Blood Group</label>
+                            <select name="blood" class="form-control form-control-lg">
+                            @foreach(array("A+","A-","B+","B-","AB+","AB-","O+","O-") as $group)
+                              @if($group==$blood)
+                              {
+                                <option value="{{$group}}" selected="selected">{{$group}}</option>
+                              }
+                              @else{
+                                <option value="{{$group}}">{{$group}}</option>
+                              }
+                              @endif
+                            @endforeach
+                            </select>
+                    </div>
+                  <div class="col-md-12 form-group">
+                    <label for="status">Status</label>
+                          <select name="status" class="form-control form-control-lg">
+                            @foreach(array("Active","Deactive") as $sts)
+                              @if($sts==$status)
+                              {
+                                <option value="{{$sts}}" selected="selected">{{$sts}}</option>
+                              }
+                              @else{
+                                <option value="{{$sts}}">{{$sts}}</option>
+                              }
+                              @endif
+                            @endforeach
+                            <select>
+                  </div>
+                  <div class="row">
+                          <div class="col-sm-3">
+                              <input type="submit" value="Delete" id="update" name="submit" class="btn btn-primary btn-lg px-5">
+                          </div>
+                    </div>
+                </div>
+
+              </div>
                 </div>
               </form>
             </div>
         </div>
     </div>
 
-
     
+
     <div class="footer">
       <div class="container">
         <div class="row">
@@ -214,35 +248,8 @@
 
   <script src="../../assets/js/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
-  <script type="text/javascript">
-      //newMethod
-      $(document).on('keyup', '#search', function(){
-        var query = $(this).val();
-        //console.log(query);
-        $.ajax({
-          method:'POST',
-          url:"{{ route('admin.teacherlist') }}",
-          dataType:'json',
-          data:{
-            query:query,
-          },
-          success: function(res){
-            console.log(res);
-            var tableRow ='';
-            $('#temporary-table').html('');
-            $.each(res,function(index,value){
-              console.log(index);
-              console.log("Break");
-              tableRow = '<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+value.email+'</td><td>'+value.gender+'</td><td>'+value.address+'</td><td>'+value.dob+'</td><td>'+value.contact+'</td><td>'+value.blood+'</td><td>'+value.status+'</td><td><a href="{{route('admin.user','res.id')}}">Edit</a>&nbsp<a href="">Delete</a></td></tr>';
-              $('#temporary-table').append(tableRow);
-              //var n=$('#index').val();
-            });
-          }
-        });
-        //fetch_customer_data(query);
-        });
-
-      
+  <script>
+    
 </script>
 
 </body>

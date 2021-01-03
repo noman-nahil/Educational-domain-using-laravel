@@ -70,7 +70,17 @@
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li>
                   <a href="/teacher" class="nav-link text-left">Home</a>
-              </ul>                                                                                                                                                                                                                  
+              </li>
+
+              <li>
+                  <a href="/teacher/notice" class="nav-link text-left">PostNotice</a>
+                </li>
+
+                <li>
+                  <a href="/teacher/checkNotice" class="nav-link text-left">Check Notice</a>
+                </li>
+
+              </ul>   
             </nav>
 
           </div>

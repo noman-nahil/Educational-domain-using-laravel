@@ -115,6 +115,9 @@
             <div class="row justify-content-center">
                 <div class="col-md-5">
                   <form method="post">
+                  <div class="col-md-3 offset-md-4">
+                      <h5>{{session('bookmsg')}}</h5>
+                      </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <label for="bookName">Book Name</label>

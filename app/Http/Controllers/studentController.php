@@ -8,12 +8,16 @@ use DB;
 use PDF;
 use App\course;
 use App\searchCourse;
+use App\library;
 
 class studentController extends Controller
 {
-    public function CoursesResult(){
-        $data = course::all();
-     return view('student.CoursesResult',$data);
+    public function CoursesResult()
+    {
+        $search = $_GET['search'];
+        $users = course::where('courseName','like','%'.$search.'%')
+        ->get();
+     return view('student.CoursesResult',$users);
 }
 function actionCourse(Request $request)
     {
@@ -68,11 +72,22 @@ public function GradeReport(Request $req){
     ->get();
     return view('student.GradeReport',$user,['data'=>$data]);
 }
-public function Library(){
-    return view('student.Library');
-
+function test(){
+    $list = DB ::table('library')->get();
+    $list->transform(function($i) {
+        return (array)$i;
+        });
+    $users = $list->toArray(); 
+    //echo "$list";                           
+    return view('student.Library')->with("users",$users);
 }
-
+public function Library(Request $req){
+    $query = $req->get('query');
+        $users = library::where('id','like','%'.$query.'%')
+        ->get();
+        return json_encode($users);
+    return view('student.Library');
+}
 public function Notice(){
     $data = Appnotice::all();
     return view('student.Notice' ,['data'=>$data]);
@@ -120,10 +135,40 @@ function passUpdate(Request $req){
 }
 
 public function portal(Request $req){ 
+
+    // $client = new \GuzzleHttp\Client();
+
+    //     $response = $client->request('GET', 'http://localhost:3000');
+        
+    //     if($response->getStatusCode()==200){
+    //     $blog= json_decode($response->getBody(), true);
+    //     dd($blog);
+
+    //     // return view('admin.all-blog')->with('admin',$admin)->with('blog',$blog);
+    //     }else{
+    //         return "SERVER IS RESPONDING";
+    //     }
     $data = Appportal::all();
      return view('student.portal',['data'=>$data]);
     
 }
+public function Registration(Request $req){ 
+
+    $client = new \GuzzleHttp\Client();
+
+        $response = $client->request('GET', 'http://localhost:3000');
+        
+        if($response->getStatusCode()==200){
+        $data= json_decode($response->getBody(), true);
+        dd($data);
+
+        //return view('student.Registration',['data'=>$data]);
+        }else{
+            return "SERVER IS RESPONDING";
+        }
+    // $data = Appportal::all();
+    //  return view('student.Registration',['data'=>$data]);
+    }  
 function Profile(Request $req){
     $id = $req->session()->get('username');
         $user = userModel::find($id);

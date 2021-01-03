@@ -46,12 +46,17 @@
 
     <div class="py-2 bg-light">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-9 d-none d-lg-block">
+      <div class="row align-items-center">
+          <div class="col-lg-6 d-none d-lg-block">
             <a href="#" class="small mr-3"><span class="icon-question-circle-o mr-2"></span> Have a questions?</a> 
             <a href="#" class="small mr-3"><span class="icon-phone2 mr-2"></span> 10 20 123 456</a> 
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a> 
           </div>
+          <div class="col-lg-6 text-right">
+            <a href="/admin/password" class="small mr-3"><span class=""></span>Change Password</a>
+            <a href="/logout" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Logout</a>
+          </div>
+        </div>
 
         </div>
       </div>
@@ -97,6 +102,7 @@
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
+            
           </div>
          
         </div>
@@ -125,6 +131,9 @@
                 <div class="col-md-5">
                   <form method="post">
                     <div class="row">
+                    <div class="col-md-3 offset-md-4">
+                      <h5>{{session('coursemsg')}}</h5>
+                      </div>
                         <div class="col-md-12 form-group">
                             <label for="courseName">Course Name</label>
                             <select name="courseName" id="courseList" class="form-control form-control-lg">
@@ -151,18 +160,16 @@
                          <div class="col-md-12 form-group">
                             <label for="courseTeacher">Course Teacher</label>
                             <select name="courseTeacher" class="form-control form-control-lg">
-                              <% users.forEach( function(results){ %>
-                                <option value=""></option>
-                             <%
-                            });
-                            %>
+                            @foreach($users as $user)
+                                <option value="{{$user['id']}}">{{$user['id']}}&nbsp&nbsp{{$user['name']}}</option>
+                                @endforeach
                             </select>
                             
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <input type="submit" value="Submit" name="submit" class="btn btn-primary btn-lg px-5">
+                            <input type="submit" value="Add" name="submit" class="btn btn-primary btn-lg px-5">
                         </div>
                     </div>
                   </form>
