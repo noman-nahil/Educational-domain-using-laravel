@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\userModel;
-use Auth;
-use Hash;
 use Socialite;
-use Str;
 use App\user;
 class loginController extends Controller
 {
