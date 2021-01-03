@@ -54,7 +54,7 @@
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a> 
           </div>
           <div class="col-lg-6 text-right">
-            <a href="/" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Logout</a>
+            <a href="/login" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Logout</a>
           </div>
         </div>
       </div>
@@ -66,18 +66,14 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome,Shamim Ahamed</p>
+                <p>Welcome,{{$name}}</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
-          </div>
-         
+          </div>      
         </div>
       </div>
-
-    </header>
-
-    
+    </header> 
     <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('../../assets/images/bg_1.jpg')">
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
@@ -88,8 +84,6 @@
           </div>
         </div>
       </div> 
-
-
     <div class="site-section">
         <div class="container">
 
@@ -119,15 +113,9 @@
                     </div>
                   </form>
                 </div>
-            </div>
-            
-
-          
+            </div>      
         </div>
     </div>
-
-    
-
     <div class="footer">
       <div class="container">
         <div class="row">
@@ -183,14 +171,10 @@
         </div>
       </div>
     </div>
-    
-
   </div>
   <!-- .site-wrap -->
-
   <!-- loader -->
   <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#51be78"/></svg></div>
-
   <script src="../../assets/js/jquery-3.3.1.min.js"></script>
   <script src="../../assets/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="../../assets/js/jquery-ui.js"></script>
@@ -205,10 +189,6 @@
   <script src="../../assets/js/jquery.fancybox.min.js"></script>
   <script src="../../assets/js/jquery.sticky.js"></script>
   <script src="../../assets/js/jquery.mb.YTPlayer.min.js"></script>
-
-
-
-
   <script src="../../assets/js/main.js"></script>
 
 </body>
