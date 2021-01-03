@@ -27,13 +27,14 @@ Route::post('/home/edit','adminController@update');
 Route::get('/home/adduser','adminController@adduser');
 Route::post('/home/adduser','adminController@userstore');
 
-Route::get('/home/user/{id}','adminController@user')->name('admin.user');
+Route::get('/home/user/{id}','adminController@user')->name('admin.user');//
 Route::post('/home/user/{id}','adminController@useredit');
 
 Route::get('/home/delete/{id}','adminController@delete')->name('admin.delete');
 Route::post('/home/delete/{id}','adminController@del');
 
-Route::get('/home/teacherlist','adminController@teacherlist');
+Route::get('/home/teacherlist','adminController@test')->name('admin.teacherlist');//
+Route::post('/home/teacherlist','adminController@teacherlist');
 Route::get('/home/studentlist','adminController@studentlist');
 Route::get('/home/addcourse','adminController@addcourse');
 Route::get('/home/book','adminController@book');
