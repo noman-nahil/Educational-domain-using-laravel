@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\userModel;
 use App\course;
+use App\bookmodel;
 use DB;
 use PDF;
 
@@ -162,6 +163,20 @@ class adminController extends Controller
         $id = $req->session()->get('username');
         $user = userModel::find($id);
         return view('admin.book',$user);
+    }
+    function bookstore(Request $req){
+        $id = DB::table('library')->max('bookId');
+        $newID =$id+1;
+        $book = new bookmodel();
+        $book->bookId = $newID ;
+        $book->bookName = $req->bookName;
+        $book->author = $req->author;
+        $book->category = $req->category;
+        if($book->save()){
+            $req->session()->flash('bookmsg', 'Added Successfully');
+            return redirect('/home/book');
+        }
+
     }
     function password(Request $req){
         $id = $req->session()->get('username');

@@ -131,7 +131,7 @@
                 <div class="col-md-5">
                   <form method="post">
                     <div class="row">
-                    <div class="col-sm-3 offset-md-4">
+                    <div class="col-md-3 offset-md-4">
                       <h5>{{session('coursemsg')}}</h5>
                       </div>
                         <div class="col-md-12 form-group">
