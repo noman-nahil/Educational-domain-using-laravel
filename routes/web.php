@@ -24,6 +24,7 @@ Route::get('/login/github','loginController@github');
 Route::get('/login/github/redirect','loginController@githubRedirect');
 
 //admin
+Route::group(['middleware'=>['chck']], function(){
 Route::get('/home','adminController@home');
 
 Route::get('/home/edit','adminController@edit');
@@ -51,15 +52,13 @@ Route::get('/home/password','adminController@password');
 Route::post('/home/password','adminController@passUpdate');
 
 Route::get('/home/addcourse','adminController@addcourse');
-
+});
 
 //adminend
 Route::get('/CoursesResult', 'studentController@CoursesResult');
-
-Route::post('/Profile/EditUser','studentController@update');
+Route::post('/CoursesResult/actionCourse', 'studentController@actionCourse')->name('CoursesResult.actionCourse');
 
 Route::get('/Email', 'studentController@Email');
-
 Route::get('/Email/Emaildelete/{id}', 'studentController@Emaildelete');
 Route::post('/Email/Emaildelete/{id}', 'studentController@delete');
 
@@ -74,6 +73,7 @@ Route::get('/Notice/NoticeDelete/{id}', 'studentController@NoticeDelete');
 Route::post('/Notice/NoticeDelete/{id}', 'studentController@delete_notice');
 
 Route::get('/Profile/password', 'studentController@password');
+Route::post('/Profile/password','studentController@passUpdate');
 
 Route::get('/portal', 'studentController@portal');
 
@@ -95,9 +95,11 @@ Route::get('/teacher/tsfedit/{id}','teacherController@editTsf');
 Route::post('/teacher/tsfedit/{id}','teacherController@updatetsf');
 Route::get('/teacher/clasRoutine','teacherController@showRoutine');
 Route::get('/teacher/gradelist','teacherController@showgrade');
+Route::get('/teacher/gradeedit/{id}','teacherController@editGrade');
+Route::post('/teacher/gradeedit/{id}','teacherController@updateGrade');
 
-
-
+Route::get('/teacher/password', 'teacherController@password');
+Route::post('/teacher/password','teacherController@passUpdate');
 
 
 

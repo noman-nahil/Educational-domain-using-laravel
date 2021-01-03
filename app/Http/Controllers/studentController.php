@@ -6,15 +6,24 @@ use App\portal as Appportal;
 use App\notice as Appnotice;
 use DB;
 use PDF;
+use App\course;
+use App\searchCourse;
 
 class studentController extends Controller
 {
     public function CoursesResult(){
-        $users=DB::table('userinfo')
-        ->select('select * from userinfo');
-        return view('student.CoursesResult',['user'=>$users]);
+        $data = course::all();
+     return view('student.CoursesResult',$data);
 }
-
+function actionCourse(Request $request)
+    {
+     if($request->ajax())
+     {
+      $data = searchCourse::search($request->get('CoursesResult_query'))->get();
+      //echo $data;
+      return response()->json($data);
+     }
+    }
 public function update(Request $req){
     $id = $req->session()->get('username');
     
@@ -77,10 +86,39 @@ public function delete_notice($id){
      $user->delete();
     return redirect('/Notice');
   }
-public function password(){
-    return view('student.password');
-
+public function password(Request $req){
+    $id = $req->session()->get('username');
+    $user = userModel::find($id);
+    return view('student.password',$user);
 }
+function passUpdate(Request $req){
+    $id = $req->session()->get('username');
+    $pass = userModel::find($id)->password;
+    if($req->oldpass==$pass){
+       //echo "$pass";
+        if($req->newpass==$req->newpass2 && $req->newpass2!=""){
+            //echo "$req->newpass";
+            $user = userModel::find($id);
+
+            $user->password=$req->newpass;
+            $user->save();
+
+            $req->session()->flash('passmsg', 'Password change Successfully');
+            return redirect('/Profile/password'); 
+        }
+        else{
+            $req->session()->flash('passmsg', "Password didn't match");
+            return redirect('/Profile/password'); 
+            //echo "Not same";password didn't match
+        }
+    }
+    else{
+        $req->session()->flash('passmsg', "Current password isn't correct");
+        return redirect('/Profile/password'); 
+    }
+    
+}
+
 public function portal(Request $req){ 
     $data = Appportal::all();
      return view('student.portal',['data'=>$data]);

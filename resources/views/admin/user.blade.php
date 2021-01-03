@@ -135,7 +135,7 @@
                     </div>
                     <div class="col-md-12 form-group">
                       <label for="gender">Gender</label>
-                            <select name="gender" class="form-control form-control-lg">
+                            <select name="gender" id="gender" class="form-control form-control-lg">
                             @foreach(array("Male","Female") as $gen)
                               @if($gen==$gender)
                               {
@@ -162,7 +162,7 @@
                     </div>
                     <div class="col-md-12 form-group">
                     <label for="gender">Blood Group</label>
-                            <select name="blood" class="form-control form-control-lg">
+                            <select name="blood" id="blood" class="form-control form-control-lg">
                             @foreach(array("A+","A-","B+","B-","AB+","AB-","O+","O-") as $group)
                               @if($group==$blood)
                               {

@@ -72,13 +72,7 @@
                   <a href="/teacher" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/teacher/notice" class="nav-link text-left">Notice</a>
-                </li>
-                <li>
-                  <a href="/teacher/studentlist" class="nav-link text-left">View students</a>
-                </li>
-                <li>
-                  <a href="teacher/password" class="nav-link text-left">Change Password</a>
+                  <a href="/teacher/password" class="nav-link text-left">Change Password</a>
                 </li>
                 <li>
                   <a href="/logout" class="nav-link text-left">Logout</a>
@@ -105,7 +99,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">Grade Info</h2>
+              <h2 class="mb-0">checknotice</h2>
              <p></p>
             </div>
           </div>
@@ -117,38 +111,29 @@
         <div class="container">
 
 
-           
 
     <div>
 
-      <h3 align='center'>Grade</h3>
+      <h3 align='center'>Notices</h3>
+      <form method="post">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Student id</th>
+          <th scope="col">Student Id</th>
           <th scope="col">Midterm</th>
           <th scope="col">Finalterm</th>
-          <th scope="col">Total</th>
-
-          <th scope="col">Edit</th>
-          
         </tr>
       </thead>
       <tbody>
-        @for($i=0; $i<count($users); $i++)
-    <tr>
-        <td>{{ $users[$i]['sid']}}</td>
-        <td>{{ $users[$i]['Midterm']}}</td>
-        <td>{{ $users[$i]['Finalterm']}}</td>
-        <td>{{ $users[$i]['Total']}}</td>
-        <td><a href="/teacher/gradeedit/{{$users[$i]['id']}}">Edit</a></td>
-    </tr>    
-    @endfor
-
-
+			<tr>
+        <td>{{ $sid }}</td>
+       <td><input type="text"  name="Midterm" class="form-control form-control-lg" value="{{$Midterm}}"></td>
+       <td><input type="text"  name="Finalterm" class="form-control form-control-lg" value="{{$Finalterm}}"></td>
+    </tr>
       </tbody>
     </table>
-
+    <button type="submit" class="btn btn-primary">Post</button>
+      </form>
     </div>
     
     <div class="footer">

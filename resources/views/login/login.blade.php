@@ -130,10 +130,10 @@
                         <div class="col-5  form-group">
                             <input type="submit" name="submit"value="Log In" class="btn btn-primary btn-lg px-5">
                         </div>
-                        <h2>{{session('msg')}}</h2>
                         <div class="col-5  form-group">
                             <a href="/login/github" class="btn btn-primary btn-lg px-5">Login with GitHub</a>
                         </div>
+                        <h2>{{session('msg')}}</h2>
                       </div>
                         </form>
                 </div>

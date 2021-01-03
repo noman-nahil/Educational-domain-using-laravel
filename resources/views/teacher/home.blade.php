@@ -86,6 +86,9 @@
                 <li>
                   <a href="/teacher/gradelist" class="nav-link text-left">GradeList</a>
                 </li>
+                <li>
+                  <a href="/teacher/password" class="nav-link text-left">change password</a>
+                </li>
 
 
 

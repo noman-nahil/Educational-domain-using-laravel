@@ -75,7 +75,7 @@ class loginController extends Controller
                         return redirect('/teacher');
 
             }
-            elseif($users[0]['type']=='Student'){
+            else if($users[0]['type']=='Student'){
                 $req->session()->put('username',$users[0]['id']);
                 return redirect('/portal');
             }
@@ -90,7 +90,7 @@ class loginController extends Controller
         }
 
        }
-       $req->session()->flash('msg', 'invalid username/password');
+       $req->session()->flash('msg', "Email doesn't exist");
        return redirect('/login');
     }
 
