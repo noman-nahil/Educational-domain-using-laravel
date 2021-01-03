@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\userModel;
+use Auth;
+use Hash;
+use Socialite;
+use Str;
+use App\user;
 class loginController extends Controller
 {
     function index(){
@@ -50,4 +55,47 @@ class loginController extends Controller
             }
 
     }
+    public function github(){
+        return Socialite::driver('github')->redirect();
+
+    }
+    public function githubRedirect(Request $req){
+        $user = Socialite::driver('github')->user()->email;
+        
+       // echo "$user";
+       $users = userModel:: where ('email',$user)->get();
+       //echo $users[0]['email'];
+       
+       if(count($users)>0){
+        if($users[0]['status']=='Active'){
+            if($users[0]['type']=='Admin'){
+                $req->session()->put('username',$users[0]['id']);
+                    $req->session()->put('type',$users[0]['type']);
+                    return redirect('/home');
+            }
+            else if($users[0]['type']=='Teacher'){
+                $req->session()->put('username', $users[0]['id']);
+                        return redirect('/teacher');
+
+            }
+            elseif($users[0]['type']=='Student'){
+                $req->session()->put('username',$users[0]['id']);
+                return redirect('/portal');
+            }
+            else{
+                echo "opps!! type error";
+            }
+        }
+        else{
+            $req->session()->flash('msg', 'opps!! Inactive');
+                    return redirect('/login');
+
+        }
+
+       }
+       $req->session()->flash('msg', 'invalid username/password');
+       return redirect('/login');
+    }
+
+
 }

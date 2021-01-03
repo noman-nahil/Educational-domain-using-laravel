@@ -16,7 +16,12 @@ Route::get('/', function () {
 });
 Route::get('/login','loginController@index');
 Route::post('/login','loginController@verify');
+
 Route::get('/logout', 'logoutController@index');
+
+Route::get('/login','loginController@index');
+Route::get('/login/github','loginController@github');
+Route::get('/login/github/redirect','loginController@githubRedirect');
 
 //admin
 Route::get('/home','adminController@home');
