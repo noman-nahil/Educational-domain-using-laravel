@@ -86,12 +86,14 @@
       </div> 
     <div class="site-section">
         <div class="container">
-
-
             <div class="row justify-content-center">
                 <div class="col-md-5">
                   <form method="post">
                     <div class="row">
+                      <input type="hidden" name="_token" value="{{csrf_token()}}">
+                      <div class="col-md-12 form-group">
+                        <h4>{{session('passmsg')}}</h4>
+                    </div>
                         <div class="col-md-12 form-group">
                             <label for="newpass">Current</label>
                             <input type="password" id="oldpass" name="oldpass" value="" class="form-control form-control-lg"> 

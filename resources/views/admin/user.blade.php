@@ -119,6 +119,7 @@
                 <div class="col-md-8">
                   <form method="post">
                     <div class="row">
+                      
                       <div class="col-md-12 form-group">
                           <label for="id">ID:</label>
                           <input type="text" id="id" name="id" value="{{$id}}" class="form-control form-control-lg" disabled> 
@@ -134,7 +135,7 @@
                     </div>
                     <div class="col-md-12 form-group">
                       <label for="gender">Gender</label>
-                            <select name="gender" class="form-control form-control-lg">
+                            <select name="gender" id="gender" class="form-control form-control-lg">
                             @foreach(array("Male","Female") as $gen)
                               @if($gen==$gender)
                               {
@@ -161,7 +162,7 @@
                     </div>
                     <div class="col-md-12 form-group">
                     <label for="gender">Blood Group</label>
-                            <select name="blood" class="form-control form-control-lg">
+                            <select name="blood" id="blood" class="form-control form-control-lg">
                             @foreach(array("A+","A-","B+","B-","AB+","AB-","O+","O-") as $group)
                               @if($group==$blood)
                               {
@@ -190,6 +191,13 @@
                             <select>
                   </div>
                   <div class="row">
+                      <div class="col-md-4 form-group">
+                          <span></span>
+                      </div>
+                      <div class="col-md-6 form-group">
+                        <span id="msg"></span>
+                   </div>
+                  <div class="row">
                           <div class="col-sm-3">
                               <input type="submit" value="Update" id="update" name="submit" class="btn btn-primary btn-lg px-5">
                           </div>
@@ -204,6 +212,7 @@
                              <input type="button" value="Print" id="print" name="print" class="btn btn-secondary btn-lg px-5">
                           </div>
                     </div>
+                    
                 </div>
 
               </div>
@@ -259,7 +268,44 @@
   <script src="../../assets/js/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
   <script>
-    
+    $(document).ready(function(){
+      
+      $("#print").click(function(){
+        $("#msg").text('Printing Success');
+            $("#msg").css("color", "green");
+        var doc = new jsPDF();
+              var id=  $("#id").val();
+              var name= $("#name").val();
+              var email=  $("#email").val();
+              var gender=$("#gender").val();
+              var dob=$("#dob").val();
+              var address= $("#address").val();
+              var contact= $("#contact").val();
+              var blood= $("#blood").val();
+              var status=  $("#status").val();
+              doc.setFontSize(25);
+              doc.text(60, 30, 'User Infromation')
+              doc.setFontSize(10);
+              doc.setFont('times')
+              doc.text(160, 35, 'Print Time:')
+              doc.setFontSize(16);
+              doc.text(30, 40, 'ID:'+id);
+              doc.text(30, 50, 'Name:'+name);
+              doc.text(30, 60, 'Email:'+email);
+              doc.text(30, 70, 'Gender:'+gender);
+              doc.text(30, 80, 'Date of birth:'+dob);
+              doc.text(30, 90, 'Address:'+address);
+              doc.text(30, 100, 'Contact:'+contact);
+              doc.text(30, 110, 'Blood Group:'+blood);
+              doc.text(30, 120, 'Status:'+status);
+              
+                doc.save(id+'.pdf');
+
+      });
+
+      });
+
+
 </script>
 
 </body>

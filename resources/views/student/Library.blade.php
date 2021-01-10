@@ -91,9 +91,10 @@
     <div class="site-section">
         <div class="listboard">
             <div class="row justify-content-center">
+              <p align='right'><a class="btn btn-danger" href="/Library/printlibrary" role="button">Print</a></p>    
                 <div class="col-12">
                   <div class="row">
-                         
+                    
                   </div> 
                   <form>
                     <div class="row">

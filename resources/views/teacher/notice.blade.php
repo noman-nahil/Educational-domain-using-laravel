@@ -68,15 +68,34 @@
           <div class="mr-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li>
+              <li>
                   <a href="/teacher" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/teacher/notice" class="nav-link text-left">Notice</a>
+                  <a href="/teacher/notice" class="nav-link text-left">PostNotice</a>
                 </li>
                 <li>
-                  <a href="/teacher/checkNotice" class="nav-link text-left">Check Notice</a>
+                  <a href="/teacher/checkNotice" class="nav-link text-left">CheckNotice</a>
                 </li>
+                <li>
+                  <a href="/teacher/studentList" class="nav-link text-left">ViewStudents</a>
+                </li>
+                <li>
+                  <a href="/teacher/tsf" class="nav-link text-left">Tsf</a>
+                </li>
+                <li>
+                  <a href="/teacher/clasRoutine" class="nav-link text-left">classRoutine</a>
+                </li>
+                <li>
+                  <a href="/teacher/gradelist" class="nav-link text-left">GradeList</a>
+                </li>
+                <li>
+                  <a href="/teacher/password" class="nav-link text-left">change password</a>
+                </li>
+                <li>
+                  <a href="/logout" class="nav-link text-left">Logout</a>
+                </li>
+
               </ul>                                                                                                                                                                                                                  
             </nav>
 

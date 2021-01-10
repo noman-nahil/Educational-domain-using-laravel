@@ -84,10 +84,7 @@
          
         </div>
       </div>
-
     </header>
-
-    
     <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('../../assets/images/bg_1.jpg')">
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">

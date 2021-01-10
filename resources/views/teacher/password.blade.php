@@ -29,7 +29,6 @@
 
 
 
-
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -55,7 +54,7 @@
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a> 
           </div>
           <div class="col-lg-6 text-right">
-            <a href="/logout" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Logout</a>
+            <a href="/login" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Logout</a>
           </div>
         </div>
       </div>
@@ -63,78 +62,102 @@
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
       <div class="container">
         <div class="d-flex align-items-center">
+          <div class="mr-auto">
+          </div>
           <div class="ml-auto">
             <div class="social-wrap">
+                <p>Welcome,{{$name}}</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
-          </div>
-         
+          </div>      
         </div>
       </div>
-
-    </header>
-
-    
+    </header> 
     <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('../../assets/images/bg_1.jpg')">
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0"> Find Courses & Result</h2>
+              <h2 class="mb-0">Settings</h2>
+             <p></p>
             </div>
           </div>
         </div>
       </div> 
-
-
     <div class="site-section">
-        <div class="listboard">
+        <div class="container">
+
+
             <div class="row justify-content-center">
-                <div class="col-12">
-                  <form>
-                    <p align='right'><a class="btn btn-danger" href="/CoursesResult/printDetails" role="button">Print</a></p>
+                <div class="col-md-5">
+                  <form method="post">
                     <div class="row">
-                        <div class="col-md-4 offset-md-4 form-group">
-                        <input type="text" name="search" id="search" class="form-control" placeholder="Search Your Course Here" />
+                        <div class="col-md-12 form-group">
+                            <label for="newpass">Current</label>
+                            <input type="password" id="oldpass" name="oldpass" value="" class="form-control form-control-lg"> 
+                        </div>
+                        <div class="col-md-12 form-group">
+                          <label for="newpass">New</label>
+                          <input type="password" id="newpass" name="newpass" value="" class="form-control form-control-lg"> 
+                      </div>
+                      <div class="col-md-12 form-group">
+                        <label for="newpass2">Re-type new</label>
+                       <input type="password" id="newpass2" name="newpass2" value="" class="form-control form-control-lg">
+                    </div>
+                    
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                          <input type="submit" value="UPDATE"name="submit" class="btn btn-primary btn-lg px-5">
                         </div>
                     </div>
-                    <div class="row">
-                      <div class="col-sm-3 offset-md-4">
-                        <h5>{{session('upmsg')}}</h5>
-                      </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Course Id</th>
-                                    <th scope="col">Course Name </th>
-                                    <th scope="col">Course Teacher Name</th>
-                                    <th scope="col">Grade</th>
-                                    <th scope="col">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="temporary-table">
-                            @foreach($users as $user)
-                                <tr>
-                                    <td>{{$user['id']}}</td>
-                                    <td>{{$user['courseName']}}</td>
-                                    <td>{{$user['teacherName']}}</td>
-                                    <td>{{$user['grade']}}</td>
-                                    <td>{{$user['status']}}</td>
-                                </tr>
-                              @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                  </form>
                 </div>
-              </form>
-            </div>
+            </div>      
         </div>
     </div>
-
-
-    
     <div class="footer">
       <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <p class="mb-4"><img src="../../assets/images/logo.png" alt="Image" class="img-fluid"></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>  
+            <p><a href="#">Learn More</a></p>
+          </div>
+          <div class="col-lg-3">
+            <h3 class="footer-heading"><span>Our Campus</span></h3>
+            <ul class="list-unstyled">
+                <li><a href="#">Acedemic</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Our Interns</a></li>
+                <li><a href="#">Our Leadership</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Human Resources</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+              <h3 class="footer-heading"><span>Our Courses</span></h3>
+              <ul class="list-unstyled">
+                  <li><a href="#">Math</a></li>
+                  <li><a href="#">Science &amp; Engineering</a></li>
+                  <li><a href="#">Arts &amp; Humanities</a></li>
+                  <li><a href="#">Economics &amp; Finance</a></li>
+                  <li><a href="#">Business Administration</a></li>
+                  <li><a href="#">Computer Science</a></li>
+              </ul>
+          </div>
+          <div class="col-lg-3">
+              <h3 class="footer-heading"><span>Contact</span></h3>
+              <ul class="list-unstyled">
+                  <li><a href="#">Help Center</a></li>
+                  <li><a href="#">Support Community</a></li>
+                  <li><a href="#">Press</a></li>
+                  <li><a href="#">Share Your Story</a></li>
+                  <li><a href="#">Our Supporters</a></li>
+              </ul>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-12">
             <div class="copyright">
@@ -148,14 +171,10 @@
         </div>
       </div>
     </div>
-    
-
   </div>
   <!-- .site-wrap -->
-
   <!-- loader -->
   <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#51be78"/></svg></div>
-
   <script src="../../assets/js/jquery-3.3.1.min.js"></script>
   <script src="../../assets/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="../../assets/js/jquery-ui.js"></script>
@@ -170,42 +189,7 @@
   <script src="../../assets/js/jquery.fancybox.min.js"></script>
   <script src="../../assets/js/jquery.sticky.js"></script>
   <script src="../../assets/js/jquery.mb.YTPlayer.min.js"></script>
-
-
-
-
   <script src="../../assets/js/main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
-  <script type="text/javascript">
-      //newMethod
-      $(document).on('keyup', '#search', function(){
-        var query = $(this).val();
-        //console.log(query);
-        $.ajax({
-          method:'POST',
-          url:"{{ route('student.CoursesResult') }}",
-          dataType:'json',
-          data:{
-            query:query,
-          },
-          success: function(res){
-            console.log(res);
-            var tableRow ='';
-            $('#temporary-table').html('');
-            $.each(res,function(index,value){
-              console.log(index);
-              console.log("Break");
-              tableRow ='<tr><td>'+value.id+'</td><td>'+value.courseName+'</td><td>'+value.teacherName+'</td><td>'+value.grade+'</td><td>'+value.status+'</td></tr>';
-              $('#temporary-table').append(tableRow);
-             
-            });
-          }
-        });
-        
-        });
-
-      
-</script>
 
 </body>
 
