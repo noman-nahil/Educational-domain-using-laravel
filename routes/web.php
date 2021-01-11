@@ -121,14 +121,12 @@ Route::post('/teacher/password','teacherController@passUpdate');
 Route::get('/teacher/fileupload', 'teacherController@fileupload');
 Route::post('/teacher/fileupload','teacherController@insertfile');
 Route::get('/teacher/showfilelist', 'teacherController@showfilelist');
-<<<<<<< HEAD
 Route::get('/teacher/pdf', 'teacherController@studentpdf');
 Route::get('/teacher/gradepdf', 'teacherController@gradepdf');
 Route::get('/teacher/verify', 'teacherController@verify');
 
 
-=======
->>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
+
 
 Route::post('/teacher/studentList', 'teacherController@searchResult');
 
