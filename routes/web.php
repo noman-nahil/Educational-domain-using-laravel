@@ -24,6 +24,8 @@ Route::get('/login/github','loginController@github');
 Route::get('/login/github/redirect','loginController@githubRedirect');
 
 //admin
+Route::group(['middleware'=>['chck']], function(){
+    Route::group(['middleware'=>['sesn']], function(){
 Route::get('/home','adminController@home');
 
 Route::get('/home/edit','adminController@edit');
@@ -40,7 +42,8 @@ Route::post('/home/delete/{id}','adminController@del');
 
 Route::get('/home/teacherlist','adminController@test')->name('admin.teacherlist');//
 Route::post('/home/teacherlist','adminController@teacherlist');
-Route::get('/home/studentlist','adminController@studentlist');
+Route::get('/home/studentlist','adminController@student')->name('admin.studentlist');
+Route::post('/home/studentlist','adminController@studentlist');
 Route::get('/home/addcourse','adminController@addcourse');//coursestore
 Route::post('/home/addcourse','adminController@coursestore');
 
@@ -52,10 +55,14 @@ Route::post('/home/password','adminController@passUpdate');
 
 Route::get('/home/addcourse','adminController@addcourse');
 
+    });
+});
 
 //adminend
-Route::get('/CoursesResult', 'studentController@CoursesResult');
-Route::post('/CoursesResult/actionCourse', 'studentController@actionCourse')->name('CoursesResult.actionCourse');
+    Route::group(['middleware'=>['session']], function(){
+    //Route::group(['middleware'=>['check']], function(){
+Route::get('/CoursesResult', 'studentController@testCourse')->name('student.CoursesResult');
+Route::post('/CoursesResult', 'studentController@CoursesResult');
 
 Route::get('/Email', 'studentController@Email');
 Route::get('/Email/Emaildelete/{id}', 'studentController@Emaildelete');
@@ -65,7 +72,12 @@ Route::post('/Email/Emaildelete/{id}', 'studentController@delete');
 Route::get('/GradeReport', 'studentController@GradeReport');
 
 
-Route::get('/Library', 'studentController@Library');
+Route::get('/Registration', 'studentController@Registration');
+
+
+Route::get('/Library', 'studentController@test')->name('student.Library');
+Route::post('/Library', 'studentController@Library');
+
 
 Route::get('/Notice', 'studentController@Notice');
 Route::get('/Notice/NoticeDelete/{id}', 'studentController@NoticeDelete');
@@ -77,7 +89,13 @@ Route::post('/Profile/password','studentController@passUpdate');
 Route::get('/portal', 'studentController@portal');
 
 Route::get('/Profile', 'studentController@Profile');
-Route::get('/pdf', 'studentController@pdf');
+
+Route::get('/CoursesResult/printDetails', 'studentController@CoursePdf');
+
+Route::get('/Library/printlibrary','studentController@Librarypdf');
+
+});
+//});
 
 //teacher
 
@@ -103,11 +121,14 @@ Route::post('/teacher/password','teacherController@passUpdate');
 Route::get('/teacher/fileupload', 'teacherController@fileupload');
 Route::post('/teacher/fileupload','teacherController@insertfile');
 Route::get('/teacher/showfilelist', 'teacherController@showfilelist');
+<<<<<<< HEAD
 Route::get('/teacher/pdf', 'teacherController@studentpdf');
 Route::get('/teacher/gradepdf', 'teacherController@gradepdf');
 Route::get('/teacher/verify', 'teacherController@verify');
 
 
+=======
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
 
 Route::post('/teacher/studentList', 'teacherController@searchResult');
 

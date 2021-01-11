@@ -9,10 +9,15 @@ use App\tsfList;
 use App\classRoutine; 
 use App\grade; 
 use App\fileUpload; 
+<<<<<<< HEAD
 use DB;
 use PDF;
 use App\Http\Requests\UserRequest;
 use Validator;
+=======
+
+use DB;
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
 
 class teacherController extends Controller
 {
@@ -31,7 +36,7 @@ function noticePost(UserRequest $req){
 
     $noticePost = new noticePost();
     $noticePost->teacherId = $req->session()->get('username');
-    $noticePost->notice        =  $req->text;
+    $noticePost->notice    =  $req->text;
     if($noticePost->save()){
         return redirect('/teacher/checkNotice');
     }else{
@@ -115,6 +120,7 @@ public function editGrade($id){
 
   $user=grade::find($id);
   return view('teacher.gradeedit',$user);
+<<<<<<< HEAD
   
           }
 
@@ -272,4 +278,107 @@ public function verify(Request $req){
   } 
 
 
+=======
+  
+          }
+
+    public function updateGrade($id, Request $req){
+            $user=grade::find($id);
+            $user->Midterm     = $req->Midterm;
+            $user->Finalterm    = $req->Finalterm;
+            
+            
+            $num1 =$req->Midterm; 
+            $int1 = (int)$num1;
+            $num2 =$req->Finalterm; 
+            $int2 = (int)$num2;
+            $int3 = $int1+$int2;
+            
+            
+            
+            
+            $user->Total         =  $int3;
+            $user->save(); 
+          
+            return redirect('/teacher/gradelist');
+          
+          }
+
+
+          public function password(Request $req){
+            $id = $req->session()->get('username');
+            $user = userModel::find($id);
+            return view('teacher.password',$user);
+        }
+
+
+        function passUpdate(Request $req){
+          $id = $req->session()->get('username');
+          $pass = userModel::find($id)->password;
+          if($req->oldpass==$pass){
+             //echo "$pass";
+              if($req->newpass==$req->newpass2 && $req->newpass2!=""){
+                  //echo "$req->newpass";
+                  $user = userModel::find($id);
+      
+                  $user->password=$req->newpass;
+                  $user->save();
+      
+                  $req->session()->flash('passmsg', 'Password change Successfully');
+                  return redirect('/teacher'); 
+              }
+              else{
+                  $req->session()->flash('passmsg', "Password didn't match");
+                  return redirect('/teacher'); 
+                  //echo "Not same";password didn't match
+              }
+          }
+          else{
+              $req->session()->flash('passmsg', "Current password isn't correct");
+              return redirect('/teacher'); 
+          }
+          
+      }
+      
+      public function fileupload(){
+        return view('teacher.fileupload'); 
+    }
+
+    public function insertfile(Request $req){
+      if($req->hasFile('fileup')){
+        $file= $req->file('fileup');
+
+       /*echo "File name: ".$file->getClientOriginalName().'</br>';
+        echo "File extension: ".$file->getClientOriginalExtension().'</br>';
+        echo "File size: ".$file->getSize();
+        */
+        if($file->move('upload',$file->getClientOriginalName())){
+      
+          $user = new fileUpload();
+          $user->sec     = $req->sec;
+          $user->filename  = $file->getClientOriginalName();
+    
+          if($user->save()){
+              return redirect('/teacher');
+          }else{
+            return redirect("/teacher/fileupload");
+          }
+        }
+        else{
+    
+          return redirect("/teacher/fileupload");
+    
+         }
+  }
+
+}
+
+public function showfilelist(){
+  $users=fileUpload::all();
+  return view('teacher.showfilelist')->with('users',$users);
+  
+}
+
+
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
 }

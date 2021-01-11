@@ -51,6 +51,8 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'sesn'=> \App\Http\Middleware\AdminSession::class,
+        'chck'=> \App\Http\Middleware\VerifyAdmin::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -60,7 +62,12 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+<<<<<<< HEAD
         'sess'  => \App\Http\Middleware\VerifySession::class,
+=======
+        'session' => \App\Http\Middleware\studentSession::class,
+        'check'=> \App\Http\Middleware\Verifystudent::class,
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
     ];
 
     /**

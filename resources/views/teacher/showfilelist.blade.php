@@ -93,12 +93,15 @@
                   <a href="/teacher/password" class="nav-link text-left">change password</a>
                 </li>
                 <li>
+<<<<<<< HEAD
                   <a href="/teacher/fileupload" class="nav-link text-left">fileupload</a>
                 </li>
                 <li>
                   <a href="/teacher/showfilelist" class="nav-link text-left">fileList</a>
                 </li>
                 <li>
+=======
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
                   <a href="/logout" class="nav-link text-left">Logout</a>
                 </li>
 
@@ -109,7 +112,10 @@
           <div class="ml-auto">
             <div class="social-wrap">
                 <p>Welcome, Anik Sikder</p>
+<<<<<<< HEAD
              
+=======
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -125,7 +131,11 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
+<<<<<<< HEAD
               <h2 class="mb-0">FileList</h2>
+=======
+              <h2 class="mb-0">Grade Info</h2>
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
              <p></p>
             </div>
           </div>
@@ -141,7 +151,11 @@
 
     <div>
 
+<<<<<<< HEAD
       <h3 align='center'>List</h3>
+=======
+      <h3 align='center'>Grade</h3>
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
     <table class="table">
       <thead>
         <tr>

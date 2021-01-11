@@ -68,6 +68,7 @@
           <div class="mr-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+<<<<<<< HEAD
               <li>
                   <a href="/teacher" class="nav-link text-left">Home</a>
                 </li>
@@ -97,6 +98,16 @@
                 </li>
                 <li>
                   <a href="/teacher/showfilelist" class="nav-link text-left">fileList</a>
+=======
+                <li>
+                  <a href="/teacher" class="nav-link text-left">Home</a>
+                </li>
+                <li>
+                  <a href="/teacher/checknotice" class="nav-link text-left">check notice</a>
+                </li>
+                <li>
+                  <a href="/teacher/password" class="nav-link text-left">Change Password</a>
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
                 </li>
                 <li>
                   <a href="/logout" class="nav-link text-left">Logout</a>

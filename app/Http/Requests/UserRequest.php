@@ -24,6 +24,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
+<<<<<<< HEAD
             'text' => 'required|min:4'
         ];
     }
@@ -34,4 +35,10 @@ class UserRequest extends FormRequest
             'text.min'=> "must be at least 3 ch...."
         ];
     }
+=======
+            'username' => 'required|min:4',
+            'password' => 'required|min:4'
+        ];
+    }  
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
 }

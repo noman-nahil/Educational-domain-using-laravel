@@ -93,16 +93,25 @@
                   <a href="/teacher/password" class="nav-link text-left">change password</a>
                 </li>
                 <li>
+<<<<<<< HEAD
                   <a href="/teacher/fileupload" class="nav-link text-left">fileupload</a>
                 </li>
                 <li>
                   <a href="/teacher/showfilelist" class="nav-link text-left">fileList</a>
                 </li>
+=======
+                  <a href="/teacher/fileupload" class="nav-link text-left">File upload</a>
+                </li>
+
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
                 <li>
                   <a href="/logout" class="nav-link text-left">Logout</a>
                 </li>
 
+<<<<<<< HEAD
              
+=======
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
               </ul>                                                                                                                                                                                                                  
             </nav>
 

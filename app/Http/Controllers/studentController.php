@@ -8,22 +8,27 @@ use DB;
 use PDF;
 use App\course;
 use App\searchCourse;
+use App\library;
 
 class studentController extends Controller
 {
-    public function CoursesResult(){
-        $data = course::all();
-     return view('student.CoursesResult',$data);
-}
-function actionCourse(Request $request)
-    {
-     if($request->ajax())
-     {
-      $data = searchCourse::search($request->get('CoursesResult_query'))->get();
-      //echo $data;
-      return response()->json($data);
-     }
+    function testCourse(){
+        $list = DB ::table('course')->get();
+        $list->transform(function($i) {
+            return (array)$i;
+            });
+        $users = $list->toArray(); 
+        //echo "$list";                           
+        return view('student.CoursesResult')->with("users",$users);
     }
+    public function CoursesResult(Request $req)
+    {
+        $query = $req->get('query');
+        $users = course::where('id','like','%'.$query.'%')
+        ->get();
+        return json_encode($users);
+     return view('student.CoursesResult');
+}
 public function update(Request $req){
     $id = $req->session()->get('username');
     
@@ -54,11 +59,11 @@ public function delete($id){
      $user->delete();
     return redirect('/Email');
   }
-public function pdf()
-{
-    $data = $this->GradeReport();
-    return view('pdf')->with('data',$data);
-}
+// public function pdf()
+// {
+//     $data = $this->GradeReport();
+//     return view('pdf')->with('data',$data);
+// }
 public function GradeReport(Request $req){
     $id = $req->session()->get('username');
     $user = userModel::find($id);
@@ -68,11 +73,22 @@ public function GradeReport(Request $req){
     ->get();
     return view('student.GradeReport',$user,['data'=>$data]);
 }
-public function Library(){
-    return view('student.Library');
-
+function test(){
+    $list = DB ::table('library')->get();
+    $list->transform(function($i) {
+        return (array)$i;
+        });
+    $users = $list->toArray(); 
+    //echo "$list";                           
+    return view('student.Library')->with("users",$users);
 }
-
+public function Library(Request $req){
+    $query = $req->get('query');
+        $users = library::where('id','like','%'.$query.'%')
+        ->get();
+        return json_encode($users);
+    return view('student.Library');
+}
 public function Notice(){
     $data = Appnotice::all();
     return view('student.Notice' ,['data'=>$data]);
@@ -120,13 +136,54 @@ function passUpdate(Request $req){
 }
 
 public function portal(Request $req){ 
+
+    // $client = new \GuzzleHttp\Client();
+
+    //     $response = $client->request('GET', 'http://localhost:3000');
+        
+    //     if($response->getStatusCode()==200){
+    //     $blog= json_decode($response->getBody(), true);
+    //     dd($blog);
+
+    //     // return view('admin.all-blog')->with('admin',$admin)->with('blog',$blog);
+    //     }else{
+    //         return "SERVER IS RESPONDING";
+    //     }
     $data = Appportal::all();
      return view('student.portal',['data'=>$data]);
     
 }
+public function Registration(Request $req){ 
+
+    $client = new \GuzzleHttp\Client();
+
+        $response = $client->request('GET', 'http://localhost:3000');
+        
+        if($response->getStatusCode()==200){
+        $data= json_decode($response->getBody(), true);
+        dd($data);
+
+        //return view('student.Registration',['data'=>$data]);
+        }else{
+            return "SERVER IS RESPONDING";
+        }
+    // $data = Appportal::all();
+    //  return view('student.Registration',['data'=>$data]);
+    }  
 function Profile(Request $req){
     $id = $req->session()->get('username');
         $user = userModel::find($id);
 return view('student.Profile',$user);
  }
+public function CoursePdf(){
+    $list=course::where('status','Pass')
+                ->get();
+                $pdf = PDF::loadView('student.printDetails',compact('list'));
+                return $pdf->download('document.pdf');
+  }
+  public function LibraryPdf(){
+    $list= library::all();
+                $pdf = PDF::loadView('student.printlibrary',compact('list'));
+                return $pdf->download('document.pdf');
+  }
 }

@@ -79,6 +79,7 @@
                 </li>
                 <li>
                   <a href="/teacher/studentList" class="nav-link text-left">ViewStudents</a>
+<<<<<<< HEAD
                 </li>
                 <li>
                   <a href="/teacher/tsf" class="nav-link text-left">Tsf</a>
@@ -97,6 +98,20 @@
                 </li>
                 <li>
                   <a href="/teacher/showfilelist" class="nav-link text-left">fileList</a>
+=======
+                </li>
+                <li>
+                  <a href="/teacher/tsf" class="nav-link text-left">Tsf</a>
+                </li>
+                <li>
+                  <a href="/teacher/clasRoutine" class="nav-link text-left">classRoutine</a>
+                </li>
+                <li>
+                  <a href="/teacher/gradelist" class="nav-link text-left">GradeList</a>
+                </li>
+                <li>
+                  <a href="/teacher/password" class="nav-link text-left">change password</a>
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
                 </li>
                 <li>
                   <a href="/logout" class="nav-link text-left">Logout</a>
