@@ -280,7 +280,6 @@ class adminController extends Controller
         return view('admin.teacherlist')->with("users",$users);
     }
     function teacherlist(Request $req){
-<<<<<<< HEAD
         $query = $req->get('query');
 
         $users = userModel::where('type','Teacher')
@@ -299,8 +298,6 @@ class adminController extends Controller
         return view('admin.studentlist')->with("users",$users);
     }
     function studentlist(Request $req){
-=======
->>>>>>> 2a895a1e3859d2ed9abcd2ada654da8dfc172c4f
         $query = $req->get('query');
 
         $users = userModel::where('type','Student')
@@ -309,7 +306,6 @@ class adminController extends Controller
 
         return json_encode($users);
     }
-<<<<<<< HEAD
     function news(){
         $list = DB ::table('news')->get();
         $list->transform(function($i) {
@@ -415,15 +411,10 @@ class adminController extends Controller
         }
         function editcourse($id,Request $req){
             $list = DB ::table('userinfo')->where('type','Teacher')
-=======
-    function student(){
-        $list = DB ::table('userinfo')->where('type','Student')
->>>>>>> 2a895a1e3859d2ed9abcd2ada654da8dfc172c4f
                                     ->get();
         $list->transform(function($i) {
             return (array)$i;
             });
-<<<<<<< HEAD
         $users = $list->toArray(); 
         $course = course::find($id);
             return view('admin.editcourse',$course)->with("users",$users);
@@ -462,19 +453,5 @@ class adminController extends Controller
         //SERVER IS NOT RESPONDING
       
   
-=======
-        $users = $list->toArray();                            
-        return view('admin.studentlist')->with("users",$users);
-    }
-    function studentlist(Request $req){
-        $query = $req->get('query');
-
-        $users = userModel::where('type','Student')
-        ->where('id','like','%'.$query.'%')
-        ->get();
-
-        return json_encode($users);
-    }
->>>>>>> 2a895a1e3859d2ed9abcd2ada654da8dfc172c4f
 
 }
