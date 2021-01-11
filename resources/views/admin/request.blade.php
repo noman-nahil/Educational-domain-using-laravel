@@ -28,8 +28,6 @@
 
 
 
-
-
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -43,41 +41,63 @@
         </div>
       </div>
       <div class="site-mobile-menu-body"></div>
-      <a href="/Home" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-unlock-alt"></span> Home</a>
     </div>
 
 
     <div class="py-2 bg-light">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-9 d-none d-lg-block">
+          <div class="col-lg-6 d-none d-lg-block">
             <a href="#" class="small mr-3"><span class="icon-question-circle-o mr-2"></span> Have a questions?</a> 
             <a href="#" class="small mr-3"><span class="icon-phone2 mr-2"></span> 10 20 123 456</a> 
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a> 
           </div>
-          <div class="col-lg-3 text-right">
-          <a href="/" class="small mr-3"><span class=""></span>Addmission</a>
+          <div class="col-lg-6 text-right">
+          <a href="/home/password" class="small mr-3"><span class=""></span>Change Password</a>
+            <a href="/logout" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span>Logout</a>
           </div>
         </div>
       </div>
     </div>
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
 
-      <div class="container">
+      <div class="listboard">
         <div class="d-flex align-items-center">
           <div class="site-logo">
-            <a href="index.html" class="d-block">
-             
+            <a href="" class="d-block">
             </a>
           </div>
-          
+          <div class="mr-auto">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li>
+                  <a href="/home" class="nav-link text-left">Home</a>
+                </li>
+                <li>
+                  <a href="/home/addcourse" class="nav-link text-left">Add new Courses</a>
+                </li>
+                <li>
+                  <a href="/home/teacherlist" class="nav-link text-left">Teacher List</a>
+                </li>
+                
+                <li>
+                    <a href="/home/studentlist" class="nav-link text-left">Student List</a>
+                  </li>
+                <li>
+                  <a href="/home/book" class="nav-link text-left">Book</a>
+                </li>
+                <li>
+                  <a href="/home/news" class="nav-link text-left">News</a>
+                </li>
+              </ul>                                                                                                                                                                                                                  
+            </nav>
+
+          </div>
           <div class="ml-auto">
             <div class="social-wrap">
-              <a href="#"><span class="icon-facebook"></span></a>
-              <a href="#"><span class="icon-twitter"></span></a>
-              <a href="#"><span class="icon-linkedin"></span></a>
+            <p>Welcome,{{session('name')}}</p>
 
-              <a href="/home" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black">Home<span
+              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
           </div>
@@ -87,65 +107,81 @@
 
     </header>
 
-
+    
     <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('../../assets/images/bg_1.jpg')">
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">Login</h2>
-              <p></p>
+              <h2 class="mb-0"><a href="/home/adduser">Add New User</a></h2>
+             <p></p>
             </div>
           </div>
         </div>
       </div> 
-    
 
-    
 
     <div class="site-section">
         <div class="container">
 
 
             <div class="row justify-content-center">
+              
                 <div class="col-md-5">
-                    
-                        <form method="post">
-                          <div class="row">
-                            <div class="col-md-12 form-group">
-                          </div>
-                            <div class="col-md-12 form-group">
-                            <label >ID</label>
-                            <input type="text" name="username" value="{{old('username')}}"class="form-control form-control-lg">
-                            @foreach($errors->get('username') as $err) 
-                            {{$err}}
-                           @endforeach
-                        </div>
-                        
-                        <div class="col-md-12 form-group">
-                            <label for="pword">Password</label>
-                            <input type="password"  name="password" class="form-control form-control-lg">
-                            @foreach($errors->get('password') as $err) 
-                            {{$err}}
-                           @endforeach
+                  <form method="post">
+                  @foreach($errors->all() as $err) 
+                   {{$err}}
+                   @endforeach
+                  <div class="row">
+                        <div class="col-12">
+                            <h4>{{session('addmsg')}}</h4>
                         </div>
                     </div>
                     <div class="row">
-                      <div class="col-12  form-group">
-                       
+                        <div class="col-md-12 form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" value="{{$name}}" class="form-control form-control-lg" readonly>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" value="{{$email}}" class="form-control form-control-lg" readonly>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="gender">Gender</label>
+                            <input type="tesxt" name="gender" value="{{$gender}}" class="form-control form-control-lg" readonly>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="dob">Birthday</label>
+                            <input type="tesxt" name="dob" value="{{$dob}}" class="form-control form-control-lg" readonly >
+                        </div>
+                         <div class="col-md-12 form-group">
+                            <label for="address">Address</label>
+                            <input type="text" name="address" value="{{$address}}" class="form-control form-control-lg" readonly>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="contact">Contact</label>
+                            <input type="text" name="contact" value="{{$contact}}" class="form-control form-control-lg" readonly>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="blood">Blood Group</label>
+                            <input type="text" id="blood" name="blood" value="{{$blood}}" class="form-control form-control-lg" readonly>
+                        </div>
+                        <div class="col-md-12 form-group">
+                          <label for="status">Status</label>
+                          <input type="text" id="status" name="status" value="{{$status}}" class="form-control form-control-lg" readonly>
+                      </div>
+                      <div class="col-md-12 form-group">
+                          <label for="type">User Type</label>
+                          <input type="text" id="type" name="type" value="{{$type}}" class="form-control form-control-lg" readonly>
                       </div>
                     </div>
-                      <div class="row">
-                        <div class="col-5  form-group">
-                            <input type="submit" name="submit"value="Log In" class="btn btn-primary btn-lg px-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="submit"   name="submit" value="Register" class="btn btn-primary btn-lg px-5">
                         </div>
-                        
-                        <div class="col-5  form-group">
-                            <a href="/login/github" class="btn btn-secondary btn-lg px-5">Login with GitHub</a>
-                        </div>
-                        <h2>{{session('msg')}}</h2>
-                      </div>
-                        </form>
+                    </div>
+                  </form>
                 </div>
+              
             </div>
             
 
@@ -172,7 +208,7 @@
     </div>
     
 
-
+  </div>
   <!-- .site-wrap -->
 
   <!-- loader -->
@@ -197,7 +233,6 @@
 
 
   <script src="../../assets/js/main.js"></script>
-
 
 </body>
 

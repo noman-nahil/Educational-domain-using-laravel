@@ -63,11 +63,11 @@
     </div>
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
 
-      <div class="container">
+      <div class="listboard">
         <div class="d-flex align-items-center">
           <div class="site-logo">
             <a href="" class="d-block">
-              <img src="../../assets/images/logo.jpg" alt="Image" class="img-fluid">
+             
             </a>
           </div>
           <div class="mr-auto">
@@ -80,8 +80,11 @@
                   <a href="/home/adduser" class="nav-link text-left">Add user</a>
                 </li>
                 <li>
-                  <a href="/home/user" class="nav-link text-left">User Information</a>
-                </li>
+                    <a href="/home/teacherlist" class="nav-link text-left">Teacher List</a>
+                  </li>
+                  <li>
+                    <a href="/home/studentlist" class="nav-link text-left">Student List</a>
+                  </li>
                 <li>
                   <a href="/home/book" class="nav-link text-left">Book</a>
                 </li>
@@ -95,9 +98,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-              <a href="#"><span class="icon-facebook"></span></a>
-              <a href="#"><span class="icon-twitter"></span></a>
-              <a href="#"><span class="icon-linkedin"></span></a>
+            <p>Welcome,{{session('name')}}</p>
 
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
@@ -176,6 +177,35 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+    <div class="col-12">
+                    <div class="row">
+                            <table class="table">
+                            <thead>
+                                <tr>
+                                  <td>ID</td>
+                                    <td>Course Name</td>
+                                    <td>Course Time</td>
+                                    <td>Course Day</td>
+                                    <td>Course Teacher</td>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              @foreach($courses as $course)  
+                                <tr class="col-6">
+                                    <td>{{$course['id']}}</td>
+                                    <td>{{$course['courseName']}}</td>
+                                    <td>{{$course['courseTime']}}</td>
+                                    <td>{{$course['courseDay']}}</td>
+                                    <td>{{$course['courseTeacher']}}</td>
+                                    <td><a href="{{route('admin.editcourse',$course['id'])}}">Edit</a>&nbsp<a href="{{route('admin.deletecourse',$course['id'])}}">Delete</a></td>
+                                </tr>
+                                @endforeach 
+                              </tbody>                       
+                            </table>  
+                      </div>
+                    </div>
     </div>
 
 

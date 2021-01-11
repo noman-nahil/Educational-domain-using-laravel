@@ -23,9 +23,8 @@
   <link rel="stylesheet" href="../../assets/fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
 
-  <link rel="stylesheet" href="../../assets/css/aos.css">
+  <link rel="stylesheet" href="css/aos.css">
   <link href="../../assets/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
 
 
@@ -47,33 +46,38 @@
 
     <div class="py-2 bg-light">
       <div class="container">
-        <div class="row align-items-center">
+      <div class="row align-items-center">
           <div class="col-lg-6 d-none d-lg-block">
             <a href="#" class="small mr-3"><span class="icon-question-circle-o mr-2"></span> Have a questions?</a> 
             <a href="#" class="small mr-3"><span class="icon-phone2 mr-2"></span> 10 20 123 456</a> 
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a> 
           </div>
           <div class="col-lg-6 text-right">
-            <a href="/home/password" class="small mr-3"><span class=""></span>Change Password</a>
+            <a href="/admin/password" class="small mr-3"><span class=""></span>Change Password</a>
             <a href="/logout" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Logout</a>
           </div>
+        </div>
+
         </div>
       </div>
     </div>
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
       <div class="listboard">
         <div class="d-flex align-items-center">
+          <div class="site-logo">
+            <a href="" class="d-block">
+             
+            </a>
+          </div>
           <div class="mr-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li>
-                    <a href="/home" class="nav-link text-left">Home</a>
-                  </li>
-                <li>
-                  <a href="/home/adduser" class="nav-link text-left">Add New User</a>
+                  <a href="/home" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/home/addcourse" class="nav-link text-left">Add New Course</a>
+                  <a href="/home/adduser" class="nav-link text-left">Add user</a>
                 </li>
                 <li>
                     <a href="/home/teacherlist" class="nav-link text-left">Teacher List</a>
@@ -81,7 +85,10 @@
                   <li>
                     <a href="/home/studentlist" class="nav-link text-left">Student List</a>
                   </li>
-                  <li>
+                <li>
+                  <a href="/home/book" class="nav-link text-left">Book</a>
+                </li>
+                <li>
                   <a href="/home/news" class="nav-link text-left">News</a>
                 </li>
                 
@@ -92,9 +99,11 @@
           <div class="ml-auto">
             <div class="social-wrap">
             <p>Welcome,{{session('name')}}</p>
+
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
+            
           </div>
          
         </div>
@@ -107,7 +116,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">Book</h2>
+              <h2 class="mb-0">Add New Course</h2>
              <p></p>
             </div>
           </div>
@@ -122,29 +131,67 @@
             <div class="row justify-content-center">
                 <div class="col-md-5">
                   <form method="post">
-                  <div class="col-md-3 offset-md-4">
-                      <h5>{{session('bookmsg')}}</h5>
-                      </div>
                     <div class="row">
+                    <div class="col-md-3 offset-md-4">
+                      <h5>{{session('coursemsg')}}</h5>
+                      </div>
                         <div class="col-md-12 form-group">
-                            <label for="bookName">Book Name</label>
-                            <input type="bookName" id="bookName" name="bookName" value="" class="form-control form-control-lg"> 
+                            <label for="courseName">Course Name</label>
+                            <input type="text" name="courseName" value="{{$courseName}}" class="form-control form-control-lg" readonly> 
+                    
                         </div>
                         <div class="col-md-12 form-group">
-                          <label for="author">Author</label>
-                          <input type="author" id="author" name="author" value="" class="form-control form-control-lg"> 
+                            <label for="courseTime">Course Time</label>
+                            <select class="form-control form-control-lg" name="courseTime">
+                            @foreach(array("8.00-10.00","10.00-12.00","12.00-2.00","2.00-4.00") as $time)
+                            @if($time==$courseTime)
+                            {
+                              <option value="{{$time}}" selected="selected">{{$time}}</option>
+                            }
+                            @else{
+                                <option value="{{$time}}">{{$time}}</option>
+                              }
+                              @endif
+                            @endforeach
+                            
+                            </select>
+                        </div>
+                        <div class="col-md-12 form-group">
+                          <label for="courseDay">Course Day</label>
+                          <select name="courseDay"class="form-control form-control-lg">
+                          @foreach(array("Sunday-Tuesday","Monday-Wednesday") as $day)
+                              @if($day==$courseDay)
+                              {
+                                <option value="{{$day}}" selected="selected">{{$day}}</option>
+                              }
+                              @else{
+                                <option value="{{$day}}">{{$day}}</option>
+                              }
+                              @endif
+                            @endforeach
+                          </select>
                       </div>
-                      <div class="col-md-12 form-group">
-                        <label for="category">Category</label>
-                        <select name="category" class="form-control form-control-lg" id="categoryList"> 
+                         <div class="col-md-12 form-group">
+                            <label for="courseTeacher">Course Teacher</label>
+                            <select name="courseTeacher" class="form-control form-control-lg">
+                            @foreach($users as $user)
 
-                        </select>
-                    </div>
-                    
+                            @if($user['id']==$courseTeacher)
+                              {
+                                <option value="{{$user['id']}}" selected="selected">{{$user['id']}}&nbsp&nbsp{{$user['name']}}</option>
+                              }
+                              @else{
+                                <option value="{{$user['id']}}">{{$user['id']}}&nbsp&nbsp{{$user['name']}}</option>
+                              }
+                              @endif
+                                @endforeach
+                            </select>
+                            
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                          <input type="submit" value="Add book"name="submit" class="btn btn-primary btn-lg px-5">
+                            <input type="submit" value="Update" name="submit" class="btn btn-primary btn-lg px-5">
                         </div>
                     </div>
                   </form>
@@ -152,36 +199,7 @@
             </div>
         </div>
     </div>
-    <div>
-    <div class="col-12">
-                    <div class="row">
-                            <table class="table">
-                            <thead>
-                                <tr>
-                                  <td>ID</td>
-                                    <td>Book Name</td>
-                                    <td>Author</td>
-                                    <td>Category</td>
-                                </tr>
-                              </thead>
-                              <tbody>
-                              @foreach($books as $book)  
-                                <tr class="col-6">
-                                    <td>{{$book['bookId']}}</td>
-                                    <td>{{$book['bookName']}}</td>
-                                    <td>{{$book['author']}}</td>
-                                    <td>{{$book['category']}}</td>
-                                    <td><a href="{{route('admin.deletebook',$book['bookId'])}}">Delete</a></td>
-                                </tr>
-                                @endforeach 
-                              </tbody>                       
-                            </table>  
-                      </div>
-                    </div>
-    </div>
 
-
-    
 
     <div class="footer">
       <div class="container">
@@ -226,17 +244,18 @@
 
   <script src="../../assets/js/main.js"></script>
   <script type="text/javascript">
-    var dropdown = $('#categoryList');
-      dropdown.empty();
-      dropdown.append('<option selected="true" disabled>Choose a category</option>');
-      dropdown.prop('selectedIndex', 0);
-      $.getJSON('../../assets/json/book.json', function (data) {
-        $.each(data, function (key, entry) {
-          dropdown.append($('<option></option>').attr('value', entry.category).text(entry.category));      
-        })
-      });
-     
-    </script>
+  //var  ID= $('#courseId');
+  var dropdown = $('#courseList');
+    dropdown.empty();
+    dropdown.append('<option selected="true" disabled>Choose a course</option>');
+    dropdown.prop('selectedIndex', 0);
+    $.getJSON('../../assets/json/course.json', function (data) {
+      $.each(data, function (key, entry) {
+        dropdown.append($('<option></option>').attr('value', entry.courseName).text(entry.courseName));      
+      })
+    });
+   
+  </script>
 
 </body>
 

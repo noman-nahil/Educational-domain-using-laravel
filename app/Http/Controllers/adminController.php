@@ -4,8 +4,11 @@ use Illuminate\Http\Request;
 use App\userModel;
 use App\course;
 use App\bookmodel;
+use App\news;
+use App\library;
 use DB;
 use PDF;
+use Validator;
 
 class adminController extends Controller
 {
@@ -25,19 +28,37 @@ class adminController extends Controller
     function update(Request $req){
         $id = $req->session()->get('username');
         
-        $user = userModel::find($id);
-        //echo "$user";
-        //$user = new userModel();
-        $user->name = $req->name;
-        $user->email = $req->email;
-        $user->gender = $req->gender;
-        $user->address = $req->address;
-        $user->dob = $req->dob;
-        $user->contact = $req->contact;
-        $user->blood = $req->blood;
-        $user->save();
-
-        return redirect('/home');
+        $validation = Validator::make($req->all(),[
+            'name'=>'required|min:5',
+            'email'=>'required',
+            'gender'=>'required',
+            'address'=>'required',
+            'contact'=>'required',
+            'dob'=>'required',
+            'blood'=>'required',
+        ]);
+        if($validation->fails()){
+            return redirect()
+                            ->back()
+                            ->withInput()
+                            ->with('errors',$validation->errors());
+        }
+        else{
+            $user = userModel::find($id);
+            //echo "$user";
+            //$user = new userModel();
+            $user->name = $req->name;
+            $user->email = $req->email;
+            $user->gender = $req->gender;
+            $user->address = $req->address;
+            $user->dob = $req->dob;
+            $user->contact = $req->contact;
+            $user->blood = $req->blood;
+            $user->save();
+    
+            return redirect()->route('admin.home'); 
+        }
+        
     }
 
     function user($id,Request $req){
@@ -91,8 +112,25 @@ class adminController extends Controller
         return view('admin.adduser');
     }
     function userstore(Request $req){
+
        $id = DB::table('userinfo')->max('id');
-    
+        //userValidation
+       $validation = Validator::make($req->all(),[
+        'name'=>'required|min:5',
+        'email'=>'required',
+        'gender'=>'required',
+        'address'=>'required',
+        'contact'=>'required|min:11',
+        'dob'=>'required',
+        'blood'=>'required',
+    ]);
+    if($validation->fails()){
+        return redirect()
+                        ->route('admin.adduser')
+                        ->withInput()
+                        ->with('errors',$validation->errors());
+                        //echo "$validation->errors()";
+    }else{
         $password= sprintf("%06d", mt_rand(1, 999999));
         $newID =$id+1;
         $user = new userModel();
@@ -129,6 +167,9 @@ class adminController extends Controller
             $req->session()->flash('addmsg', 'Something Wrong');
             return redirect('/home/adduser');
         }
+
+    }
+        
     }
     function addcourse(){
         $list = DB ::table('userinfo')->where('type','Teacher')
@@ -137,8 +178,14 @@ class adminController extends Controller
             return (array)$i;
             });
         $users = $list->toArray(); 
+        $courselist = DB ::table('subject')->get();
+        $courselist->transform(function($i) {
+            return (array)$i;
+            });
+        $courses = $courselist->toArray();
         //echo "$list";                           
-        return view('admin.addcourse')->with("users",$users);
+        return view('admin.addcourse')->with("users",$users)
+                                    ->with("courses",$courses);
     }
     function coursestore(Request $req){
         $id = DB::table('subject')->max('id');
@@ -158,9 +205,12 @@ class adminController extends Controller
         
     }
     function book(Request $req){
-        $id = $req->session()->get('username');
-        $user = userModel::find($id);
-        return view('admin.book',$user);
+        $Booklist = DB ::table('library')->get();
+        $Booklist->transform(function($i) {
+            return (array)$i;
+            });
+        $books = $Booklist->toArray();
+        return view('admin.book')->with("books",$books);
     }
     function bookstore(Request $req){
         $id = DB::table('library')->max('bookId');
@@ -175,6 +225,17 @@ class adminController extends Controller
             return redirect('/home/book');
         }
 
+    }
+    function deletebook($bookId){
+        $book = library::find($bookId);
+        return view('admin.deletebook',$book);
+    }
+    function bookdelete($bookId,Request $req){
+        $user=library::find($bookId);
+        $user->delete();
+        $req->session()->flash('bookmsg', 'Delete Successfully');
+        return redirect('/home/book');
+        
     }
     function password(Request $req){
         $id = $req->session()->get('username');
@@ -209,7 +270,7 @@ class adminController extends Controller
         
     }
     function test(){
-        $list = DB ::table('userinfo')->where('type','Student')
+        $list = DB ::table('userinfo')->where('type','Teacher')
                                     ->get();
         $list->transform(function($i) {
             return (array)$i;
@@ -221,7 +282,7 @@ class adminController extends Controller
     function teacherlist(Request $req){
         $query = $req->get('query');
 
-        $users = userModel::where('type','Student')
+        $users = userModel::where('type','Teacher')
         ->where('id','like','%'.$query.'%')
         ->get();
 
@@ -245,5 +306,152 @@ class adminController extends Controller
 
         return json_encode($users);
     }
+    function news(){
+        $list = DB ::table('news')->get();
+        $list->transform(function($i) {
+            return (array)$i;
+            });
+        $news = $list->toArray();       
+        return view('admin.news')->with("news",$news);
+    }
+    function addnews(Request $req){
+        if($req->hasFile('myimg')){
+            $file = $req->file('myimg');
+            if($file->move('upload', $file->getClientOriginalName())){
+
+               // echo "Success";
+               $id = DB::table('news')->max('id');
+               $newID =$id+1;
+                $news = new news();
+                $news->id     =  $newID =$id+1;;
+                $news->title     = $req->title;
+                $news->body     = $req->body;
+                $news->req1     = $req->req1;
+                $news->req2     = $req->req2;
+                $news->req3     = $req->req3;
+                $news->req4     = $req->req4;
+                $news->req5     = $req->req5;
+                $news->req6     = $req->req6;
+                $news->myimg  = $file->getClientOriginalName();
+                if($news->save()){
+                    $req->session()->flash('newsmsg', "Added Succesfully");
+                    return redirect()->route('admin.news');
+                }else{
+                    $req->session()->flash('newsmsg', "Something Wrong");
+                    return redirect()->route('admin.news');
+                }
+
+            }
+        }
+        else{
+            $req->session()->flash('newsmsg', "You have to select Image");
+            return redirect()->route('admin.news');
+        } 
+    }
+    function newsedit($id,Request $req){
+        //echo "$id";
+        $news = news::find($id);
+        return view('admin.newsedit',$news);
+
+    }
+    function newsupdate($id,Request $req){
+        $news = news::find($id);
+        $news->title    = $req->title;
+        $news->body     = $req->body;
+        $news->req1     = $req->req1;
+        $news->req2     = $req->req2;
+        $news->req3     = $req->req3;
+        $news->req4     = $req->req4;
+        $news->req5     = $req->req5;
+        $news->req6     = $req->req6;
+        $news->save();
+        $req->session()->flash('newsmsg', "Update Succesfully");
+        return redirect('/home/news');
+    }
+    function newsdelete($id,Request $req){
+        //echo "$id";
+        $news = news::find($id);
+        return view('admin.newsdelete',$news);
+
+    }
+    function newsdel($id,Request $req){
+        //echo "$id";
+        DB::table('news')->delete($id);
+        $req->session()->flash('newsmsg', "Delete Succesfully");
+        return redirect('/home/news');
+
+    }
+    function search(){
+        return view('admin.search');
+    }
+    function request(Request $req){
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('GET', 'http://localhost:3000');
+            if($response->getStatusCode()==200){
+                $data= json_decode($response->getBody(), true);
+               // echo $data['name'];
+               return view('admin.request',$data);
+    
+                }
+                else{
+                   echo "Something wrong";
+                     }
+        }
+
+
+        function page(){
+            $list = DB ::table('news')->get();
+            $list->transform(function($i) {
+                    return (array)$i;
+                        });
+                    $news = $list->toArray();      
+                   // echo $list;                      
+            return view('welcome')->with("news",$news);
+            
+        }
+        function editcourse($id,Request $req){
+            $list = DB ::table('userinfo')->where('type','Teacher')
+                                    ->get();
+        $list->transform(function($i) {
+            return (array)$i;
+            });
+        $users = $list->toArray(); 
+        $course = course::find($id);
+            return view('admin.editcourse',$course)->with("users",$users);
+                                            
+        }
+        function courseupdate($id,Request $req){
+            $course = course::find($id);
+            $course->courseName = $req->courseName;
+            $course->courseTime = $req->courseTime;
+            $course->courseDay = $req->courseDay;
+            $course->courseTeacher = $req->courseTeacher;
+            $course->save();
+            $req->session()->flash('coursemsg', 'Update Successfully');
+            return redirect('/home/addcourse');
+
+        }
+        function deletecourse($id,Request $req){
+            $list = DB ::table('userinfo')->where('type','Teacher')
+                                    ->get();
+        $list->transform(function($i) {
+            return (array)$i;
+            });
+        $users = $list->toArray(); 
+        $course = course::find($id);
+            return view('admin.deletecourse',$course)->with("users",$users);
+                                            
+        }
+        function coursedelete($id,Request $req){
+            DB::table('subject')->delete($id);
+            $req->session()->flash('coursemsg', 'Delete Successfully');
+            return redirect('/home/addcourse');
+
+        }
+
+
+        //SERVER IS NOT RESPONDING
+      
+  
 
 }

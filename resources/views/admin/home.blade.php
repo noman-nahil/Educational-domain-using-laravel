@@ -60,7 +60,7 @@
       </div>
     </div>
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
-      <div class="container">
+      <div class="listboard">
         <div class="d-flex align-items-center">
           <div class="mr-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
@@ -74,6 +74,9 @@
                   <li>
                     <a href="/home/studentlist" class="nav-link text-left">Student List</a>
                   </li>
+                  <li>
+                    <a href="/home/search" class="nav-link text-left">Search</a>
+                  </li>
                 <li>
                   <a href="/home/addcourse" class="nav-link text-left">Add New Course</a>
                 </li>
@@ -83,14 +86,13 @@
                 <li>
                   <a href="/home/news" class="nav-link text-left">News</a>
                 </li>
-
               </ul>                                                                                                                                                                                                                  
             </nav>
 
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome,{{$name}}</p>
+                <p>Welcome,{{session('name')}}</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -121,6 +123,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-5">
                     <div class="row">
+                       <div class="col-md-12 form-group">
+                            <label for="username">Name:</label>
+                            <input type="text" id="name" name="name" value="{{$name}}" class="form-control form-control-lg" disabled> 
+                        </div>
                         <div class="col-md-12 form-group">
                             <label for="username">Name:</label>
                             <input type="text" id="name" name="name" value="{{$name}}" class="form-control form-control-lg" disabled> 

@@ -124,6 +124,9 @@
 
                 <div class="col-md-5">
                   <form method="post">
+                   @foreach($errors->all() as $err) 
+                   {{$err}}
+                   @endforeach
                   <div class="row">
                         <div class="col-md-12 form-group">
                             <label for="username">Name:</label>
@@ -181,6 +184,7 @@
                             <input type="submit" value="Save Changes" name="submit" class="btn btn-primary btn-lg px-5">
                         </div>
                     </div>
+                    
                     </form>
                 </div>
             </div>

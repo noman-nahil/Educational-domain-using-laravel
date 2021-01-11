@@ -59,7 +59,7 @@
                   <a href="/CoursesResult" class="nav-link text-left">Courses & Result</a>
                 </li>
                 <li>
-                  <a href="#" class="nav-link text-left">Registration</a>
+                  <a href="/Registration" class="nav-link text-left">Registration</a>
                 </li>
                 <li>
                   <a href="/GradeReport" class="nav-link text-left">Grade Report</a>

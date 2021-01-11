@@ -54,7 +54,7 @@
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a> 
           </div>
           <div class="col-lg-6 text-right">
-            <a href="/home/password" class="small mr-3"><span class=""></span>Change Password</a>
+            <a href="" class="small mr-3"><span class=""></span>Change Password</a>
             <a href="/logout" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Logout</a>
           </div>
         </div>
@@ -81,10 +81,9 @@
                   <li>
                     <a href="/home/studentlist" class="nav-link text-left">Student List</a>
                   </li>
-                  <li>
-                  <a href="/home/news" class="nav-link text-left">News</a>
+                <li>
+                  <a href="/home/book" class="nav-link text-left">Book</a>
                 </li>
-                
               </ul>                                                                                                                                                                                                                  
             </nav>
 
@@ -107,7 +106,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">Book</h2>
+              <h2 class="mb-0">Settings</h2>
              <p></p>
             </div>
           </div>
@@ -121,37 +120,53 @@
 
             <div class="row justify-content-center">
                 <div class="col-md-5">
-                  <form method="post">
-                  <div class="col-md-3 offset-md-4">
-                      <h5>{{session('bookmsg')}}</h5>
+                <h5>{{session('newsmsg')}}</h5>
+                  <form method="post" enctype="multipart/form-data">
+                      <div class="row">
+                            <div class="col-12 form-group"> 
+                                <label for="title">Title</label>
+                                <input type="text" name="title" class="form-control form-control-lg">
+                            </div>
+                          <div class="col-12 form-group">
+                              <textarea name="body" rows="6" cols="50">
+                              </textarea>
+                          </div>
+                          <div class="col-12 form-group"> 
+                          <label for="myimg">Image</label>
+                                <input type="file" name="myimg" class="form-control form-control-lg" Placeholder="">
+                          </div>
+                          <div class="col-12 form-group"> 
+                                <input type="text" name="req1" class="form-control form-control-lg" Placeholder="Requirment 1">
+                          </div>
+                          <div class="col-12 form-group"> 
+                                <input type="text" name="req2" class="form-control form-control-lg" Placeholder="Requirment 2">
+                          </div>
+                          <div class="col-12 form-group"> 
+                                <input type="text" name="req3" class="form-control form-control-lg" Placeholder="Requirment 3">
+                          </div>
+                          <div class="col-12 form-group"> 
+                                <input type="text" name="req4" class="form-control form-control-lg" Placeholder="Requirment 4">
+                          </div>
+                          <div class="col-12 form-group"> 
+                                <input type="text" name="req5" class="form-control form-control-lg" Placeholder="Requirment 5">
+                          </div>
+                          <div class="col-12 form-group"> 
+                                <input type="text" name="req6" class="form-control form-control-lg" Placeholder="Requirment 6">
+                          </div>
                       </div>
                     <div class="row">
-                        <div class="col-md-12 form-group">
-                            <label for="bookName">Book Name</label>
-                            <input type="bookName" id="bookName" name="bookName" value="" class="form-control form-control-lg"> 
-                        </div>
-                        <div class="col-md-12 form-group">
-                          <label for="author">Author</label>
-                          <input type="author" id="author" name="author" value="" class="form-control form-control-lg"> 
-                      </div>
-                      <div class="col-md-12 form-group">
-                        <label for="category">Category</label>
-                        <select name="category" class="form-control form-control-lg" id="categoryList"> 
-
-                        </select>
-                    </div>
-                    
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                          <input type="submit" value="Add book"name="submit" class="btn btn-primary btn-lg px-5">
+                        <div class="col-12 form-group">
+                          <input type="submit" value="Post"name="submit" class="btn btn-primary btn-lg px-5">
                         </div>
                     </div>
                   </form>
                 </div>
+                    
+              </div>
             </div>
         </div>
-    </div>
+    
+
     <div>
     <div class="col-12">
                     <div class="row">
@@ -159,19 +174,29 @@
                             <thead>
                                 <tr>
                                   <td>ID</td>
-                                    <td>Book Name</td>
-                                    <td>Author</td>
-                                    <td>Category</td>
+                                    <td>Title</td>
+                                    <td>Description</td>
+                                    <td>REquirement 1</td>
+                                    <td>REquirement 2</td>
+                                    <td>REquirement 3</td>
+                                    <td>REquirement 4</td>
+                                    <td>REquirement 5</td>
+                                    <td>REquirement 6</td>
                                 </tr>
                               </thead>
                               <tbody>
-                              @foreach($books as $book)  
+                              @foreach($news as $new)  
                                 <tr class="col-6">
-                                    <td>{{$book['bookId']}}</td>
-                                    <td>{{$book['bookName']}}</td>
-                                    <td>{{$book['author']}}</td>
-                                    <td>{{$book['category']}}</td>
-                                    <td><a href="{{route('admin.deletebook',$book['bookId'])}}">Delete</a></td>
+                                    <td>{{$new['id']}}</td>
+                                    <td>{{$new['title']}}</td>
+                                    <td>{{$new['body']}}</td>
+                                    <td>{{$new['req1']}}</td>
+                                    <td>{{$new['req2']}}</td>
+                                    <td>{{$new['req3']}}</td>
+                                    <td>{{$new['req4']}}</td>
+                                    <td>{{$new['req5']}}</td>
+                                    <td>{{$new['req6']}}</td>
+                                    <td><a href="{{route('admin.newsedit',$new['id'])}}">Edit</a>&nbsp<a href="{{route('admin.newsdelete',$new['id'])}}">Delete</a></td>
                                 </tr>
                                 @endforeach 
                               </tbody>                       
@@ -179,9 +204,6 @@
                       </div>
                     </div>
     </div>
-
-
-    
 
     <div class="footer">
       <div class="container">
@@ -225,18 +247,6 @@
 
 
   <script src="../../assets/js/main.js"></script>
-  <script type="text/javascript">
-    var dropdown = $('#categoryList');
-      dropdown.empty();
-      dropdown.append('<option selected="true" disabled>Choose a category</option>');
-      dropdown.prop('selectedIndex', 0);
-      $.getJSON('../../assets/json/book.json', function (data) {
-        $.each(data, function (key, entry) {
-          dropdown.append($('<option></option>').attr('value', entry.category).text(entry.category));      
-        })
-      });
-     
-    </script>
 
 </body>
 

@@ -61,11 +61,10 @@
     </div>
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
 
-      <div class="container">
+      <div class="listboard">
         <div class="d-flex align-items-center">
           <div class="site-logo">
             <a href="" class="d-block">
-              <img src="../../assets/images/logo.jpg" alt="Image" class="img-fluid">
             </a>
           </div>
           <div class="mr-auto">
@@ -75,11 +74,15 @@
                   <a href="/home" class="nav-link text-left">Home</a>
                 </li>
                 <li>
-                  <a href="/home/teacherlist" class="nav-link text-left">Teacher List</a>
-                </li>
-                <li>
                   <a href="/home/addcourse" class="nav-link text-left">Add new Courses</a>
                 </li>
+                <li>
+                  <a href="/home/teacherlist" class="nav-link text-left">Teacher List</a>
+                </li>
+                
+                <li>
+                    <a href="/home/studentlist" class="nav-link text-left">Student List</a>
+                  </li>
                 <li>
                   <a href="/home/book" class="nav-link text-left">Book</a>
                 </li>
@@ -92,9 +95,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-              <a href="#"><span class="icon-facebook"></span></a>
-              <a href="#"><span class="icon-twitter"></span></a>
-              <a href="#"><span class="icon-linkedin"></span></a>
+            <p>Welcome,{{session('name')}}</p>
 
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
@@ -135,11 +136,17 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" class="form-control form-control-lg">
+                            <input type="text" id="name" name="name" value="{{old('name')}}" class="form-control form-control-lg">
+                            @foreach($errors->get('name') as $err) 
+                            {{$err}}
+                           @endforeach
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control form-control-lg">
+                            <input type="email" id="email" name="email" value="{{old('email')}}" class="form-control form-control-lg">
+                            @foreach($errors->get('email') as $err) 
+                            {{$err}}
+                           @endforeach
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="gender">Gender</label>
@@ -147,18 +154,30 @@
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
+                            @foreach($errors->get('gender') as $err) 
+                            {{$err}}
+                           @endforeach
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="dob">Birthday</label>
                             <input type="date" name="dob" class="form-control form-control-lg">
+                            @foreach($errors->get('dob') as $err) 
+                            {{$err}}
+                           @endforeach
                         </div>
                          <div class="col-md-12 form-group">
                             <label for="address">Address</label>
-                            <input type="text" name="address" class="form-control form-control-lg">
+                            <input type="text" name="address" value="{{old('address')}}" class="form-control form-control-lg">
+                            @foreach($errors->get('address') as $err) 
+                            {{$err}}
+                           @endforeach
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="contact">Contact</label>
                             <input type="text" name="contact" class="form-control form-control-lg">
+                            @foreach($errors->get('contact') as $err) 
+                            {{$err}}
+                           @endforeach
                         </div>
                         <div class="col-md-12 form-group">
                             <label for="blood">Blood Group</label>

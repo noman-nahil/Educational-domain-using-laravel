@@ -61,7 +61,7 @@
       </div>
     </div>
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
-      <div class="container">
+      <div class="listboard">
         <div class="d-flex align-items-center">
           <div class="mr-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
@@ -87,7 +87,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome,{{$name}}</p>
+                <p><p>Welcome,{{session('name')}}</p></p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>

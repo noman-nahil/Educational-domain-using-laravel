@@ -4,19 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "b46febd4fe3dc5eb018d306a4ac82fd1",
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "content-hash": "24c15adb908544691e3b54153080aa65",
-=======
-    "content-hash": "103b6b5ccb4911258309fbe94b62111b",
->>>>>>> b6fafc422b90a9f11409863388f384ffe316c709
-=======
-    "content-hash": "b683527adfe369bbfa4acdf8757b0b81",
->>>>>>> 06eeddf538f43dcb2f46b299348a1d7d1cbc28f1
->>>>>>> dc07fb4da77c33d255a0890db2e5d7da8334ce94
+    "content-hash": "12ee1d63da422286a481fe2ee9d07f66",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -2542,13 +2530,6 @@
             "time": "2020-06-01T09:10:00+00:00"
         },
         {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 06eeddf538f43dcb2f46b299348a1d7d1cbc28f1
->>>>>>> dc07fb4da77c33d255a0890db2e5d7da8334ce94
             "name": "setasign/fpdi",
             "version": "v2.3.5",
             "source": {
@@ -2621,14 +2602,6 @@
             "time": "2020-12-03T13:40:03+00:00"
         },
         {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> b6fafc422b90a9f11409863388f384ffe316c709
-=======
->>>>>>> 06eeddf538f43dcb2f46b299348a1d7d1cbc28f1
->>>>>>> dc07fb4da77c33d255a0890db2e5d7da8334ce94
             "name": "swiftmailer/swiftmailer",
             "version": "v6.2.4",
             "source": {

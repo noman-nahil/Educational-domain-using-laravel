@@ -29,7 +29,7 @@ function noticePost(Request $req){
      
     $noticePost = new noticePost();
     $noticePost->teacherId = $req->session()->get('username');
-    $noticePost->notice        =  $req->text;
+    $noticePost->notice    =  $req->text;
     if($noticePost->save()){
         return redirect('/teacher');
     }else{

@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class course extends Model
+class news extends Model
 {
-
-    protected $table = "subject";
+    protected $table = "news";
     protected $primaryKey =  "id";
     public $timestamps = false;
 }

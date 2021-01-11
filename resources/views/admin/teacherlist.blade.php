@@ -91,7 +91,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome,</p>
+            <p>Welcome,{{session('name')}}</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -239,7 +239,7 @@
               console.log("Break");
               //var product_id = integer;
               console.log(integer);
-              tableRow = '<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+value.email+'</td><td>'+value.gender+'</td><td>'+value.address+'</td><td>'+value.dob+'</td><td>'+value.contact+'</td><td>'+value.blood+'</td><td>'+value.status+'</td><td><a href="{{route('admin.user','"+value.id+"')}}">Edit</a>&nbsp<a href="">Delete</a></td></tr>';
+              tableRow = '<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+value.email+'</td><td>'+value.gender+'</td><td>'+value.address+'</td><td>'+value.dob+'</td><td>'+value.contact+'</td><td>'+value.blood+'</td><td>'+value.status+'</td><td><a href="/home/user/'+value.id+'">Edit</a>&nbsp<a href="/home/delete/'+value.id+'">Delete</a></td></tr>';
               $('#temporary-table').append(tableRow);
               //var n=$('#index').val();
             });

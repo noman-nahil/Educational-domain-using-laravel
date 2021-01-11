@@ -54,7 +54,7 @@
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a> 
           </div>
           <div class="col-lg-6 text-right">
-            <a href="/admin/password" class="small mr-3"><span class=""></span>Change Password</a>
+            <a href="/home/password" class="small mr-3"><span class=""></span>Change Password</a>
             <a href="/logout" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Logout</a>
           </div>
         </div>
@@ -76,12 +76,6 @@
                   <a href="/home/addcourse" class="nav-link text-left">Add New Course</a>
                 </li>
                 <li>
-                    <a href="/home/teacherlist" class="nav-link text-left">Teacher List</a>
-                  </li>
-                  <li>
-                    <a href="/home/studentlist" class="nav-link text-left">Student List</a>
-                  </li>
-                <li>
                   <a href="/home/book" class="nav-link text-left">Book</a>
                 </li>
                 <li>
@@ -93,7 +87,7 @@
           </div>
           <div class="ml-auto">
             <div class="social-wrap">
-                <p>Welcome,{{session('name')}}</p>
+            <p>Welcome,{{session('name')}}</p>
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -123,105 +117,90 @@
 
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                  <form method="post">
+                  <form>
                     <div class="row">
+
+                        <div class="col-md-8 form-group">
+                            <input type="text" name="searchId" id="searchId" class="form-control form-control-lg">
+                        </div  class="col-md-4 form-group">
+                        <div>
+                            <input type="button" id="ajaxSearch" value="Search" class="btn btn-primary btn-lg px-5">
+                        </div>
+                    </div>
+                    <div id="printArea">
+                    
+                    <div class="row">
+
                       
                       <div class="col-md-12 form-group">
                           <label for="id">ID:</label>
-                          <input type="text" id="id" name="id" value="{{$id}}" class="form-control form-control-lg" disabled> 
+                          <input type="text" id="id" name="id" value="" class="form-control form-control-lg" disabled> 
                       </div>
                     
                     <div class="col-md-12 form-group">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" value="{{$name}}" class="form-control form-control-lg"> 
+                        <input type="text" id="name" name="name" value="" class="form-control form-control-lg"> 
                     </div>
                     <div class="col-md-12 form-group">
                         <label for="email">Email</label>
-                        <input type="text" id="email" name="email" value="{{$email}}" class="form-control form-control-lg"> 
+                        <input type="text" id="email" name="email" value="" class="form-control form-control-lg"> 
                     </div>
                     <div class="col-md-12 form-group">
                       <label for="gender">Gender</label>
-                            <select name="gender" id="gender" class="form-control form-control-lg">
-                            @foreach(array("Male","Female") as $gen)
-                              @if($gen==$gender)
-                              {
-                                <option value="{{$gen}}" selected="selected">{{$gen}}</option>
-                              }
-                              @else{
-                                <option value="{{$gen}}">{{$gen}}</option>
-                              }
-                              @endif
-                            @endforeach
-                            <select>
+                      <select id="gender" name="gender" class="form-control form-control-lg">
+                          <option></option>
+                      </select>
                     </div>
                     <div class="col-md-12 form-group">
                         <label for="dob">Birthday</label>
-                        <input type="text" id="dob" name="dob" value="{{$dob}}" class="form-control form-control-lg"> 
+                        <input type="text" id="dob" name="dob" value="" class="form-control form-control-lg"> 
                     </div>
                      <div class="col-md-12 form-group">
                         <label for="address">Address</label>
-                        <input type="text" id="address" name="address" value="{{$address}}" class="form-control form-control-lg"> 
+                        <input type="text" id="address" name="address" value="" class="form-control form-control-lg"> 
                     </div>
                     <div class="col-md-12 form-group">
                         <label for="contact">Contact</label>
-                        <input type="text" id="contact" name="contact" value="{{$contact}}" class="form-control form-control-lg"> 
+                        <input type="text" id="contact" name="contact" value="" class="form-control form-control-lg"> 
                     </div>
                     <div class="col-md-12 form-group">
-                    <label for="gender">Blood Group</label>
-                            <select name="blood" id="blood" class="form-control form-control-lg">
-                            @foreach(array("A+","A-","B+","B-","AB+","AB-","O+","O-") as $group)
-                              @if($group==$blood)
-                              {
-                                <option value="{{$group}}" selected="selected">{{$group}}</option>
-                              }
-                              @else{
-                                <option value="{{$group}}">{{$group}}</option>
-                              }
-                              @endif
-                            @endforeach
-                            </select>
+                        <label for="blood">Blood Group</label>
+                        <select id="blood" name="blood" class="form-control form-control-lg">
+                          <option></option>
+                      </select>
                     </div>
+                    <div class="col-md-12 form-group">
+                      <label for="type">Type</label>
+                      <input type="text" id="type" name="type" value="" class="form-control form-control-lg" disabled> 
+                  </div>
                   <div class="col-md-12 form-group">
                     <label for="status">Status</label>
-                          <select name="status" id="status"class="form-control form-control-lg">
-                            @foreach(array("Active","Deactive") as $sts)
-                              @if($sts==$status)
-                              {
-                                <option value="{{$sts}}" selected="selected">{{$sts}}</option>
-                              }
-                              @else{
-                                <option value="{{$sts}}">{{$sts}}</option>
-                              }
-                              @endif
-                            @endforeach
-                            <select>
+                    <select id="status" name="status" class="form-control form-control-lg">
+                        <option></option>
+                    </select>
                   </div>
-                  <div class="row">
-                      <div class="col-md-4 form-group">
-                          <span></span>
-                      </div>
-                      <div class="col-md-6 form-group">
-                        <span id="msg"></span>
-                   </div>
-                  <div class="row">
-                          <div class="col-sm-3">
-                              <input type="submit" value="Update" id="update" name="submit" class="btn btn-primary btn-lg px-5">
-                          </div>
-                          <div id="editor"></div>
-                          <div class="col-sm-3">
-                            
-                          </div>
-                          <div class="col-sm-3">
-                            
-                          </div>
-                          <div class="col-sm-3">
-                             <input type="button" value="Print" id="print" name="print" class="btn btn-secondary btn-lg px-5">
-                          </div>
-                    </div>
-                    
                 </div>
 
               </div>
+
+
+                <div class="row">
+                  <div class="col-md-4 form-group">
+                      <span></span>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <span id="msg"></span>
+                </div>
+                </div>
+                    <div class="row">
+                          <div class="col-sm-3">
+                              <input type="button" value="Update" id="update" name="update" class="btn btn-primary btn-lg px-5">
+                          </div>
+                          <div id="editor"></div>
+                          <div class="col-sm-3">
+                            <input type="button" value="Print" id="print" name="print" class="btn btn-secondary btn-lg px-5">
+                          </div>
+                    </div>
                 </div>
               </form>
             </div>
@@ -232,6 +211,46 @@
 
     <div class="footer">
       <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <p class="mb-4"><img src="../../assets/images/logo.png" alt="Image" class="img-fluid"></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>  
+            <p><a href="#">Learn More</a></p>
+          </div>
+          <div class="col-lg-3">
+            <h3 class="footer-heading"><span>Our Campus</span></h3>
+            <ul class="list-unstyled">
+                <li><a href="#">Acedemic</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Our Interns</a></li>
+                <li><a href="#">Our Leadership</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Human Resources</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+              <h3 class="footer-heading"><span>Our Courses</span></h3>
+              <ul class="list-unstyled">
+                  <li><a href="#">Math</a></li>
+                  <li><a href="#">Science &amp; Engineering</a></li>
+                  <li><a href="#">Arts &amp; Humanities</a></li>
+                  <li><a href="#">Economics &amp; Finance</a></li>
+                  <li><a href="#">Business Administration</a></li>
+                  <li><a href="#">Computer Science</a></li>
+              </ul>
+          </div>
+          <div class="col-lg-3">
+              <h3 class="footer-heading"><span>Contact</span></h3>
+              <ul class="list-unstyled">
+                  <li><a href="#">Help Center</a></li>
+                  <li><a href="#">Support Community</a></li>
+                  <li><a href="#">Press</a></li>
+                  <li><a href="#">Share Your Story</a></li>
+                  <li><a href="#">Our Supporters</a></li>
+              </ul>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-12">
             <div class="copyright">
@@ -274,7 +293,9 @@
   <script src="../../assets/js/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
   <script>
-    $(document).ready(function(){
+
+     $(document).ready(function(){
+       //var search = 
       
       $("#print").click(function(){
         $("#msg").text('Printing Success');
@@ -310,7 +331,6 @@
       });
 
       });
-
 
 </script>
 
