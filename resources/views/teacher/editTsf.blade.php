@@ -93,9 +93,14 @@
                   <a href="/teacher/password" class="nav-link text-left">change password</a>
                 </li>
                 <li>
+                  <a href="/teacher/fileupload" class="nav-link text-left">fileupload</a>
+                </li>
+                <li>
+                  <a href="/teacher/showfilelist" class="nav-link text-left">fileList</a>
+                </li>
+                <li>
                   <a href="/logout" class="nav-link text-left">Logout</a>
                 </li>
-
               </ul>                                                                                                                                                                                                                  
             </nav>
 

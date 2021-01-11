@@ -121,16 +121,34 @@
                             <input type="password"  name="password" class="form-control form-control-lg">
                         </div>
                     </div>
+
+
                     <div class="row">
                       <div class="col-12  form-group">
                        
+
+                      @if (count($errors) > 0)
+      <h5 align="center">
+          @foreach($errors->all() as $error)
+            <div class="alert alert-danger alert-block">             
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $error }}</strong>              
+            </div>
+          @endforeach
+      </h5>
+      @endif
+
+
                       </div>
                     </div>
                       <div class="row">
-                        <div class="col-12  form-group">
+                        <div class="col-5  form-group">
                             <input type="submit" name="submit"value="Log In" class="btn btn-primary btn-lg px-5">
                         </div>
                         <h2>{{session('msg')}}</h2>
+                        <div class="col-5  form-group">
+                            <a href="/login/github" class="btn btn-primary btn-lg px-5">Login with GitHub</a>
+                        </div>
                       </div>
                         </form>
                 </div>

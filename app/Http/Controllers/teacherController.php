@@ -9,8 +9,10 @@ use App\tsfList;
 use App\classRoutine; 
 use App\grade; 
 use App\fileUpload; 
-
 use DB;
+use PDF;
+use App\Http\Requests\UserRequest;
+use Validator;
 
 class teacherController extends Controller
 {
@@ -25,17 +27,18 @@ function notice(Request $req){
     return view('teacher.notice');
 }
 
-function noticePost(Request $req){
-     
+function noticePost(UserRequest $req){
+
     $noticePost = new noticePost();
     $noticePost->teacherId = $req->session()->get('username');
     $noticePost->notice        =  $req->text;
     if($noticePost->save()){
-        return redirect('/teacher');
+        return redirect('/teacher/checkNotice');
     }else{
       echo "Fail to post notice";
     }
-}
+  
+  }
 
 function checkNotice(Request $req){
     $noticePost=noticePost::all();
@@ -211,6 +214,62 @@ public function showfilelist(){
   return view('teacher.showfilelist')->with('users',$users);
   
 }
+
+public function studentpdf(){
+  
+  $list=userModel::where('type','Student')
+              ->get();
+              // $pdf = PDF::loadView('teacher.print')->with('data',$data);
+             // $pdf = PDF::loadView('teacher.studentList',$studentList); 
+              //$pdf = PDF::loadHTML("<h1> Anik Sikder </h1>"); 
+              $pdf = PDF::loadView('teacher.print',compact('list'));
+               return $pdf->download('document.pdf');
+           //return view('teacher.print')->with('studentList',$studentList);
+  
+}
+
+
+public function searchResult(Request $req)
+    {
+        $query = $req->get('query');
+        $users = userModel::where('type','Student')
+                           ->where('id','like','%'.$query.'%')
+                           ->get();
+        return json_encode($users);
+     return view('teacher.studentList');
+}
+
+
+public function gradepdf(){
+  
+  $users=grade::all();
+              // $pdf = PDF::loadView('teacher.print')->with('data',$data);
+             // $pdf = PDF::loadView('teacher.studentList',$studentList); 
+              //$pdf = PDF::loadHTML("<h1> Anik Sikder </h1>"); 
+              $pdf = PDF::loadView('teacher.gradeprint',compact('users'));
+               return $pdf->download('document.pdf');
+           //return view('teacher.print')->with('studentList',$studentList);
+  
+}
+
+
+public function verify(Request $req){ 
+
+  $client = new \GuzzleHttp\Client();
+
+      $response = $client->request('GET', 'http://localhost:3000');
+      
+      if($response->getStatusCode()==200){
+      $data= json_decode($response->getBody(), true);
+      dd($data);
+
+      //return view('student.Registration',['data'=>$data]);
+      }else{
+          return "SERVER IS RESPONDING";
+      }
+  // $data = Appportal::all();
+  //  return view('student.Registration',['data'=>$data]);
+  } 
 
 
 }

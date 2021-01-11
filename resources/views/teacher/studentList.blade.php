@@ -93,13 +93,16 @@
                   <a href="/teacher/password" class="nav-link text-left">change password</a>
                 </li>
                 <li>
-                  <a href="/teacher/fileupload" class="nav-link text-left">File upload</a>
+                  <a href="/teacher/fileupload" class="nav-link text-left">fileupload</a>
                 </li>
-
+                <li>
+                  <a href="/teacher/showfilelist" class="nav-link text-left">fileList</a>
+                </li>
                 <li>
                   <a href="/logout" class="nav-link text-left">Logout</a>
                 </li>
 
+             
               </ul>                                                                                                                                                                                                                  
             </nav>
 
@@ -107,6 +110,7 @@
           <div class="ml-auto">
             <div class="social-wrap">
                 <p>Welcome, Anik Sikder</p>
+               
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
             </div>
@@ -138,6 +142,12 @@
     <div>
 
       <h3 align='center'>List</h3>
+      <p align='right'><a class="btn btn-danger" href="/teacher/pdf" role="button">Pdf</a></p>
+      <div class="row">
+                        <div class="col-md-4 offset-md-4 form-group">
+                        <input type="text" name="search" id="search" class="form-control" placeholder="Search Your Id" />
+                        </div>
+                    </div>
     <table class="table">
       <thead>
         <tr>
@@ -152,7 +162,7 @@
           <th scope="col">Status</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="temporary-table">
 
             @foreach($studentList as $user)
                                 <tr>
@@ -255,6 +265,42 @@
 
 
   <script src="../../assets/js/main.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+  <script type="text/javascript">
+      //newMethod
+      $(document).on('keyup', '#search', function(){
+        var query = $(this).val();
+        //console.log(query);
+        $.ajax({
+          method:'POST',
+          url:"{{ route('teacher.studentList') }}",
+          dataType:'json',
+          data:{
+            query:query,
+          },
+          success: function(res){
+            console.log(res);
+            var tableRow ='';
+            $('#temporary-table').html('');
+            $.each(res,function(index,value){
+              console.log(index);
+              console.log("Break");
+            
+          
+  tableRow ='<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+value.email+'</td><td>'+value.gender+'</td><td>'+value.address+'</td><td>'+value.dob+'</td><td>'+value.contact+'</td><td>'+value.blood+'</td><td>'+value.status+'</td><td>';
+            
+              $('#temporary-table').append(tableRow);
+             
+            });
+          }
+        });
+        
+        });
+
+      
+</script>
+
 
 </body>
 

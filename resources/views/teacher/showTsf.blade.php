@@ -93,6 +93,12 @@
                   <a href="/teacher/password" class="nav-link text-left">change password</a>
                 </li>
                 <li>
+                  <a href="/teacher/fileupload" class="nav-link text-left">fileupload</a>
+                </li>
+                <li>
+                  <a href="/teacher/showfilelist" class="nav-link text-left">fileList</a>
+                </li>
+                <li>
                   <a href="/logout" class="nav-link text-left">Logout</a>
                 </li>
 
@@ -118,7 +124,7 @@
         <div class="container">
           <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
-              <h2 class="mb-0">My Information</h2>
+              <h2 class="mb-0">Show Tsf</h2>
              <p></p>
             </div>
           </div>

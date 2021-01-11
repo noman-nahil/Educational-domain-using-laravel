@@ -93,6 +93,12 @@
                   <a href="/teacher/password" class="nav-link text-left">change password</a>
                 </li>
                 <li>
+                  <a href="/teacher/fileupload" class="nav-link text-left">fileupload</a>
+                </li>
+                <li>
+                  <a href="/teacher/showfilelist" class="nav-link text-left">fileList</a>
+                </li>
+                <li>
                   <a href="/logout" class="nav-link text-left">Logout</a>
                 </li>
 
@@ -135,6 +141,7 @@
     <div>
 
       <h3 align='center'>Grade</h3>
+      <p align='right'><a class="btn btn-danger" href="/teacher/gradepdf" role="button">PDF</a></p>
     <table class="table">
       <thead>
         <tr>

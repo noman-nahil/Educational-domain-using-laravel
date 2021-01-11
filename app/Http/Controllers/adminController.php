@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\userModel;
+use App\course;
+use App\bookmodel;
 use DB;
 use PDF;
 
@@ -129,12 +131,50 @@ class adminController extends Controller
         }
     }
     function addcourse(){
-        return view('admin.addcourse');
+        $list = DB ::table('userinfo')->where('type','Teacher')
+                                    ->get();
+        $list->transform(function($i) {
+            return (array)$i;
+            });
+        $users = $list->toArray(); 
+        //echo "$list";                           
+        return view('admin.addcourse')->with("users",$users);
+    }
+    function coursestore(Request $req){
+        $id = DB::table('subject')->max('id');
+        $course = new course();
+        $newID =$id+1;
+        $course->id = $newID ;
+        $course->courseName = $req->courseName;
+        $course->courseTime = $req->courseTime;
+        $course->courseDay = $req->courseDay;
+        $course->courseTeacher = $req->courseTeacher;
+
+        if($course->save()){
+            $req->session()->flash('coursemsg', 'Added Successfully');
+            return redirect('/home/addcourse');
+
+        }
+        
     }
     function book(Request $req){
         $id = $req->session()->get('username');
         $user = userModel::find($id);
         return view('admin.book',$user);
+    }
+    function bookstore(Request $req){
+        $id = DB::table('library')->max('bookId');
+        $newID =$id+1;
+        $book = new bookmodel();
+        $book->bookId = $newID ;
+        $book->bookName = $req->bookName;
+        $book->author = $req->author;
+        $book->category = $req->category;
+        if($book->save()){
+            $req->session()->flash('bookmsg', 'Added Successfully');
+            return redirect('/home/book');
+        }
+
     }
     function password(Request $req){
         $id = $req->session()->get('username');
@@ -168,8 +208,8 @@ class adminController extends Controller
         }
         
     }
-    function teacherlist(){
-        $list = DB ::table('userinfo')->where('type','Teacher')
+    function test(){
+        $list = DB ::table('userinfo')->where('type','Student')
                                     ->get();
         $list->transform(function($i) {
             return (array)$i;
@@ -177,6 +217,71 @@ class adminController extends Controller
         $users = $list->toArray(); 
         //echo "$list";                           
         return view('admin.teacherlist')->with("users",$users);
+    }
+    function teacherlist(Request $req){
+        /*$list = DB ::table('userinfo')->where('type','Teacher')
+                                    ->get();
+        $list->transform(function($i) {
+            return (array)$i;
+            });
+        $users = $list->toArray(); 
+        //echo "$list";                           
+        return view('admin.teacherlist')->with("users",$users);*/
+       /* if($req->ajax()){
+            $output = '';
+            $query = $req->get('query');
+            if($query != '')
+            {
+                $data = DB::table('userinfo')
+                ->where('id', 'like', '%'.$query.'%')
+                -get();
+            }
+            else{
+                $data = DB ::table('userinfo')//->where('type','Student')
+                ->get();
+            }
+            $total_row = $data->count();
+            if($total_row>0){
+                foreach($data as $row)
+                    {
+                        $output .= '
+                        <tr>
+                        <td>'.$row->id.'</td>
+                        <td>'.$row->name.'</td>
+                        <td>'.$row->email.'</td>
+                        <td>'.$row->gender.'</td>
+                        <td>'.$row->address.'</td>
+                        <td>'.$row->dob.'</td>
+                        <td>'.$row->contact.'</td>
+                        <td>'.$row->blood.'</td>
+                        <td>'.$row->status.'</td>
+                        <td><a href="">Edit</a> &nbsp <a>Delete</a></td>
+                        </tr>
+                        ';
+                    }
+                }
+                else
+                    {
+                    $output = '
+                    <tr>
+                        <td align="center" colspan="5">No Data Found</td>
+                    </tr>
+                    ';
+                    }
+                    $data = array(
+                        'table_data'  => $output,
+                        'total_data'  => $total_row
+                       );
+                       echo json_encode($data);
+        }*/
+        //new method
+        $query = $req->get('query');
+
+        $users = userModel::where('type','Student')
+        ->where('id','like','%'.$query.'%')
+        ->get();
+
+        return json_encode($users);
     }
     function studentlist(){
         $list = DB ::table('userinfo')->where('type','Student')

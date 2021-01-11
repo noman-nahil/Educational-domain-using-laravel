@@ -69,6 +69,7 @@
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
               <li>
+              <li>
                   <a href="/teacher" class="nav-link text-left">Home</a>
                 </li>
                 <li>
@@ -91,6 +92,12 @@
                 </li>
                 <li>
                   <a href="/teacher/password" class="nav-link text-left">change password</a>
+                </li>
+                <li>
+                  <a href="/teacher/fileupload" class="nav-link text-left">fileupload</a>
+                </li>
+                <li>
+                  <a href="/teacher/showfilelist" class="nav-link text-left">fileList</a>
                 </li>
                 <li>
                   <a href="/logout" class="nav-link text-left">Logout</a>
@@ -140,9 +147,23 @@
                         
 
                     <form method="post">
+
+
+
+                    @if (count($errors) > 0)
+      <h5 align="center">
+          @foreach($errors->all() as $error)
+            <div class="alert alert-danger alert-block">             
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $error }}</strong>              
+            </div>
+          @endforeach
+      </h5>
+      @endif
+
                         <div class="form-group">
                           <label for="exampleFormControlTextarea1">Notice</label>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="text" placeholder="Please write something"></textarea>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="text"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Post</button>
                       </form>

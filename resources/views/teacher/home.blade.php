@@ -98,6 +98,9 @@
                 <li>
                   <a href="/logout" class="nav-link text-left">Logout</a>
                 </li>
+                <li>
+                  <a href="/teacher/verify" class="nav-link text-left">verify</a>
+                </li>
 
 
 

@@ -29,6 +29,7 @@
 
 
 
+
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -122,18 +123,14 @@
                   </div> 
                   <form>
                     <div class="row">
-                        <div class="col-md-4 offset-md-2 form-group">
-                            <input type="text" name="searchId" id="searchId" class="form-control form-control-lg">
-                        </div>
-                        <div>
-                            <input type="button" id="ajaxSearch" value="Search" class="btn btn-primary btn-lg px-5">
+                        <div class="col-md-4 offset-md-4 form-group">
+                        <input type="text" name="search" id="search" class="form-control" placeholder="Search Teacher Data" />
                         </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-3 offset-md-4">
                       <h5>{{session('upmsg')}}</h5>
                       </div>
-                    
                         <table class="table">
                             <thead>
                                 <tr>
@@ -148,8 +145,8 @@
                                     <th scope="col">Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                              @foreach($users as $user)
+                            <tbody id="temporary-table">
+                            @foreach($users as $user)
                                 <tr>
                                     <td>{{$user['id']}}</td>
                                     <td>{{$user['name']}}</td>
@@ -217,237 +214,40 @@
 
   <script src="../../assets/js/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      var doc = new jsPDF();
-        var specialElementHandlers = {
-        '#editor': function (element, renderer) {
-        return true;
-      }
-      };
-        $("#ajaxSearch").click((e) => {
-            e.preventDefault();
-            var search = $("#searchId").val();
-            $.ajax({
-                url: "/home/user",
-                data: { search: search },
-                method: "post",
-                contentType: "application/x-www-form-urlencoded",
-                success: function(data){
-                    var results = data.results;
-                      $("#searchId").val('');
-                      $("#msg").text('');
-                       $("#id").val(results.id);
-                      $("#name").val(results.name);
-                      $("#email").val(results.email);
-                     // $("#gender").val(results.gender);
-                      $("#dob").val(results.dob);
-                      $("#address").val(results.address);
-                      $("#contact").val(results.contact);
-                      //$("#blood").val(results.blood);
-                      $("#type").val(results.type);
-                      //$("#bloodtest").val(results.blood);
-                      var dropdown = $('#gender');
-                      dropdown.empty();
-                      dropdown.prop('selectedIndex', 0);
-                      var options = ['Male','Female'];
-                      for(var i = 0; i< options.length; i++){
-                        if(options[i]===results.gender){
-                          dropdown.append($('<option selected="true" ></option>').attr('value', options[i]).text(options[i]));
-                        }
-                        else{
-                          dropdown.append($('<option></option>').attr('value', options[i]).text(options[i]));
-                        }
-                      }
-                      var bloodgrp = $('#blood');
-                      bloodgrp.empty();
-                      bloodgrp.prop('selectedIndex', 0);
-                      var blood = ['A+','A-','B+','B-','AB+','AB-','O+','O-'];
-                      for(var i = 0; i< blood.length; i++){
-                        if(blood[i]===results.blood){
-                          bloodgrp.append($('<option selected="true" ></option>').attr('value', blood[i]).text(blood[i]));
-                        }
-                        else{
-                          bloodgrp.append($('<option></option>').attr('value', blood[i]).text(blood[i]));
-                        }
-                      }
-                      var status = $('#status');
-                      status.empty();
-                      status.prop('selectedIndex', 0);
-                      var statusOptions = ['Active','Deactive'];
-                      for(var i = 0; i< statusOptions.length; i++){
-                        if(statusOptions[i]===results.status){
-                          status.append($('<option selected="true" ></option>').attr('value', statusOptions[i]).text(statusOptions[i]));
-                        }
-                        else{
-                          status.append($('<option></option>').attr('value', statusOptions[i]).text(statusOptions[i]));
-                        }
-                      }
-                      
-                      /*
-                      if(results.gender==='Male'){
-                        dropdown.append($('<option selected="true" ></option>').attr('value', 'Male').text('Male'));
-                        dropdown.append($('<option ></option>').attr('value', 'Female').text('Female'));
-                      }
-                      else{
-                        dropdown.append($('<option ></option>').attr('value', 'Male').text('Male'));
-                        dropdown.append($('<option selected="true"></option>').attr('value', 'Female').text('Female'));
-                      }*/
-                     
-                      //dropdown.val($('<option></option>').attr('value', results.blood).text(results.blood));
-                     // dropdown.val(results.blood);
-                }, error: function(err) {
-                    alert(err);
-                }
-            });
-        });
-        $("#clear").click((e) => {
-          //alert("clear");
-          $("#searchId").val('');
-          $("#id").val('');
-          $("#name").val('');
-          $("#email").val('');
-          $("#gender").val('');
-          $("#dob").val('');
-          $("#address").val('');
-          $("#contact").val('');
-          $("#blood").val('');
-          $("#type").val('');
-          $("#status").val('');
-          $("#msg").text('');
-        });
-        
-        $("#print").click(function(){
-          if($("#name").val()==='' || $("#email").val()==='' || $("#gender").val()==='' || $("#dob").val()==='' || $("#address").val()==='' || $("#contact").val()==='' && $("#blood").val()==='' || $("#status").val()===''){
-            //alert('Can not print cz name is empty');
-            $("#msg").text('Failed');
-            $("#msg").css("color", "red");
-          }
-          else{
-            $("#msg").text('Printing Success');
-            $("#msg").css("color", "green");
-            var doc = new jsPDF();
-              var id=  $("#id").val();
-              var name= $("#name").val();
-              var email=  $("#email").val();
-              var gender=$("#gender").val();
-              var dob=$("#dob").val();
-              var address= $("#address").val();
-              var contact= $("#contact").val();
-              var blood= $("#blood").val();
-              var status=  $("#status").val();
-              doc.setFontSize(25);
-              doc.text(60, 30, 'User Infromation')
-              doc.setFontSize(10);
-              doc.setFont('times')
-              doc.text(160, 35, 'Print Time:')
-              doc.setFontSize(16);
-              doc.text(30, 40, 'ID:'+id);
-              doc.text(30, 50, 'Name:'+name);
-              doc.text(30, 60, 'Email:'+email);
-              doc.text(30, 70, 'Gender:'+gender);
-              doc.text(30, 80, 'Date of birth:'+dob);
-              doc.text(30, 90, 'Address:'+address);
-              doc.text(30, 100, 'Contact:'+contact);
-              doc.text(30, 110, 'Blood Group:'+blood);
-              doc.text(30, 120, 'Status:'+status);
+  <script type="text/javascript">
+      //newMethod
+      $(document).on('keyup', '#search', function(){
+        var query = $(this).val();
+        //console.log(query);
+        $.ajax({
+          method:'POST',
+          url:"{{ route('admin.teacherlist') }}",
+          dataType:'json',
+          data:{
+            query:query,
+          },
+          success: function(res){
+            console.log(res);
+            var tableRow ='';
+            $('#temporary-table').html('');
+            $.each(res,function(index,value){
               
-                doc.save(id+'.pdf');
-            /*doc.fromHTML($('#printArea').html(), 15, 15, {
-                'width': 170,
-            'elementHandlers': specialElementHandlers
-           });*/
-             //doc.save('sample-file.pdf');
+              var id=res[index]['id'];
+              var integer = parseInt(id, 10);
+              //console.log("New: "+integer);
+              console.log("Break");
+              var product_id = integer;
+              console.log(integer);
+              tableRow = '<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+value.email+'</td><td>'+value.gender+'</td><td>'+value.address+'</td><td>'+value.dob+'</td><td>'+value.contact+'</td><td>'+value.blood+'</td><td>'+value.status+'</td><td><a href="{{route('admin.user','id')}}">Edit</a>&nbsp<a href="">Delete</a></td></tr>';
+              $('#temporary-table').append(tableRow);
+              //var n=$('#index').val();
+            });
           }
         });
-        $("#update").click((e) => {
-          if($("#name").val()==='' || $("#email").val()==='' || $("#gender").val()==='' || $("#dob").val()==='' || $("#address").val()==='' || $("#contact").val()==='' && $("#blood").val()==='' || $("#status").val()===''){
-            $("#msg").text('Failed');
-            $("#msg").css("color", "red");
-          }
-          else{
-            e.preventDefault();
-//var id= $("#id").val();
-      $.ajax({
-          url: "/admin/user",
-          type: "post",
-          data: {
-              id:  $("#id").val(),
-              name:  $("#name").val(),
-              email:  $("#email").val(),
-              gender:  $("#gender").val(),
-              dob:  $("#dob").val(),
-              address:  $("#address").val(),
-              contact:  $("#contact").val(),
-              blood:  $("#blood").val(),
-              status:  $("#status").val(),
-          },
-          success: function (results) {
-              //$('#output').html(data.responseText);
-             
-          }
-      });
-      $("#msg").text('update Successfully');
-          $("#msg").css("color", "green");
-          $("#id").val('');
-          $("#name").val('');
-          $("#email").val('');
-          $("#gender").val('');
-          $("#dob").val('');
-          $("#address").val('');
-          $("#contact").val('');
-          $("#blood").val('');
-          $("#type").val('');
-          $("#status").val('');
-      //alert(payload);
-          }
-       
+        //fetch_customer_data(query);
         });
-        $("#delete").click((e) => {
-          if($("#name").val()==='' || $("#email").val()==='' || $("#gender").val()==='' || $("#dob").val()==='' || $("#address").val()==='' || $("#contact").val()==='' && $("#blood").val()==='' || $("#status").val()===''){
-            $("#msg").text('Failed');
-            $("#msg").css("color", "red");
-          }
-          else{
-            var proceed = confirm("Are you sure you want to proceed?");
-          if (proceed) {
-          //proceed
-                } else {
-          //don't proceed
-        }
-            //alert("Are you sure?");
-            
-            e.preventDefault();
-//var id= $("#id").val();
-      $.ajax({
-          url: "/admin/user",
-          type: "post",
-          data: {
-              deleteId:  $("#id").val(),
-          },
-          success: function (results) {
-              //$('#output').html(data.responseText);
-             
-          }
-      });
-      $("#msg").text('Delete Successfully');
-          $("#msg").css("color", "green");
-          $("#id").val('');
-          $("#name").val('');
-          $("#email").val('');
-          $("#gender").val('');
-          $("#dob").val('');
-          $("#address").val('');
-          $("#contact").val('');
-          $("#blood").val('');
-          $("#type").val('');
-          $("#status").val('');
-      //alert(payload);
-          }
-          //alert("delete");
-        });
-       
-    });
+
+      
 </script>
 
 </body>
