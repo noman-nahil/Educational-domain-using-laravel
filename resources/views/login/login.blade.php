@@ -110,9 +110,11 @@
                 <div class="col-md-5">
                     
                         <form method="post">
+                          <input type="hidden" name="_token" value="{{csrf_token()}}">
                           <div class="row">
                             <div class="col-md-12 form-group">
-                          </div>
+                            </div>
+                              <div class="col-md-12 form-group">
                             <div class="col-md-12 form-group">
                             <label >ID</label>
                             <input type="text" name="username" value="{{old('username')}}"class="form-control form-control-lg">
@@ -120,7 +122,15 @@
                             {{$err}}
                            @endforeach
                         </div>
+<<<<<<< HEAD
                         
+=======
+                        @error('username')
+                        <span style="color: red">
+                          {{$message}}
+                        </span>
+                        @enderror
+>>>>>>> 2a895a1e3859d2ed9abcd2ada654da8dfc172c4f
                         <div class="col-md-12 form-group">
                             <label for="pword">Password</label>
                             <input type="password"  name="password" class="form-control form-control-lg">
@@ -128,17 +138,40 @@
                             {{$err}}
                            @endforeach
                         </div>
+                        @error('password')
+                        <span style="color: red">
+                          {{$message}}
+                        </span>
+                        @enderror
                     </div>
+
+
                     <div class="row">
                       <div class="col-12  form-group">
                        
+
+                      @if (count($errors) > 0)
+      <h5 align="center">
+          @foreach($errors->all() as $error)
+            <div class="alert alert-danger alert-block">             
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $error }}</strong>              
+            </div>
+          @endforeach
+      </h5>
+      @endif
+
+
                       </div>
                     </div>
                       <div class="row">
                         <div class="col-5  form-group">
                             <input type="submit" name="submit"value="Log In" class="btn btn-primary btn-lg px-5">
                         </div>
+<<<<<<< HEAD
                         
+=======
+>>>>>>> 2a895a1e3859d2ed9abcd2ada654da8dfc172c4f
                         <div class="col-5  form-group">
                             <a href="/login/github" class="btn btn-secondary btn-lg px-5">Login with GitHub</a>
                         </div>

@@ -231,6 +231,25 @@
             var tableRow ='';
             $('#temporary-table').html('');
             $.each(res,function(index,value){
+<<<<<<< HEAD
+              //var id=$(res[index]['id']).val();
+            var id=res[index]['id'];
+=======
+<<<<<<< HEAD
+              
+              var id=res[index]['id'];
+>>>>>>> 2a895a1e3859d2ed9abcd2ada654da8dfc172c4f
+              var integer = parseInt(id, 10);
+
+              //console.log("New: "+integer);
+              console.log("Break");
+              //var product_id = integer;
+              console.log(integer);
+<<<<<<< HEAD
+              tableRow = '<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+value.email+'</td><td>'+value.gender+'</td><td>'+value.address+'</td><td>'+value.dob+'</td><td>'+value.contact+'</td><td>'+value.blood+'</td><td>'+value.status+'</td><td><a href="/home/user/'+value.id+'">Edit</a>&nbsp<a href="/home/delete/'+value.id+'">Delete</a></td></tr>';
+=======
+              tableRow = '<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+value.email+'</td><td>'+value.gender+'</td><td>'+value.address+'</td><td>'+value.dob+'</td><td>'+value.contact+'</td><td>'+value.blood+'</td><td>'+value.status+'</td><td><a href="{{route('admin.user','id')}}">Edit</a>&nbsp<a href="">Delete</a></td></tr>';
+=======
               //var id=$(res[index]['id']).val();
             var id=res[index]['id'];
               var integer = parseInt(id, 10);
@@ -239,7 +258,9 @@
               console.log("Break");
               //var product_id = integer;
               console.log(integer);
-              tableRow = '<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+value.email+'</td><td>'+value.gender+'</td><td>'+value.address+'</td><td>'+value.dob+'</td><td>'+value.contact+'</td><td>'+value.blood+'</td><td>'+value.status+'</td><td><a href="/home/user/'+value.id+'">Edit</a>&nbsp<a href="/home/delete/'+value.id+'">Delete</a></td></tr>';
+              tableRow = '<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+value.email+'</td><td>'+value.gender+'</td><td>'+value.address+'</td><td>'+value.dob+'</td><td>'+value.contact+'</td><td>'+value.blood+'</td><td>'+value.status+'</td><td><a href="{{route('admin.user','"+value.id+"')}}">Edit</a>&nbsp<a href="">Delete</a></td></tr>';
+>>>>>>> e4024cf394f3022ba5ec573316edfa1aac74d6c5
+>>>>>>> 2a895a1e3859d2ed9abcd2ada654da8dfc172c4f
               $('#temporary-table').append(tableRow);
               //var n=$('#index').val();
             });

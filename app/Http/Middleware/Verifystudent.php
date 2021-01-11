@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class VerifySession
+class Verifystudent
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,12 @@ class VerifySession
      */
     public function handle($request, Closure $next)
     {
-
-        if($request->session()->has('username')){
-           return $next($request);
-        }else{
-            $request->session()->flash('msg', 'invalid request...');
-            return redirect('/login');
-        } 
+        $type = $request->session()->get('type');
+        if($type=='Student'){
+            return $next($request);
+         }else{
+             $request->session()->flash('msg', 'Invalid Request');
+             return redirect('/login');
+         } 
     }
 }
